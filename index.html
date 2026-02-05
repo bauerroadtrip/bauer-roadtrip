@@ -193,6 +193,33 @@ Dein Wohnwagen für entspannte Familienabenteuer. <strong>Hundefreundlich 🐾</
     </div>
 </section>
 
+<section id="bewertungen">
+<h2>Kundenbewertungen</h2>
+
+<div class="box" style="max-width:700px;margin:auto">
+
+<input id="rname" placeholder="Dein Name">
+
+<div class="star-row" id="stars">
+<span data-s="1">★</span>
+<span data-s="2">★</span>
+<span data-s="3">★</span>
+<span data-s="4">★</span>
+<span data-s="5">★</span>
+</div>
+
+<textarea id="rtext" placeholder="Deine Bewertung"></textarea>
+
+<button class="btn" onclick="sendReview()">Bewertung absenden</button>
+
+<div id="avg"></div>
+<div id="reviewList"></div>
+
+</div>
+</section>
+
+
+	
 
 <body>
 
@@ -720,6 +747,7 @@ loadReviews();
 </body>
 
 </html>
+
 
 
 
