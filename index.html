@@ -382,43 +382,43 @@ function show(img){
 
 <script>
 
-const blocked = [
-  "2026-02-10",
-  "2026-02-11",
-  "2026-02-12"
+const blockedRanges = [
+  { start: "2026-08-07", end: "2026-08-23" },
+  
 ];
 
-function isBlocked(date){
-  return blocked.includes(date);
+function inBlockedRange(date){
+  let d = new Date(date);
+
+  return blockedRanges.some(range => {
+    let s = new Date(range.start);
+    let e = new Date(range.end);
+    return d >= s && d <= e;
+  });
 }
 
 document.getElementById("start").addEventListener("change", function(){
-
-  if(isBlocked(this.value)){
-    alert("Dieser Starttermin ist bereits belegt.");
+  if(inBlockedRange(this.value)){
+    alert("Dieser Zeitraum ist bereits belegt.");
     this.value="";
   }
-
 });
 
 document.getElementById("ende").addEventListener("change", function(){
-
-  if(isBlocked(this.value)){
-    alert("Dieser Rückgabetermin ist bereits belegt.");
+  if(inBlockedRange(this.value)){
+    alert("Dieser Zeitraum ist bereits belegt.");
     this.value="";
   }
-
 });
 
 </script>
 
 
 
-
-
 </body>
 
 </html>
+
 
 
 
