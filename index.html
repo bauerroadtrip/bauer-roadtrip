@@ -422,7 +422,7 @@ Anfrage senden
                 </div>
             </div>
             <p class="hint" style="font-size: 0.85em; color: #666; margin-top: 5px;">
-                Hinweis: Buchungen ab 3 Tagen möglich. Grau hinterlegte Tage sind belegt.
+                Hinweis: Mindestmietdauer 3 Tage. Grau hinterlegte Tage sind bereits belegt.
             </p>
 
             <label for="message">Nachricht / Wünsche</label>
@@ -443,33 +443,36 @@ Anfrage senden
         emailjs.init("psDLSmm0PzMVXF_ws"); 
     })();
 
-    // --- HIER TERMINE BLOCKIEREN ---
+    // --- HIER DEINE TERMINE EINTRAGEN ---
     const belegteTermine = [
         { from: "20.06.2026", to: "30.06.2026" },
-        { from: "15.07.2026", to: "22.07.2026" },
-        "24.12.2026" // Beispiel für einen einzelnen Tag
+        { from: "15.07.2026", to: "22.07.2026" }
     ];
-    // ------------------------------
 
     // 2. Kalender-Konfiguration
+    // Erst den Rückgabe-Kalender definieren
     const endDatePicker = flatpickr("#enddate", { 
         "locale": "de", 
         minDate: "today", 
         dateFormat: "d.m.Y",
-        disable: belegteTermine // Sperrt die Daten im Rückgabe-Feld
+        disable: belegteTermine 
     });
 
+    // Dann den Abhol-Kalender definieren
     flatpickr("#startdate", { 
         "locale": "de", 
         minDate: "today", 
         dateFormat: "d.m.Y",
-        disable: belegteTermine, // Sperrt die Daten im Abholung-Feld
+        disable: belegteTermine, 
         onChange: function(selectedDates) {
             if (selectedDates.length > 0) {
-                const minEnd = new Date(selectedDates[0]);
-                minEnd.setDate(minEnd.getDate() + 3); 
+                const startDatum = selectedDates[0];
+                const minEndDatum = new Date(startDatum);
+                minEndDatum.setDate(minEndDatum.getDate() + 3); 
                 
-                endDatePicker.set("minDate", minEnd);
+                // WICHTIG: minDate UND disable neu setzen, damit nichts verschwindet
+                endDatePicker.set("minDate", minEndDatum);
+                endDatePicker.set("disable", belegteTermine); 
                 endDatePicker.clear(); 
             }
         }
@@ -478,7 +481,6 @@ Anfrage senden
     // 3. Formular-Versand
     document.getElementById('bookingForm').addEventListener('submit', function(event) {
         event.preventDefault();
-        
         const btn = document.getElementById('submitBtn');
         btn.innerText = 'Wird gesendet...';
         btn.disabled = true;
@@ -490,7 +492,7 @@ Anfrage senden
                 btn.innerText = 'Unverbindliche Anfrage senden';
                 btn.disabled = false;
             }, (error) => {
-                alert('Fehler beim Senden. Bitte schreibe an bauer.roadtrip@gmail.com');
+                alert('Fehler. Bitte E-Mail an bauer.roadtrip@gmail.com');
                 console.error('EmailJS Error:', error);
                 btn.innerText = 'Unverbindliche Anfrage senden';
                 btn.disabled = false;
@@ -499,14 +501,12 @@ Anfrage senden
 </script>
 
 
-
-
-
 	
 
 </body>
 
 </html>
+
 
 
 
