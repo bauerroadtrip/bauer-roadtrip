@@ -401,29 +401,63 @@ Anfrage senden
 </section>
 
 <script>
-function buchen() {
-  let start = document.getElementById("start").value;
-  let ende = document.getElementById("ende").value;
+    // 1. EmailJS Initialisierung
+    (function() {
+        // HIER DEINEN PUBLIC KEY EINTRAGEN!
+        emailjs.init("psDLSmm0PzMVXF_ws"); 
+    })();
 
-  if(start && ende){
-    document.getElementById("ausgabe").innerHTML =
-    "Danke! Deine Anfrage vom <strong>" + start + "</strong> bis <strong>" + ende + "</strong> wurde gespeichert.";
-  } else {
-    alert("Bitte beide Daten auswählen 🙂");
-  }
-}
+    // 2. Kalender-Konfiguration
+    const endDatePicker = flatpickr("#enddate", { 
+        "locale": "de", 
+        minDate: "today", 
+        dateFormat: "d.m.Y" 
+    });
+
+    flatpickr("#startdate", { 
+        "locale": "de", 
+        minDate: "today", 
+        dateFormat: "d.m.Y",
+        onChange: function(selectedDates) {
+            if (selectedDates.length > 0) {
+                const minEnd = new Date(selectedDates[0]);
+                minEnd.setDate(minEnd.getDate() + 3); // 3 Tage Regel
+                
+                endDatePicker.set("minDate", minEnd);
+                endDatePicker.clear(); 
+            }
+        }
+    });
+
+    // 3. Formular-Versand
+    document.getElementById('bookingForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        
+        const btn = document.getElementById('submitBtn');
+        btn.innerText = 'Wird gesendet...';
+        btn.disabled = true;
+
+        // Nutzt deine Service-ID und Template-ID
+        emailjs.sendForm('service_qsajyk7', 'template_znuahar', this)
+            .then(() => {
+                alert('Herzlichen Dank! Deine Anfrage wurde erfolgreich übermittelt. Wir melden uns zeitnah bei dir.');
+                document.getElementById('bookingForm').reset();
+                btn.innerText = 'Unverbindliche Anfrage senden';
+                btn.disabled = false;
+            }, (error) => {
+                alert('Entschuldigung, es gab ein technisches Problem. Bitte sende uns alternativ eine E-Mail an bauer.roadtrip@gmail.com');
+                console.error('EmailJS Error:', error);
+                btn.innerText = 'Unverbindliche Anfrage senden';
+                btn.disabled = false;
+            });
+    });
 </script>
-
-
-
-
-
-
 
 
 </body>
 
 </html>
+
 
 
 
