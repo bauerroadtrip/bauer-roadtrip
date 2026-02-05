@@ -400,30 +400,38 @@ const blocked = [
 "2026-08-21",
 "2026-08-22",
 "2026-08-23"
-	
+
 ];
 
+function isBlocked(date){
+  return blocked.includes(date);
+}
+
 document.getElementById("start").addEventListener("change", function(){
- if(blocked.includes(this.value)){
-   alert("Dieser Termin ist bereits belegt!");
-   this.value="";
- }
+
+  if(isBlocked(this.value)){
+    alert("Dieser Starttermin ist bereits belegt.");
+    this.value="";
+  }
+
 });
 
 document.getElementById("ende").addEventListener("change", function(){
- if(blocked.includes(this.value)){
-   alert("Dieser Termin ist bereits belegt!");
-   this.value="";
- }
+
+  if(isBlocked(this.value)){
+    alert("Dieser Rückgabetermin ist bereits belegt.");
+    this.value="";
+  }
+
 });
 
 </script>
 
 
-
 </body>
 
 </html>
+
 
 
 
