@@ -1,13 +1,14 @@
+
 <!DOCTYPE html>
 <html lang="de">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bauer Roadtrip – Wohnwagenvermietung Frankenhardt</title>
-
+    
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/material_green.css">
-
+    
     <style>
         :root {
             --primary-color: #5b7f6c;
@@ -16,7 +17,6 @@
             --text-dark: #2b2b2b;
             --white: #ffffff;
         }
-
         body { 
             margin: 0; 
             font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
@@ -24,8 +24,6 @@
             color: var(--text-dark); 
             line-height: 1.6; 
         }
-
-        /* Header & Navigation */
         header { 
             display: flex; 
             justify-content: space-between; 
@@ -37,93 +35,57 @@
             top: 0;
             z-index: 1000;
         }
-
         header img { height: 100px; width: auto; }
-
         nav { display: flex; gap: 25px; }
-        nav a { 
-            text-decoration: none; 
-            color: var(--text-dark); 
-            font-weight: 600; 
-            transition: color 0.3s;
-        }
+        nav a { text-decoration: none; color: var(--text-dark); font-weight: 600; transition: color 0.3s; }
         nav a:hover { color: var(--primary-color); }
 
-        /* Hero Bereich */
         .hero { 
             padding: 100px 20px; 
             text-align: center; 
-            background: linear-gradient(135deg, #e7ece9 0%, #f7f6f2 100%); 
+            background: linear-gradient(135deg, rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('Titelbild.png');
+            background-size: cover;
+            background-position: center;
+            color: white;
         }
-        .hero h1 { font-size: 3rem; margin-bottom: 10px; color: #1a1a1a; }
-        .hero p { font-size: 1.2rem; max-width: 600px; margin: 0 auto 30px; }
+        .hero h1 { font-size: 3rem; margin-bottom: 10px; text-shadow: 2px 2px 8px rgba(0,0,0,0.6); }
+        .hero p { font-size: 1.2rem; max-width: 600px; margin: 0 auto 30px; text-shadow: 1px 1px 6px rgba(0,0,0,0.6); }
 
-        /* Sektionen */
         section { padding: 80px 5%; max-width: 1100px; margin: auto; }
         h2 { color: #3e5f50; font-size: 2rem; margin-bottom: 30px; text-align: center; }
 
-        /* Boxen & Karten */
         .box { 
             background: var(--white); 
             padding: 40px; 
             border-radius: 24px; 
             box-shadow: 0 10px 30px rgba(0,0,0,0.03); 
         }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-        }
-
+        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
         ul { list-style: none; padding: 0; }
         ul li { margin-bottom: 10px; display: flex; align-items: center; }
         ul li::before { content: "✔"; color: var(--primary-color); font-weight: bold; margin-right: 10px; }
 
-        /* Formular */
+        .gallery { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 20px; }
+        .gallery img { width: 150px; height: 110px; object-fit: cover; border-radius: 10px; cursor: pointer; transition: transform 0.2s; }
+        .gallery img:hover { transform: scale(1.05); }
+
         form label { font-weight: 600; display: block; margin-top: 20px; margin-bottom: 5px; }
-        form input, form textarea { 
-            padding: 14px; 
-            border-radius: 12px; 
-            border: 1px solid #ddd; 
-            width: 100%; 
-            box-sizing: border-box; 
-            font-size: 1rem;
-            transition: border-color 0.3s;
-        }
-        form input:focus, form textarea:focus { 
-            outline: none; 
-            border-color: var(--primary-color); 
-        }
+        form input, form textarea { padding: 14px; border-radius: 12px; border: 1px solid #ddd; width: 100%; box-sizing: border-box; font-size: 1rem; }
+        
+        .btn { background: var(--primary-color); color: white; padding: 18px 35px; border-radius: 50px; text-decoration: none; font-weight: bold; border: none; cursor: pointer; display: inline-block; transition: all 0.3s; font-size: 1.1rem; text-align: center; }
+        .btn:hover { background: var(--primary-hover); transform: translateY(-2px); }
+        .btn:disabled { background: #ccc; cursor: not-allowed; }
 
-        .btn { 
-            background: var(--primary-color); 
-            color: white; 
-            padding: 18px 35px; 
-            border-radius: 50px; 
-            text-decoration: none; 
-            font-weight: bold; 
-            border: none; 
-            cursor: pointer; 
-            display: inline-block; 
-            transition: all 0.3s; 
-            font-size: 1.1rem;
-        }
-        .btn:hover { background: var(--primary-hover); transform: translateY(-2px); box-shadow: 0 5px 15px rgba(91, 127, 108, 0.3); }
-        .btn:disabled { background: #ccc; cursor: not-allowed; transform: none; }
+        #big { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 2000; cursor: pointer; }
+        #big img { position: absolute; top: 0; bottom: 0; left: 0; right: 0; margin: auto; max-width: 90%; max-height: 90%; border-radius: 10px; }
 
-        .hint { font-size: 0.9rem; color: #777; margin-top: 8px; font-style: italic; }
+        footer { background: #2b2b2b; color: white; padding: 50px 20px; text-align: center; margin-top: 50px; }
+        footer a { color: #cdded5; text-decoration: none; }
 
-        footer { background: #2b2b2b; color: white; padding: 50px 20px; text-align: center; }
-        footer a { color: #cdded5; text-decoration: none; margin: 0 10px; }
-
-        /* Mobile Optimierung */
         @media (max-width: 600px) {
-            header { flex-direction: column; text-align: center; gap: 15px; }
-            header img { height: 80px; }
-            nav { gap: 15px; font-size: 0.9rem; }
+            header { flex-direction: column; text-align: center; }
             .hero h1 { font-size: 2.2rem; }
-            .box { padding: 25px; }
+            .features-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -131,36 +93,18 @@
 
 <header>
     <img src="Logo.png" alt="Bauer Roadtrip Logo">
-   <nav>
-    <a href="#start">Start</a>
-    <a href="#wohnwagen">Wohnwagen</a>
-    <a href="#kontakt">Kontakt</a>
-
-</nav>
+    <nav>
+        <a href="#start">Start</a>
+        <a href="#wohnwagen">Wohnwagen</a>
+        <a href="#kontakt">Kontakt</a>
+    </nav>
 </header>
 
-<div class="hero" id="start" style="
-background-image:url('Titelbild.png');
-background-size:cover;
-background-position:center;
-padding:100px 20px;
-color:black;
-text-align:center;
-">
-
-    <h1 style="color:white; text-shadow:2px 2px 8px rgba(0,0,0,0.6);">
-Bauer Roadtrip
-</h1>
-	
-    <p style="color:white; text-shadow:1px 1px 6px rgba(0,0,0,0.6);">
-Dein Wohnwagen für entspannte Familienabenteuer. <strong>Hundefreundlich 🐾</strong>
-</p>
+<div class="hero" id="start">
+    <h1>Bauer Roadtrip</h1>
+    <p>Dein Wohnwagen für entspannte Familienabenteuer. <strong>Hundefreundlich 🐾</strong></p>
     <a href="#kontakt" class="btn">Jetzt Anfrage senden</a>
-
 </div>
-
-
-
 
 <section id="wohnwagen">
     <h2>Unser Miet-Wohnwagen "Lotte"</h2>
@@ -182,80 +126,33 @@ Dein Wohnwagen für entspannte Familienabenteuer. <strong>Hundefreundlich 🐾</
                 <li>Mindestmietdauer: 3 Tage</li>
                 <li>Standort: 74586 Frankenhardt</li>
                 <li>Kaution: 1.500 €</li>
-                <li>Januar bis Mai 60€/Tag</li>
-		<li>Juni 69€/Tag</li>
-                <li>Juli & August 79€/Tag</li>
-                <li>September bis Dezember 60€/Tag </li>
-		<li> Endreinigung wird mit 80€ berechnet
-
+                <li>Jan-Mai & Sep-Dez: 60€/Tag</li>
+                <li>Juni: 69€/Tag | Juli-Aug: 79€/Tag</li>
+                <li>Endreinigung: 80€ einmalig</li>
             </ul>
         </div>
     </div>
 
-<body>
-
-<!DOCTYPE html>
-<html lang="de">
-<head>
-<meta charset="UTF-8">
-<title>Bildergalerie</title>
-
-<style>
-.gallery img {
-  width: 200px;
-  margin: 5px;
-  cursor: pointer;
-}
-</style>
-</head>
-
-<body>
-
-<h2>Meine Bildergalerie</h2>
-
-<div class="gallery">
-  <img src="1.png" onclick="show(this)">
-  <img src="2.png" onclick="show(this)">
-  <img src="3.png" onclick="show(this)">
-  <img src="4.png" onclick="show(this)">
-  <img src="5.png" onclick="show(this)">
-  <img src="6.png" onclick="show(this)">
-  <img src="7.png" onclick="show(this)">
-  <img src="8.png" onclick="show(this)">
-  <img src="9.png" onclick="show(this)">
-  <img src="10.png" onclick="show(this)">
-  </div>
-
-<img id="big" style="
-display:none;
-position:fixed;
-top:0;left:0;right:0;bottom:0;
-margin:auto;
-max-width:90%;
-max-height:90%;
-cursor:pointer;
-" onclick="this.style.display='none'">
-
-<script>
-function show(img){
-  let big = document.getElementById("big");
-  big.src = img.src;
-  big.style.display = "block";
-}
-</script>
-
-</body>
-</html>
-</body>
-</html>
-
+<section id="wohnwagen">
+    <h2>Unser Miet-Wohnwagen "Lotte"</h2>
+   <div class="gallery">
+        <img src="1.png" onclick="show(this)">
+        <img src="2.png" onclick="show(this)">
+        <img src="3.png" onclick="show(this)">
+        <img src="4.png" onclick="show(this)">
+        <img src="5.png" onclick="show(this)">
+        <img src="6.png" onclick="show(this)">
+        <img src="7.png" onclick="show(this)">
+        <img src="8.png" onclick="show(this)">
+        <img src="9.png" onclick="show(this)">
+        <img src="10.png" onclick="show(this)">
+    </div>
+</section>
 
 <section id="ueber-uns">
     <h2>Über uns</h2>
-
-    <div class="box about-container">
-        <div class="about-text">
-            <h3>Hallo, wir sind Marcel, Jasmin & Balu!</h3>
+    <div class="box">
+        <h3>Hallo, wir sind Marcel, Jasmin & Balu!</h3>
             <p>
                 Camping ist für uns mehr als nur Urlaub – es ist Freiheit, Natur und wertvolle Zeit mit den Liebsten. 
                 Als leidenschaftliche Camper wissen wir genau, worauf es bei einer entspannten Reise ankommt.
@@ -267,15 +164,15 @@ function show(img){
             </p>
             <p>
                 Wir freuen uns darauf, euch bei eurem nächsten Abenteuer zu unterstützen!
+ <div class="image-placeholder">🏠<br>Familie Bauer</div>
             </p>
-        </div>
+
         <div class="about-image">
-             <div class="image-placeholder">🏠<br>Familie Bauer</div>
+             
  <img src="Werbung Lotte.png" onclick="show(this)" style="width:180px; display:block; margin:auto;">
 
         </div>
     </div>
-
 
 
     </div>
@@ -284,15 +181,15 @@ function show(img){
 <section id="kontakt">
     <h2>Kontakt & Buchung</h2>
     <div class="box" style="max-width: 700px; margin: auto;">
-        <p style="text-align: center; margin-bottom: 30px;">Schreib uns deinen Wunschzeitraum – wir antworten dir persönlich!</p>
+        <p style="text-align: center;">Wähle deinen Zeitraum aus – wir antworten dir persönlich!</p>
         
         <form id="bookingForm">
             <label for="user_name">Dein Name</label>
             <input type="text" id="user_name" name="user_name" placeholder="Vor- und Nachname" required>
-
+            
             <label for="user_email">E-Mail-Adresse</label>
             <input type="email" id="user_email" name="user_email" placeholder="Deine E-Mail für unsere Antwort" required>
-
+            
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
                 <div>
                     <label for="startdate">Abholung</label>
@@ -303,35 +200,37 @@ function show(img){
                     <input type="text" id="enddate" name="enddate" placeholder="Datum wählen" required>
                 </div>
             </div>
-            <p style="font-size: 0.85em; color: #666; margin-top: 5px;">
-                Hinweis: Buchung ab 3 Tagen möglich. Graue Tage sind belegt.
-            </p>
+            <p class="hint">Hinweis: Buchung ab 3 Tagen möglich. Grau hinterlegte Tage sind belegt.</p>
 
             <label for="message">Nachricht / Wünsche</label>
-            <textarea id="message" name="message" rows="5" placeholder="z.B. Anzahl Personen, Reiseziel oder Fragen zu Hunden..."></textarea>
-
+            <textarea id="message" name="message" rows="5" placeholder="z.B. Personenanzahl, Reiseziel..."></textarea>
+            
             <button type="submit" id="submitBtn" class="btn" style="margin-top: 30px; width: 100%;">Unverbindliche Anfrage senden</button>
         </form>
     </div>
 </section>
+
+<div id="big" onclick="this.style.display='none'"><img id="bigImg" src=""></div>
+
+<footer>
+    <p>&copy; 2026 Bauer Roadtrip – 74586 Frankenhardt</p>
+    <p><a href="#"><img src="https://freelogs.com/counter/index.php?u=cybertiger92&s=a" alt="Hit Counter" style="border:none;"></a></p>
+</footer>
 
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 <script src="https://npmcdn.com/flatpickr/dist/l10n/de.js"></script>
 
 <script>
-    // 1. EmailJS Initialisierung (Beibehalten)
-    (function() {
-        emailjs.init("psDLSmm0PzMVXF_ws"); 
-    })();
+    // 1. EmailJS
+    (function() { emailjs.init("psDLSmm0PzMVXF_ws"); })();
 
-    // 2. Deine belegten Termine definieren (Hier einfach neue hinzufügen)
+    // 2. BELEGTE TERMINE
     const belegteTermine = [
-        { from: "20.06.2026", to: "30.06.2026" },
-        { from: "15.07.2026", to: "22.07.2026" }
+        { from: "07.08.2026", to: "23.08.2026" }
     ];
 
-    // 3. Stabile Kalender-Logik
+    // 3. KALENDER LOGIK (STABIL)
     let endDatePicker = flatpickr("#enddate", {
         "locale": "de",
         dateFormat: "d.m.Y",
@@ -348,9 +247,8 @@ function show(img){
             if (selectedDates.length > 0) {
                 const selDate = selectedDates[0];
                 const minEnd = new Date(selDate.getTime());
-                minEnd.setDate(minEnd.getDate() + 3); // 3-Tage Regel
+                minEnd.setDate(minEnd.getDate() + 3); 
 
-                // Sicherer Neuaufbau des Rückgabe-Kalenders
                 endDatePicker.destroy();
                 endDatePicker = flatpickr("#enddate", {
                     "locale": "de",
@@ -359,13 +257,18 @@ function show(img){
                     disable: belegteTermine,
                     defaultDate: ""
                 });
-                
                 setTimeout(() => endDatePicker.open(), 100);
             }
         }
     });
 
-    // 4. Formular-Versand (Beibehalten)
+    // 4. BILDER-GALERIE FUNKTION
+    function show(img) {
+        document.getElementById("bigImg").src = img.src;
+        document.getElementById("big").style.display = "block";
+    }
+
+    // 5. VERSAND
     document.getElementById('bookingForm').addEventListener('submit', function(event) {
         event.preventDefault();
         const btn = document.getElementById('submitBtn');
@@ -379,174 +282,12 @@ function show(img){
                 btn.innerText = 'Unverbindliche Anfrage senden';
                 btn.disabled = false;
             }, (error) => {
-                alert('Technischer Fehler. Bitte sende eine E-Mail an bauer.roadtrip@gmail.com');
-                console.error('EmailJS Error:', error);
+                alert('Fehler beim Senden. Mail an: bauer.roadtrip@gmail.com');
                 btn.innerText = 'Unverbindliche Anfrage senden';
                 btn.disabled = false;
             });
     });
 </script>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-
-<style>
-*{
-box-sizing:border-box;
-}
-
-body{
-margin:0;
-min-height:100vh;
-display:flex;
-justify-content:center;
-align-items:center;
-background:linear-gradient(135deg,#667eea,#764ba2);
-font-family:'Poppins',sans-serif;
-}
-
-.container{
-width:420px;
-background:rgba(255,255,255,0.95);
-border-radius:18px;
-padding:30px;
-box-shadow:0 25px 60px rgba(0,0,0,.3);
-}
-
-h2{
-text-align:center;
-margin-bottom:10px;
-}
-
-#average{
-text-align:center;
-margin-bottom:20px;
-font-weight:600;
-color:#555;
-}
-
-input,textarea{
-width:100%;
-padding:12px;
-border-radius:10px;
-border:1px solid #ddd;
-margin-bottom:12px;
-font-family:inherit;
-}
-
-textarea{
-resize:none;
-height:90px;
-}
-
-.stars{
-text-align:center;
-margin-bottom:15px;
-}
-
-.stars span{
-font-size:34px;
-cursor:pointer;
-color:#ccc;
-transition:.2s;
-}
-
-.stars span:hover,
-.stars span.active{
-color:#ffb400;
-transform:scale(1.2);
-}
-
-button{
-width:100%;
-border:none;
-background:#667eea;
-color:white;
-padding:12px;
-border-radius:10px;
-font-size:16px;
-cursor:pointer;
-transition:.3s;
-}
-
-button:hover{
-background:#556cd6;
-}
-
-.review{
-margin-top:15px;
-padding-top:15px;
-border-top:1px solid #eee;
-}
-
-.review strong{
-color:#333;
-}
-
-.delete{
-background:#ff4b5c;
-margin-top:8px;
-}
-
-.delete:hover{
-background:#e84150;
-}
-</style>
-</head>
-
-<body>
-
-
-
-<footer>
-    <p>&copy; 2026 Bauer Roadtrip – 74586 Frankenhardt</p>
-    <p>
-<a href="https://freelogs.com"><img src="https://freelogs.com/counter/index.php?u=cybertiger92&s=a" alt="Hit Counter" /></a>
-    </p>
-</footer>
-	
-
 </body>
-
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
