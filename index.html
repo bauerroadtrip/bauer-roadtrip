@@ -414,6 +414,94 @@ function show(img){
 </div>
 </section>
 
+<script>
+let selectedStars=0;
+
+// Besucher-ID
+let userId=localStorage.getItem("userId");
+if(!userId){
+userId=Date.now()+"-"+Math.random();
+localStorage.setItem("userId",userId);
+}
+
+// Sterne klickbar
+document.querySelectorAll('#bewertungen .stars span').forEach(star=>{
+star.onclick=()=>{
+selectedStars=star.dataset.star;
+document.querySelectorAll('#bewertungen .stars span').forEach(s=>{
+s.classList.toggle("active",s.dataset.star<=selectedStars);
+});
+};
+});
+
+function submitReview(){
+const name=document.getElementById("rev_name").value;
+const comment=document.getElementById("rev_comment").value;
+
+if(!name||!comment||selectedStars==0){
+alert("Bitte alles ausfüllen");
+return;
+}
+
+const review={
+id:Date.now(),
+owner:userId,
+name,
+comment,
+stars:selectedStars
+};
+
+const reviews=JSON.parse(localStorage.getItem("reviews")||"[]");
+reviews.push(review);
+localStorage.setItem("reviews",JSON.stringify(reviews));
+
+document.getElementById("rev_name").value="";
+document.getElementById("rev_comment").value="";
+selectedStars=0;
+document.querySelectorAll('#bewertungen .stars span').forEach(s=>s.classList.remove("active"));
+
+loadReviews();
+}
+
+function deleteReview(id){
+let reviews=JSON.parse(localStorage.getItem("reviews")||"[]");
+reviews=reviews.filter(r=>r.id!==id);
+localStorage.setItem("reviews",JSON.stringify(reviews));
+loadReviews();
+}
+
+function loadReviews(){
+const reviews=JSON.parse(localStorage.getItem("reviews")||"[]");
+const container=document.getElementById("reviews");
+container.innerHTML="";
+let sum=0;
+
+reviews.forEach(r=>{
+sum+=Number(r.stars);
+
+let del="";
+if(r.owner===userId){
+del=`<button class="btn" style="margin-top:10px;background:#d9534f" onclick="deleteReview(${r.id})">Löschen</button>`;
+}
+
+container.innerHTML+=`
+<div style="border-top:1px solid #eee;padding-top:15px;margin-top:15px">
+<strong>${r.name}</strong> – ${"★".repeat(r.stars)}<br>
+${r.comment}
+${del}
+</div>`;
+});
+
+if(reviews.length){
+document.getElementById("average").innerHTML=
+"Durchschnitt: "+(sum/reviews.length).toFixed(1)+" ★";
+}else{
+document.getElementById("average").innerHTML="";
+}
+}
+
+loadReviews();
+</script>
 
 
 
@@ -429,6 +517,7 @@ function show(img){
 </body>
 
 </html>
+
 
 
 
