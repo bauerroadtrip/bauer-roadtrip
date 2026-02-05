@@ -134,8 +134,8 @@
    <nav>
     <a href="#start">Start</a>
     <a href="#wohnwagen">Wohnwagen</a>
-    <a href="#bewertungen">Bewertungen</a>
     <a href="#kontakt">Kontakt</a>
+	<a href="#bewertungen">Bewertungen</a>
 </nav>
 </header>
 
@@ -500,36 +500,9 @@ background:#e84150;
 <body>
 
 
-</section>
-
-<div class="container">
-
-<h2>⭐ Kundenbewertungen</h2>
-
-<div id="average"></div>
-
-<input id="name" placeholder="Dein Name">
-
-<div class="stars">
-<span data-star="1">★</span>
-<span data-star="2">★</span>
-<span data-star="3">★</span>
-<span data-star="4">★</span>
-<span data-star="5">★</span>
-</div>
-
-<textarea id="comment" placeholder="Deine Bewertung"></textarea>
-
-<button onclick="submitReview()">Bewertung absenden</button>
-
-<div id="reviews"></div>
-
-</div>
-
-<script>
 <section id="bewertungen" style="padding:80px 5%;max-width:900px;margin:auto">
 
-<h2 style="text-align:center;color:#3e5f50">Kundenbewertungen</h2>
+<h2 style="text-align:center;color:#3e5f50">⭐ Kundenbewertungen</h2>
 
 <style>
 .review-box{
@@ -537,19 +510,19 @@ background:#fff;
 border-radius:20px;
 padding:30px;
 box-shadow:0 15px 40px rgba(0,0,0,.06);
+max-width:700px;
+margin:auto;
 }
 
-.review-form input,
-.review-form textarea{
+.review-box input,.review-box textarea{
 width:100%;
 padding:14px;
 border-radius:12px;
 border:1px solid #ddd;
 margin-bottom:12px;
-font-size:15px;
 }
 
-.review-form textarea{height:90px;resize:none;}
+.review-box textarea{height:90px}
 
 .star-row{text-align:center;margin:15px 0}
 
@@ -557,52 +530,42 @@ font-size:15px;
 font-size:32px;
 cursor:pointer;
 color:#ccc;
-transition:.2s;
 }
 
-.star-row span.active,
-.star-row span:hover{
-color:#ffb400;
-transform:scale(1.15);
-}
+.star-row span.active{color:#ffb400}
 
 .review-btn{
 background:#5b7f6c;
 color:white;
 border:none;
-padding:14px 25px;
+padding:14px;
 border-radius:40px;
+width:100%;
 cursor:pointer;
 font-weight:600;
-width:100%;
 }
-
-.review-btn:hover{background:#4a6958}
 
 .review-card{
 border-top:1px solid #eee;
-padding-top:15px;
 margin-top:15px;
+padding-top:15px;
 }
 
-.review-name{font-weight:600}
-
 .delete-btn{
-margin-top:8px;
 background:#e55353;
 color:white;
 border:none;
-padding:8px 16px;
+padding:6px 14px;
 border-radius:20px;
+margin-top:8px;
 cursor:pointer;
 }
 
-.avg{text-align:center;margin:15px 0;font-weight:600}
+.avg{text-align:center;font-weight:600;margin:10px 0}
 </style>
 
 <div class="review-box">
 
-<div class="review-form">
 <input id="rname" placeholder="Dein Name">
 
 <div class="star-row" id="stars">
@@ -616,7 +579,6 @@ cursor:pointer;
 <textarea id="rtext" placeholder="Deine Bewertung"></textarea>
 
 <button class="review-btn" onclick="sendReview()">Bewertung absenden</button>
-</div>
 
 <div id="avg" class="avg"></div>
 <div id="reviewList"></div>
@@ -626,14 +588,12 @@ cursor:pointer;
 <script>
 let rating=0;
 
-// eigene Besucher-ID
 let uid=localStorage.getItem("uid");
 if(!uid){
 uid=Date.now()+"-"+Math.random();
 localStorage.setItem("uid",uid);
 }
 
-// Sterne
 document.querySelectorAll("#stars span").forEach(s=>{
 s.onclick=()=>{
 rating=s.dataset.s;
@@ -644,16 +604,15 @@ x.classList.toggle("active",x.dataset.s<=rating);
 });
 
 function sendReview(){
-let n=rname.value;
-let t=rtext.value;
-
-if(!n||!t||rating==0){alert("Bitte alles ausfüllen");return;}
+if(!rname.value||!rtext.value||rating==0){
+alert("Bitte alles ausfüllen");return;
+}
 
 let r={
 id:Date.now(),
 owner:uid,
-name:n,
-text:t,
+name:rname.value,
+text:rtext.value,
 stars:rating
 };
 
@@ -669,67 +628,8 @@ document.querySelectorAll("#stars span").forEach(x=>x.classList.remove("active")
 loadReviews();
 }
 
-function del(id){
-let all=JSON.parse(localStorage.getItem("reviews")||"[]");
-all=all.filter(x=>x.id!==id);
-localStorage.setItem("reviews",JSON.stringify(all));
-loadReviews();
-}
+function de
 
-function loadReviews(){
-let all=JSON.parse(localStorage.getItem("reviews")||"[]");
-reviewList.innerHTML="";
-let sum=0;
-
-all.forEach(r=>{
-sum+=Number(r.stars);
-let btn="";
-if(r.owner===uid){
-btn=`<button class="delete-btn" onclick="del(${r.id})">Löschen</button>`;
-}
-
-reviewList.innerHTML+=`
-<div class="review-card">
-<div class="review-name">${r.name} – ${"★".repeat(r.stars)}</div>
-<div>${r.text}</div>
-${btn}
-</div>`;
-});
-
-avg.innerHTML=all.length
-? "Durchschnitt: "+(sum/all.length).toFixed(1)+" ★"
-: "";
-}
-
-loadReviews();
-</script>
-
-	</section>
-
-<section id="bewertungen">
-<h2>Kundenbewertungen</h2>
-
-<div class="box" style="max-width:700px;margin:auto">
-
-<input id="rname" placeholder="Dein Name">
-
-<div class="star-row" id="stars">
-<span data-s="1">★</span>
-<span data-s="2">★</span>
-<span data-s="3">★</span>
-<span data-s="4">★</span>
-<span data-s="5">★</span>
-</div>
-
-<textarea id="rtext" placeholder="Deine Bewertung"></textarea>
-
-<button class="btn" onclick="sendReview()">Bewertung absenden</button>
-
-<div id="avg"></div>
-<div id="reviewList"></div>
-
-</div>
-</section>
 
 
 
@@ -744,6 +644,7 @@ loadReviews();
 </body>
 
 </html>
+
 
 
 
