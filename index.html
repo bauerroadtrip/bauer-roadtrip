@@ -285,7 +285,15 @@ function show(img){
 <section id="kontakt">
     <h2>Kontakt & Buchung</h2>
     <div class="box" style="max-width: 700px; margin: auto;">
+        <p style="text-align: center; margin-bottom: 30px;">Schreib uns deinen Wunschzeitraum – wir antworten dir persönlich!</p>
+        
         <form id="bookingForm">
+            <label for="user_name">Dein Name</label>
+            <input type="text" id="user_name" name="user_name" placeholder="Vor- und Nachname" required>
+
+            <label for="user_email">E-Mail-Adresse</label>
+            <input type="email" id="user_email" name="user_email" placeholder="Deine E-Mail für unsere Antwort" required>
+
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
                 <div>
                     <label for="startdate">Abholung</label>
@@ -296,69 +304,92 @@ function show(img){
                     <input type="text" id="enddate" name="enddate" placeholder="Datum wählen" required>
                 </div>
             </div>
-            <p style="font-size: 0.85em; color: #666; margin-top: 5px;">
-                Hinweis: Buchung ab 3 Tagen möglich. Graue Tage sind belegt.
+            <p id="date-hint" style="font-size: 0.85em; color: #666; margin-top: 5px;">
+                Hinweis: Mindestmietdauer 3 Tage. Grau hinterlegte Tage sind bereits belegt.
             </p>
+
+            <label for="message">Nachricht / Wünsche</label>
+            <textarea id="message" name="message" rows="5" placeholder="z.B. Anzahl Personen, Reiseziel oder Fragen zu Hunden..."></textarea>
+
             <button type="submit" id="submitBtn" class="btn" style="margin-top: 30px; width: 100%;">Unverbindliche Anfrage senden</button>
         </form>
     </div>
 </section>
 
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 <script src="https://npmcdn.com/flatpickr/dist/l10n/de.js"></script>
 
 <script>
-    // 1. Deine belegten Termine definieren
+    // 1. EmailJS Initialisierung
+    (function() {
+        emailjs.init("psDLSmm0PzMVXF_ws"); 
+    })();
+
+    // --- DEINE GEBUCHTEN TERMINE ---
     const belegteTermine = [
         { from: "20.06.2026", to: "30.06.2026" },
         { from: "15.07.2026", to: "22.07.2026" }
     ];
 
-    // 2. Initialisierung des Rückgabe-Kalenders mit Standard-Werten
-    let endDatePicker = flatpickr("#enddate", {
-        "locale": "de",
+    // 2. Kalender-Konfiguration
+    const endDatePicker = flatpickr("#enddate", { 
+        "locale": "de", 
+        minDate: "today", 
         dateFormat: "d.m.Y",
-        minDate: "today",
-        disable: belegteTermine
+        disable: belegteTermine 
     });
 
-    // 3. Initialisierung des Abhol-Kalenders
-    flatpickr("#startdate", {
-        "locale": "de",
+    flatpickr("#startdate", { 
+        "locale": "de", 
+        minDate: "today", 
         dateFormat: "d.m.Y",
-        minDate: "today",
-        disable: belegteTermine,
+        disable: belegteTermine, 
         onChange: function(selectedDates) {
             if (selectedDates.length > 0) {
-                // Berechne das frühestmögliche Rückgabedatum (+3 Tage)
-                const selDate = selectedDates[0];
-                const minEnd = new Date(selDate.getTime());
+                // Neues Mindestdatum für Rückgabe berechnen (+3 Tage)
+                let minEnd = new Date(selectedDates[0]);
                 minEnd.setDate(minEnd.getDate() + 3);
-
-                // Zerstöre den alten Rückgabe-Kalender und baue ihn neu auf
-                // Das ist die sicherste Methode, um Darstellungsfehler zu vermeiden
-                endDatePicker.destroy();
-                endDatePicker = flatpickr("#enddate", {
-                    "locale": "de",
-                    dateFormat: "d.m.Y",
-                    minDate: minEnd,
-                    disable: belegteTermine,
-                    defaultDate: "" // Feld leeren für neue Auswahl
-                });
                 
-                // Fokus direkt auf das Rückgabefeld setzen (optional)
-                setTimeout(() => endDatePicker.open(), 100);
+                // Rückgabe-Kalender aktualisieren
+                endDatePicker.set("minDate", minEnd);
+                
+                // WICHTIG: Die Sperrliste muss explizit neu gesetzt werden
+                endDatePicker.set("disable", belegteTermine);
+                
+                // Feld leeren, damit keine ungültigen Zeiträume stehen bleiben
+                endDatePicker.clear(); 
             }
         }
     });
-</script>
 
+    // 3. Formular-Versand
+    document.getElementById('bookingForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        const btn = document.getElementById('submitBtn');
+        btn.innerText = 'Wird gesendet...';
+        btn.disabled = true;
+
+        emailjs.sendForm('service_qsajyk7', 'template_znuahar', this)
+            .then(() => {
+                alert('Herzlichen Dank! Deine Anfrage wurde erfolgreich übermittelt.');
+                document.getElementById('bookingForm').reset();
+                btn.innerText = 'Unverbindliche Anfrage senden';
+                btn.disabled = false;
+            }, (error) => {
+                alert('Fehler. Bitte E-Mail an bauer.roadtrip@gmail.com');
+                btn.innerText = 'Unverbindliche Anfrage senden';
+                btn.disabled = false;
+            });
+    });
+</script>
 
 	
 
 </body>
 
 </html>
+
 
 
 
