@@ -421,7 +421,9 @@ Anfrage senden
                     <input type="text" id="enddate" name="enddate" placeholder="Datum wählen" required>
                 </div>
             </div>
-            <p class="hint">Hinweis: Buchungen sind erst ab 3 Tagen möglich.</p>
+            <p class="hint" style="font-size: 0.85em; color: #666; margin-top: 5px;">
+                Hinweis: Buchungen ab 3 Tagen möglich. Grau hinterlegte Tage sind belegt.
+            </p>
 
             <label for="message">Nachricht / Wünsche</label>
             <textarea id="message" name="message" rows="5" placeholder="z.B. Anzahl Personen, Reiseziel oder Fragen zu Hunden..."></textarea>
@@ -431,13 +433,6 @@ Anfrage senden
     </div>
 </section>
 
-<footer>
-    <p>&copy; 2026 Bauer Roadtrip – 74586 Frankenhardt</p>
-    <p>
-        <a href="#">Impressum</a> | <a href="#">Datenschutz</a>
-    </p>
-</footer>
-
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 <script src="https://npmcdn.com/flatpickr/dist/l10n/de.js"></script>
@@ -445,25 +440,34 @@ Anfrage senden
 <script>
     // 1. EmailJS Initialisierung
     (function() {
-        // HIER DEINEN PUBLIC KEY EINTRAGEN!
         emailjs.init("psDLSmm0PzMVXF_ws"); 
     })();
+
+    // --- HIER TERMINE BLOCKIEREN ---
+    const belegteTermine = [
+        { from: "20.06.2026", to: "30.06.2026" },
+        { from: "15.07.2026", to: "22.07.2026" },
+        "24.12.2026" // Beispiel für einen einzelnen Tag
+    ];
+    // ------------------------------
 
     // 2. Kalender-Konfiguration
     const endDatePicker = flatpickr("#enddate", { 
         "locale": "de", 
         minDate: "today", 
-        dateFormat: "d.m.Y" 
+        dateFormat: "d.m.Y",
+        disable: belegteTermine // Sperrt die Daten im Rückgabe-Feld
     });
 
     flatpickr("#startdate", { 
         "locale": "de", 
         minDate: "today", 
         dateFormat: "d.m.Y",
+        disable: belegteTermine, // Sperrt die Daten im Abholung-Feld
         onChange: function(selectedDates) {
             if (selectedDates.length > 0) {
                 const minEnd = new Date(selectedDates[0]);
-                minEnd.setDate(minEnd.getDate() + 3); // 3 Tage Regel
+                minEnd.setDate(minEnd.getDate() + 3); 
                 
                 endDatePicker.set("minDate", minEnd);
                 endDatePicker.clear(); 
@@ -479,15 +483,14 @@ Anfrage senden
         btn.innerText = 'Wird gesendet...';
         btn.disabled = true;
 
-        // Nutzt deine Service-ID und Template-ID
         emailjs.sendForm('service_qsajyk7', 'template_znuahar', this)
             .then(() => {
-                alert('Herzlichen Dank! Deine Anfrage wurde erfolgreich übermittelt. Wir melden uns zeitnah bei dir.');
+                alert('Herzlichen Dank! Deine Anfrage wurde erfolgreich übermittelt.');
                 document.getElementById('bookingForm').reset();
                 btn.innerText = 'Unverbindliche Anfrage senden';
                 btn.disabled = false;
             }, (error) => {
-                alert('Entschuldigung, es gab ein technisches Problem. Bitte sende uns alternativ eine E-Mail an bauer.roadtrip@gmail.com');
+                alert('Fehler beim Senden. Bitte schreibe an bauer.roadtrip@gmail.com');
                 console.error('EmailJS Error:', error);
                 btn.innerText = 'Unverbindliche Anfrage senden';
                 btn.disabled = false;
@@ -504,6 +507,7 @@ Anfrage senden
 </body>
 
 </html>
+
 
 
 
