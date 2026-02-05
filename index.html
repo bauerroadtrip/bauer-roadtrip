@@ -304,8 +304,8 @@ function show(img){
                     <input type="text" id="enddate" name="enddate" placeholder="Datum wählen" required>
                 </div>
             </div>
-            <p id="date-hint" style="font-size: 0.85em; color: #666; margin-top: 5px;">
-                Hinweis: Mindestmietdauer 3 Tage. Grau hinterlegte Tage sind bereits belegt.
+            <p style="font-size: 0.85em; color: #666; margin-top: 5px;">
+                Hinweis: Buchung ab 3 Tagen möglich. Graue Tage sind belegt.
             </p>
 
             <label for="message">Nachricht / Wünsche</label>
@@ -321,49 +321,52 @@ function show(img){
 <script src="https://npmcdn.com/flatpickr/dist/l10n/de.js"></script>
 
 <script>
-    // 1. EmailJS Initialisierung
+    // 1. EmailJS Initialisierung (Beibehalten)
     (function() {
         emailjs.init("psDLSmm0PzMVXF_ws"); 
     })();
 
-    // --- DEINE GEBUCHTEN TERMINE ---
+    // 2. Deine belegten Termine definieren (Hier einfach neue hinzufügen)
     const belegteTermine = [
         { from: "20.06.2026", to: "30.06.2026" },
         { from: "15.07.2026", to: "22.07.2026" }
     ];
 
-    // 2. Kalender-Konfiguration
-    const endDatePicker = flatpickr("#enddate", { 
-        "locale": "de", 
-        minDate: "today", 
+    // 3. Stabile Kalender-Logik
+    let endDatePicker = flatpickr("#enddate", {
+        "locale": "de",
         dateFormat: "d.m.Y",
-        disable: belegteTermine 
+        minDate: "today",
+        disable: belegteTermine
     });
 
-    flatpickr("#startdate", { 
-        "locale": "de", 
-        minDate: "today", 
+    flatpickr("#startdate", {
+        "locale": "de",
         dateFormat: "d.m.Y",
-        disable: belegteTermine, 
+        minDate: "today",
+        disable: belegteTermine,
         onChange: function(selectedDates) {
             if (selectedDates.length > 0) {
-                // Neues Mindestdatum für Rückgabe berechnen (+3 Tage)
-                let minEnd = new Date(selectedDates[0]);
-                minEnd.setDate(minEnd.getDate() + 3);
+                const selDate = selectedDates[0];
+                const minEnd = new Date(selDate.getTime());
+                minEnd.setDate(minEnd.getDate() + 3); // 3-Tage Regel
+
+                // Sicherer Neuaufbau des Rückgabe-Kalenders
+                endDatePicker.destroy();
+                endDatePicker = flatpickr("#enddate", {
+                    "locale": "de",
+                    dateFormat: "d.m.Y",
+                    minDate: minEnd,
+                    disable: belegteTermine,
+                    defaultDate: ""
+                });
                 
-                // Rückgabe-Kalender aktualisieren
-                endDatePicker.set("minDate", minEnd);
-                
-                // WICHTIG: Die Sperrliste muss explizit neu gesetzt werden
-                endDatePicker.set("disable", belegteTermine);
-                
-                // Feld leeren, damit keine ungültigen Zeiträume stehen bleiben
-                endDatePicker.clear(); 
+                setTimeout(() => endDatePicker.open(), 100);
             }
         }
     });
 
-    // 3. Formular-Versand
+    // 4. Formular-Versand (Beibehalten)
     document.getElementById('bookingForm').addEventListener('submit', function(event) {
         event.preventDefault();
         const btn = document.getElementById('submitBtn');
@@ -377,18 +380,19 @@ function show(img){
                 btn.innerText = 'Unverbindliche Anfrage senden';
                 btn.disabled = false;
             }, (error) => {
-                alert('Fehler. Bitte E-Mail an bauer.roadtrip@gmail.com');
+                alert('Technischer Fehler. Bitte sende eine E-Mail an bauer.roadtrip@gmail.com');
+                console.error('EmailJS Error:', error);
                 btn.innerText = 'Unverbindliche Anfrage senden';
                 btn.disabled = false;
             });
     });
 </script>
-
 	
 
 </body>
 
 </html>
+
 
 
 
