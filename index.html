@@ -285,15 +285,7 @@ function show(img){
 <section id="kontakt">
     <h2>Kontakt & Buchung</h2>
     <div class="box" style="max-width: 700px; margin: auto;">
-        <p style="text-align: center; margin-bottom: 30px;">Schreib uns deinen Wunschzeitraum – wir antworten dir persönlich!</p>
-        
         <form id="bookingForm">
-            <label for="user_name">Dein Name</label>
-            <input type="text" id="user_name" name="user_name" placeholder="Vor- und Nachname" required>
-
-            <label for="user_email">E-Mail-Adresse</label>
-            <input type="email" id="user_email" name="user_email" placeholder="Deine E-Mail für unsere Antwort" required>
-
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
                 <div>
                     <label for="startdate">Abholung</label>
@@ -304,199 +296,60 @@ function show(img){
                     <input type="text" id="enddate" name="enddate" placeholder="Datum wählen" required>
                 </div>
             </div>
-            <p class="hint">Hinweis: Buchungen sind erst ab 3 Tagen möglich.</p>
-
-            <label for="message">Nachricht / Wünsche</label>
-            <textarea id="message" name="message" rows="5" placeholder="z.B. Anzahl Personen, Reiseziel oder Fragen zu Hunden..."></textarea>
-
-            <button type="submit" id="submitBtn" class="btn" style="margin-top: 30px; width: 100%;">Unverbindliche Anfrage senden</button>
-        </form>
-    </div>
-</section>
-
-<footer>
-    <p>&copy; 2026 Bauer Roadtrip – 74586 Frankenhardt</p>
-    <p>
-        <a href="#">Impressum</a> – Bauer Roadtrip, Marcel Bauer, Untere Stettwegäcker 2, 74586 Frankenhardt
-
-		| <a href="#">Datenschutz</a>
-    </p>
-</footer>
-
-<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-<script src="https://npmcdn.com/flatpickr/dist/l10n/de.js"></script>
-
-<script>
-    // 1. EmailJS Initialisierung
-    (function() {
-        // HIER DEINEN PUBLIC KEY EINTRAGEN!
-        emailjs.init("psDLSmm0PzMVXF_ws"); 
-    })();
-
-    // 2. Kalender-Konfiguration
-    const endDatePicker = flatpickr("#enddate", { 
-        "locale": "de", 
-        minDate: "today", 
-        dateFormat: "d.m.Y" 
-    });
-
-    flatpickr("#startdate", { 
-        "locale": "de", 
-        minDate: "today", 
-        dateFormat: "d.m.Y",
-        onChange: function(selectedDates) {
-            if (selectedDates.length > 0) {
-                const minEnd = new Date(selectedDates[0]);
-                minEnd.setDate(minEnd.getDate() + 3); // 3 Tage Regel
-                
-                endDatePicker.set("minDate", minEnd);
-                endDatePicker.clear(); 
-            }
-        }
-    });
-
-    // 3. Formular-Versand
-    document.getElementById('bookingForm').addEventListener('submit', function(event) {
-        event.preventDefault();
-        
-        const btn = document.getElementById('submitBtn');
-        btn.innerText = 'Wird gesendet...';
-        btn.disabled = true;
-
-        // Nutzt deine Service-ID und Template-ID
-        emailjs.sendForm('service_qsajyk7', 'template_znuahar', this)
-            .then(() => {
-                alert('Herzlichen Dank! Deine Anfrage wurde erfolgreich übermittelt. Wir melden uns zeitnah bei dir.');
-                document.getElementById('bookingForm').reset();
-                btn.innerText = 'Unverbindliche Anfrage senden';
-                btn.disabled = false;
-            }, (error) => {
-                alert('Entschuldigung, es gab ein technisches Problem. Bitte sende uns alternativ eine E-Mail an bauer.roadtrip@gmail.com');
-                console.error('EmailJS Error:', error);
-                btn.innerText = 'Unverbindliche Anfrage senden';
-                btn.disabled = false;
-            });
-    });
-<section id="buchung" style="text-align:center; padding:40px;">
-
-<h2>Buchungsanfrage</h2>
-
-<form>
-
-<label>Startdatum:</label><br>
-<input type="date" id="start" required><br><br>
-
-<label>Enddatum:</label><br>
-<input type="date" id="ende" required><br><br>
-
-<button type="button" onclick="buchen()" style="padding:12px 30px;border:none;border-radius:20px;background:#5f8f78;color:white;font-size:16px;">
-Anfrage senden
-</button>
-
-</form>
-
-<p id="ausgabe"></p>
-
-</section>
-<section id="kontakt">
-    <h2>Kontakt & Buchung</h2>
-    <div class="box" style="max-width: 700px; margin: auto;">
-        <p style="text-align: center; margin-bottom: 30px;">Schreib uns deinen Wunschzeitraum – wir antworten dir persönlich!</p>
-        
-        <form id="bookingForm">
-            <label for="user_name">Dein Name</label>
-            <input type="text" id="user_name" name="user_name" placeholder="Vor- und Nachname" required>
-
-            <label for="user_email">E-Mail-Adresse</label>
-            <input type="email" id="user_email" name="user_email" placeholder="Deine E-Mail für unsere Antwort" required>
-
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
-                <div>
-                    <label for="startdate">Abholung</label>
-                    <input type="text" id="startdate" name="startdate" placeholder="Datum wählen" required>
-                </div>
-                <div>
-                    <label for="enddate">Rückgabe</label>
-                    <input type="text" id="enddate" name="enddate" placeholder="Datum wählen" required>
-                </div>
-            </div>
-            <p class="hint" style="font-size: 0.85em; color: #666; margin-top: 5px;">
-                Hinweis: Mindestmietdauer 3 Tage. Grau hinterlegte Tage sind bereits belegt.
+            <p style="font-size: 0.85em; color: #666; margin-top: 5px;">
+                Hinweis: Buchung ab 3 Tagen möglich. Graue Tage sind belegt.
             </p>
-
-            <label for="message">Nachricht / Wünsche</label>
-            <textarea id="message" name="message" rows="5" placeholder="z.B. Anzahl Personen, Reiseziel oder Fragen zu Hunden..."></textarea>
-
             <button type="submit" id="submitBtn" class="btn" style="margin-top: 30px; width: 100%;">Unverbindliche Anfrage senden</button>
         </form>
     </div>
 </section>
 
-<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 <script src="https://npmcdn.com/flatpickr/dist/l10n/de.js"></script>
 
 <script>
-    // 1. EmailJS Initialisierung
-    (function() {
-        emailjs.init("psDLSmm0PzMVXF_ws"); 
-    })();
-
-    // --- HIER DEINE TERMINE EINTRAGEN ---
+    // 1. Deine belegten Termine definieren
     const belegteTermine = [
         { from: "20.06.2026", to: "30.06.2026" },
         { from: "15.07.2026", to: "22.07.2026" }
     ];
 
-    // 2. Kalender-Konfiguration
-    // Erst den Rückgabe-Kalender definieren
-    const endDatePicker = flatpickr("#enddate", { 
-        "locale": "de", 
-        minDate: "today", 
+    // 2. Initialisierung des Rückgabe-Kalenders mit Standard-Werten
+    let endDatePicker = flatpickr("#enddate", {
+        "locale": "de",
         dateFormat: "d.m.Y",
-        disable: belegteTermine 
+        minDate: "today",
+        disable: belegteTermine
     });
 
-    // Dann den Abhol-Kalender definieren
-    flatpickr("#startdate", { 
-        "locale": "de", 
-        minDate: "today", 
+    // 3. Initialisierung des Abhol-Kalenders
+    flatpickr("#startdate", {
+        "locale": "de",
         dateFormat: "d.m.Y",
-        disable: belegteTermine, 
+        minDate: "today",
+        disable: belegteTermine,
         onChange: function(selectedDates) {
             if (selectedDates.length > 0) {
-                const startDatum = selectedDates[0];
-                const minEndDatum = new Date(startDatum);
-                minEndDatum.setDate(minEndDatum.getDate() + 3); 
+                // Berechne das frühestmögliche Rückgabedatum (+3 Tage)
+                const selDate = selectedDates[0];
+                const minEnd = new Date(selDate.getTime());
+                minEnd.setDate(minEnd.getDate() + 3);
+
+                // Zerstöre den alten Rückgabe-Kalender und baue ihn neu auf
+                // Das ist die sicherste Methode, um Darstellungsfehler zu vermeiden
+                endDatePicker.destroy();
+                endDatePicker = flatpickr("#enddate", {
+                    "locale": "de",
+                    dateFormat: "d.m.Y",
+                    minDate: minEnd,
+                    disable: belegteTermine,
+                    defaultDate: "" // Feld leeren für neue Auswahl
+                });
                 
-                // WICHTIG: minDate UND disable neu setzen, damit nichts verschwindet
-                endDatePicker.set("minDate", minEndDatum);
-                endDatePicker.set("disable", belegteTermine); 
-                endDatePicker.clear(); 
+                // Fokus direkt auf das Rückgabefeld setzen (optional)
+                setTimeout(() => endDatePicker.open(), 100);
             }
         }
-    });
-
-    // 3. Formular-Versand
-    document.getElementById('bookingForm').addEventListener('submit', function(event) {
-        event.preventDefault();
-        const btn = document.getElementById('submitBtn');
-        btn.innerText = 'Wird gesendet...';
-        btn.disabled = true;
-
-        emailjs.sendForm('service_qsajyk7', 'template_znuahar', this)
-            .then(() => {
-                alert('Herzlichen Dank! Deine Anfrage wurde erfolgreich übermittelt.');
-                document.getElementById('bookingForm').reset();
-                btn.innerText = 'Unverbindliche Anfrage senden';
-                btn.disabled = false;
-            }, (error) => {
-                alert('Fehler. Bitte E-Mail an bauer.roadtrip@gmail.com');
-                console.error('EmailJS Error:', error);
-                btn.innerText = 'Unverbindliche Anfrage senden';
-                btn.disabled = false;
-            });
     });
 </script>
 
@@ -506,6 +359,7 @@ Anfrage senden
 </body>
 
 </html>
+
 
 
 
