@@ -378,41 +378,44 @@ function show(img){
                 btn.disabled = false;
             });
     });
+<section id="buchung" style="text-align:center; padding:40px;">
+
+<h2>Buchungsanfrage</h2>
+
+<form>
+
+<label>Startdatum:</label><br>
+<input type="date" id="start" required><br><br>
+
+<label>Enddatum:</label><br>
+<input type="date" id="ende" required><br><br>
+
+<button type="button" onclick="buchen()" style="padding:12px 30px;border:none;border-radius:20px;background:#5f8f78;color:white;font-size:16px;">
+Anfrage senden
+</button>
+
+</form>
+
+<p id="ausgabe"></p>
+
+</section>
+
 <script>
+function buchen() {
+  let start = document.getElementById("start").value;
+  let ende = document.getElementById("ende").value;
 
-document.addEventListener("DOMContentLoaded", function(){
-
-const blockedRanges = [
-  { start: "2026-08-07", end: "2026-08-23" }
-];
-
-function inBlockedRange(date){
-  let d = new Date(date);
-
-  return blockedRanges.some(range => {
-    let s = new Date(range.start);
-    let e = new Date(range.end);
-    return d >= s && d <= e;
-  });
+  if(start && ende){
+    document.getElementById("ausgabe").innerHTML =
+    "Danke! Deine Anfrage vom <strong>" + start + "</strong> bis <strong>" + ende + "</strong> wurde gespeichert.";
+  } else {
+    alert("Bitte beide Daten auswählen 🙂");
+  }
 }
-
-document.getElementById("start").addEventListener("change", function(){
-  if(inBlockedRange(this.value)){
-    alert("Dieser Zeitraum ist bereits belegt.");
-    this.value="";
-  }
-});
-
-document.getElementById("ende").addEventListener("change", function(){
-  if(inBlockedRange(this.value)){
-    alert("Dieser Zeitraum ist bereits belegt.");
-    this.value="";
-  }
-});
-
-});
-
 </script>
+
+
+
 
 
 
@@ -421,6 +424,7 @@ document.getElementById("ende").addEventListener("change", function(){
 </body>
 
 </html>
+
 
 
 
