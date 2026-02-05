@@ -500,138 +500,6 @@ background:#e84150;
 <body>
 
 
-<section id="bewertungen" style="padding:80px 5%;max-width:900px;margin:auto">
-
-<h2 style="text-align:center;color:#3e5f50">⭐ Kundenbewertungen</h2>
-
-<style>
-.review-box{
-background:#fff;
-border-radius:20px;
-padding:30px;
-box-shadow:0 15px 40px rgba(0,0,0,.06);
-max-width:700px;
-margin:auto;
-}
-
-.review-box input,.review-box textarea{
-width:100%;
-padding:14px;
-border-radius:12px;
-border:1px solid #ddd;
-margin-bottom:12px;
-}
-
-.review-box textarea{height:90px}
-
-.star-row{text-align:center;margin:15px 0}
-
-.star-row span{
-font-size:32px;
-cursor:pointer;
-color:#ccc;
-}
-
-.star-row span.active{color:#ffb400}
-
-.review-btn{
-background:#5b7f6c;
-color:white;
-border:none;
-padding:14px;
-border-radius:40px;
-width:100%;
-cursor:pointer;
-font-weight:600;
-}
-
-.review-card{
-border-top:1px solid #eee;
-margin-top:15px;
-padding-top:15px;
-}
-
-.delete-btn{
-background:#e55353;
-color:white;
-border:none;
-padding:6px 14px;
-border-radius:20px;
-margin-top:8px;
-cursor:pointer;
-}
-
-.avg{text-align:center;font-weight:600;margin:10px 0}
-</style>
-
-<div class="review-box">
-
-<input id="rname" placeholder="Dein Name">
-
-<div class="star-row" id="stars">
-<span data-s="1">★</span>
-<span data-s="2">★</span>
-<span data-s="3">★</span>
-<span data-s="4">★</span>
-<span data-s="5">★</span>
-</div>
-
-<textarea id="rtext" placeholder="Deine Bewertung"></textarea>
-
-<button class="review-btn" onclick="sendReview()">Bewertung absenden</button>
-
-<div id="avg" class="avg"></div>
-<div id="reviewList"></div>
-
-</div>
-
-<script>
-let rating=0;
-
-let uid=localStorage.getItem("uid");
-if(!uid){
-uid=Date.now()+"-"+Math.random();
-localStorage.setItem("uid",uid);
-}
-
-document.querySelectorAll("#stars span").forEach(s=>{
-s.onclick=()=>{
-rating=s.dataset.s;
-document.querySelectorAll("#stars span").forEach(x=>{
-x.classList.toggle("active",x.dataset.s<=rating);
-});
-};
-});
-
-function sendReview(){
-if(!rname.value||!rtext.value||rating==0){
-alert("Bitte alles ausfüllen");return;
-}
-
-let r={
-id:Date.now(),
-owner:uid,
-name:rname.value,
-text:rtext.value,
-stars:rating
-};
-
-let all=JSON.parse(localStorage.getItem("reviews")||"[]");
-all.push(r);
-localStorage.setItem("reviews",JSON.stringify(all));
-
-rname.value="";
-rtext.value="";
-rating=0;
-document.querySelectorAll("#stars span").forEach(x=>x.classList.remove("active"));
-
-loadReviews();
-}
-
-function de
-
-
-
 
 <footer>
     <p>&copy; 2026 Bauer Roadtrip – 74586 Frankenhardt</p>
@@ -644,6 +512,7 @@ function de
 </body>
 
 </html>
+
 
 
 
