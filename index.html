@@ -382,9 +382,11 @@ function show(img){
 
 <script>
 
+document.addEventListener("DOMContentLoaded", function(){
+
 const blockedRanges = [
   { start: "2026-08-07", end: "2026-08-23" },
-  
+  { start: "2026-10-08", end: "2026-10-12" }
 ];
 
 function inBlockedRange(date){
@@ -411,6 +413,8 @@ document.getElementById("ende").addEventListener("change", function(){
   }
 });
 
+});
+
 </script>
 
 
@@ -418,6 +422,7 @@ document.getElementById("ende").addEventListener("change", function(){
 </body>
 
 </html>
+
 
 
 
