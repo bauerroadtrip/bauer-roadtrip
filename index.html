@@ -1,337 +1,134 @@
-
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bauer Roadtrip – Wohnwagenvermietung Frankenhardt</title>
-    
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-    <link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/material_green.css">
-    
-    <style>
-        :root {
-            --primary-color: #5b7f6c;
-            --primary-hover: #4a6958;
-            --bg-color: #f7f6f2;
-            --text-dark: #2b2b2b;
-            --white: #ffffff;
-        }
-        body { 
-            margin: 0; 
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
-            background-color: var(--bg-color); 
-            color: var(--text-dark); 
-            line-height: 1.6; 
-        }
-        header { 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
-            padding: 15px 5%; 
-            background-color: var(--white); 
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05); 
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-        header img { height: 100px; width: auto; }
-        nav { display: flex; gap: 25px; }
-        nav a { text-decoration: none; color: var(--text-dark); font-weight: 600; transition: color 0.3s; }
-        nav a:hover { color: var(--primary-color); }
+<meta charset="UTF-8">
+<title>Datenschutzerklärung</title>
 
-        .hero { 
-            padding: 100px 20px; 
-            text-align: center; 
-            background: linear-gradient(135deg, rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('Titelbild.png');
-            background-size: cover;
-            background-position: center;
-            color: white;
-        }
-        .hero h1 { font-size: 3rem; margin-bottom: 10px; text-shadow: 2px 2px 8px rgba(0,0,0,0.6); }
-        .hero p { font-size: 1.2rem; max-width: 600px; margin: 0 auto 30px; text-shadow: 1px 1px 6px rgba(0,0,0,0.6); }
+<style>
+body {
+  margin:0;
+  padding:0;
+  font-family: Arial, sans-serif;
+  background:#f0f0f0;
+}
 
-        section { padding: 80px 5%; max-width: 1100px; margin: auto; }
-        h2 { color: #3e5f50; font-size: 2rem; margin-bottom: 30px; text-align: center; }
+/* HEADER */
+.header {
+  background:#ffffff;
+  padding:15px 30px;
+  box-shadow:0 2px 8px rgba(0,0,0,0.05);
+}
 
-        .box { 
-            background: var(--white); 
-            padding: 40px; 
-            border-radius: 24px; 
-            box-shadow: 0 10px 30px rgba(0,0,0,0.03); 
-        }
-        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
-        ul { list-style: none; padding: 0; }
-        ul li { margin-bottom: 10px; display: flex; align-items: center; }
-        ul li::before { content: "✔"; color: var(--primary-color); font-weight: bold; margin-right: 10px; }
+.header a {
+  color:#59968F;
+  text-decoration:none;
+  font-size:15px;
+}
 
-        .gallery { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 20px; }
-        .gallery img { width: 150px; height: 110px; object-fit: cover; border-radius: 10px; cursor: pointer; transition: transform 0.2s; }
-        .gallery img:hover { transform: scale(1.05); }
+.header a:hover {
+  text-decoration:underline;
+}
 
-        form label { font-weight: 600; display: block; margin-top: 20px; margin-bottom: 5px; }
-        form input, form textarea { padding: 14px; border-radius: 12px; border: 1px solid #ddd; width: 100%; box-sizing: border-box; font-size: 1rem; }
-        
-        .btn { background: var(--primary-color); color: white; padding: 18px 35px; border-radius: 50px; text-decoration: none; font-weight: bold; border: none; cursor: pointer; display: inline-block; transition: all 0.3s; font-size: 1.1rem; text-align: center; }
-        .btn:hover { background: var(--primary-hover); transform: translateY(-2px); }
-        .btn:disabled { background: #ccc; cursor: not-allowed; }
+/* CONTAINER */
+.container {
+  max-width:900px;
+  margin:30px auto;
+  background:#ffffff;
+  padding:30px;
+  border-radius:10px;
+  box-shadow:0 0 15px rgba(0,0,0,0.08);
+  color:#333;
+  line-height:1.6;
+}
 
-        #big { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 2000; cursor: pointer; }
-        #big img { position: absolute; top: 0; bottom: 0; left: 0; right: 0; margin: auto; max-width: 90%; max-height: 90%; border-radius: 10px; }
+h2, h3 {
+  color:#59968F;
+}
 
-        footer { background: #2b2b2b; color: white; padding: 50px 20px; text-align: center; margin-top: 50px; }
-        footer a { color: #cdded5; text-decoration: none; }
+.section {
+  margin-bottom:25px;
+}
 
-        @media (max-width: 600px) {
-            header { flex-direction: column; text-align: center; }
-            .hero h1 { font-size: 2.2rem; }
-            .features-grid { grid-template-columns: 1fr; }
-        }
-    </style>
+a {
+  color:#59968F;
+  text-decoration:none;
+}
+
+a:hover {
+  text-decoration:underline;
+}
+</style>
 </head>
+
 <body>
 
-<header>
-    <img src="Logo.png" alt="Bauer Roadtrip Logo">
-    <nav>
-       <nav>
-    <a href="#start">Start</a>
-    <a href="#wohnwagen">Wohnwagen</a>
-    <a href="#galerie">Galerie</a>
-    <a href="#ueber-uns">Über uns</a>
-    <a href="#kontakt">Kontakt</a>
-    <a href="datenschutz.html" style=black;">Datenschutz</a>
-</nav>
-    </nav>
-</header>
-
-<div class="hero" id="start">
-    <h1>Bauer Roadtrip</h1>
-    <p>Dein Wohnwagen für entspannte Familienabenteuer. <strong>Hundefreundlich 🐾</strong></p>
-    <a href="#kontakt" class="btn">Jetzt Anfrage senden</a>
+<!-- HEADER -->
+<div class="header">
+  <a href="index.html">← Zurück zur Startseite</a>
 </div>
 
-<section id="wohnwagen">
-    <h2>Unser Miet-Wohnwagen "Lotte"</h2>
-    <div class="features-grid">
-        <div class="box">
-            <h3>Hobby 490 KMF De Luxe</h3>
-            <ul>
-                <li>Platz für bis zu 5 Personen</li>
-                <li>Moderne Split-Klimaanlage</li>
-                <li>Großer Kühlschrank & Küche</li>
-                <li>Bad mit Toilette an Bord</li>
-                <li>Inkl. Vorzelt & Sackmarkise</li>
-                <li>Hunde reisen kostenlos mit 🐶</li>
-            </ul>
-        </div>
-        <div class="box">
-            <h3>Mietinfos</h3>
-            <ul>
-                <li>Mindestmietdauer: 3 Tage</li>
-                <li>Standort: 74586 Frankenhardt</li>
-                <li>Kaution: 1.500 €</li>
-                <li>Jan-Mai & Sep-Dez: 60€/Tag</li>
-                <li>Juni: 69€/Tag</li>                    
-                <li>Juli-Aug: 79€/Tag</li>
-                <li>Endreinigung: 80€ einmalig</li>
-            </ul>
-        </div>
-    </div>
+<!-- CONTENT -->
+<div class="container">
 
-<section id="galerie">
-    <h2>Bildergalerie "Lotte"</h2>
-   <div class="gallery">
-        <img src="1.png" onclick="show(this)">
-        <img src="2.png" onclick="show(this)">
-        <img src="3.png" onclick="show(this)">
-        <img src="4.png" onclick="show(this)">
-        <img src="5.png" onclick="show(this)">
-        <img src="6.png" onclick="show(this)">
-        <img src="7.png" onclick="show(this)">
-        <img src="8.png" onclick="show(this)">
-        <img src="9.png" onclick="show(this)">
-        <img src="10.png" onclick="show(this)">
-    </div>
-</section>
+<h2>Datenschutzerklärung</h2>
 
-<section id="ueber-uns">
-    <h2>Über uns</h2>
-    <div class="box">
-        <h3>Hallo, wir sind Marcel, Jasmin & Balu!</h3>
-            <p>
-                Camping ist für uns mehr als nur Urlaub – es ist Freiheit, Natur und wertvolle Zeit mit den Liebsten. 
-                Als leidenschaftliche Camper wissen wir genau, worauf es bei einer entspannten Reise ankommt.
-            </p>
-            <p>
-                Unser Ziel mit <strong>Bauer Roadtrip</strong> ist es, euch dieses Freiheitsgefühl zu ermöglichen, 
-                ohne dass ihr euch um die technische Ausstattung sorgen müsst. Unser Hobby-Wohnwagen ist wie unser 
-                zweites Zuhause eingerichtet: komfortabel, sicher und absolut hundefreundlich.
-            </p>
-            <p>
-                Wir freuen uns darauf, euch bei eurem nächsten Abenteuer zu unterstützen!
- <div class="image-placeholder">🏠<br>Familie Bauer</div>
-            </p>
+<div class="section">
+Wir nehmen den Schutz Ihrer persönlichen Daten sehr ernst. Ihre personenbezogenen Daten werden vertraulich und entsprechend der gesetzlichen Datenschutzvorschriften sowie dieser Datenschutzerklärung behandelt.
+</div>
 
-        <div class="about-image">
-             
- <img src="Werbung Lotte.png" onclick="show(this)" style="width:180px; display:block; margin:auto;">
+<div class="section">
+<h3>1. Verantwortlicher</h3>
+Marcel Bauer<br>
+Untere Stettwegäcker 2<br>
+74586 Frankenhardt<br>
+📧 <a href="mailto:bauer.roadtrip@gmail.com">bauer.roadtrip@gmail.com</a>
+</div>
 
-        </div>
-    </div>
+<div class="section">
+<h3>2. Erhebung personenbezogener Daten</h3>
+Personenbezogene Daten werden nur erhoben, wenn Sie uns diese freiwillig mitteilen, z. B. per E-Mail, Telefon oder im Rahmen einer Buchungsanfrage.
+</div>
 
+<div class="section">
+<h3>3. Zweck der Datenverarbeitung</h3>
+Die Verarbeitung Ihrer Daten erfolgt zur Bearbeitung von Anfragen, zur Durchführung von Buchungen sowie zur Vertragsabwicklung.
+</div>
 
-    </div>
-</section>
+<div class="section">
+<h3>4. Weitergabe von Daten</h3>
+Eine Weitergabe Ihrer Daten an Dritte erfolgt nicht, es sei denn, dies ist zur Vertragsabwicklung erforderlich oder gesetzlich vorgeschrieben.
+</div>
 
-<section id="kontakt">
-    <h2>Kontakt & Buchung</h2>
-    <div class="box" style="max-width: 700px; margin: auto;">
-        <p style="text-align: center;">Wähle deinen Zeitraum aus – wir antworten dir persönlich!</p>
-        
-        <form id="bookingForm">
-            <label for="user_name">Dein Name</label>
-            <input type="text" id="user_name" name="user_name" placeholder="Vor- und Nachname" required>
-            
-            <label for="user_email">E-Mail-Adresse</label>
-            <input type="email" id="user_email" name="user_email" placeholder="Deine E-Mail für unsere Antwort" required>
-            
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
-                <div>
-                    <label for="startdate">Abholung</label>
-                    <input type="text" id="startdate" name="startdate" placeholder="Datum wählen" required>
-                </div>
-                <div>
-                    <label for="enddate">Rückgabe</label>
-                    <input type="text" id="enddate" name="enddate" placeholder="Datum wählen" required>
-                </div>
-            </div>
-            <p class="hint">Hinweis: Buchung ab 3 Tagen möglich. Grau hinterlegte Tage sind belegt.</p>
+<div class="section">
+<h3>5. Server-Logfiles</h3>
+Der Provider dieser Website erhebt und speichert automatisch Informationen in sogenannten Server-Logfiles, die Ihr Browser automatisch übermittelt (z. B. Browsertyp, Betriebssystem oder Uhrzeit der Anfrage). Diese Daten sind nicht bestimmten Personen zuordenbar.
+</div>
 
-            <label for="message">Nachricht / Wünsche</label>
-            <textarea id="message" name="message" rows="5" placeholder="z.B. Personenanzahl, Reiseziel..."></textarea>
-            
-            <button type="submit" id="submitBtn" class="btn" style="margin-top: 30px; width: 100%;">Unverbindliche Anfrage senden</button>
-        </form>
-    </div>
-</section>
+<div class="section">
+<h3>6. Cookies</h3>
+Diese Website kann Cookies verwenden. Cookies richten auf Ihrem Rechner keinen Schaden an und enthalten keine Viren. Sie dienen dazu, unser Angebot nutzerfreundlicher zu gestalten.
+</div>
 
-<div id="big" onclick="this.style.display='none'"><img id="bigImg" src=""></div>
+<div class="section">
+<h3>7. Ihre Rechte</h3>
+Sie haben jederzeit das Recht auf Auskunft über Ihre gespeicherten personenbezogenen Daten, deren Herkunft und Empfänger sowie den Zweck der Verarbeitung. Außerdem haben Sie ein Recht auf Berichtigung, Sperrung oder Löschung dieser Daten.
+</div>
 
-<footer>
-    <p>&copy; 2026 Bauer Roadtrip – 74586 Frankenhardt</p>
-    <p><a href="#"><img src="https://freelogs.com/counter/index.php?u=cybertiger92&s=a" alt="Hit Counter" style="border:none;"></a></p>
-</footer>
+<div class="section">
+<h3>8. Widerruf Ihrer Einwilligung</h3>
+Sie können eine bereits erteilte Einwilligung jederzeit widerrufen. Eine formlose Mitteilung per E-Mail reicht hierfür aus.
+</div>
 
-<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-<script src="https://npmcdn.com/flatpickr/dist/l10n/de.js"></script>
+<div class="section">
+<h3>9. SSL-Verschlüsselung</h3>
+Diese Seite nutzt aus Sicherheitsgründen eine SSL-Verschlüsselung. Dadurch können übermittelte Daten nicht von Dritten mitgelesen werden.
+</div>
 
-<script>
-    // 1. EmailJS
-    (function() { emailjs.init("psDLSmm0PzMVXF_ws"); })();
+<div class="section">
+Stand: Februar 2026
+</div>
 
-    // 2. BELEGTE TERMINE
-    const belegteTermine = [
-        { from: "07.08.2026", to: "23.08.2026" }
-    ];
-
-    // 3. KALENDER LOGIK (STABIL)
-    let endDatePicker = flatpickr("#enddate", {
-        "locale": "de",
-        dateFormat: "d.m.Y",
-        minDate: "today",
-        disable: belegteTermine
-    });
-
-    flatpickr("#startdate", {
-        "locale": "de",
-        dateFormat: "d.m.Y",
-        minDate: "today",
-        disable: belegteTermine,
-        onChange: function(selectedDates) {
-            if (selectedDates.length > 0) {
-                const selDate = selectedDates[0];
-                const minEnd = new Date(selDate.getTime());
-                minEnd.setDate(minEnd.getDate() + 3); 
-
-                endDatePicker.destroy();
-                endDatePicker = flatpickr("#enddate", {
-                    "locale": "de",
-                    dateFormat: "d.m.Y",
-                    minDate: minEnd,
-                    disable: belegteTermine,
-                    defaultDate: ""
-                });
-                setTimeout(() => endDatePicker.open(), 100);
-            }
-        }
-    });
-
-    // 4. BILDER-GALERIE FUNKTION
-    function show(img) {
-        document.getElementById("bigImg").src = img.src;
-        document.getElementById("big").style.display = "block";
-    }
-
-    // 5. VERSAND
-    document.getElementById('bookingForm').addEventListener('submit', function(event) {
-        event.preventDefault();
-        const btn = document.getElementById('submitBtn');
-        btn.innerText = 'Wird gesendet...';
-        btn.disabled = true;
-
-        emailjs.sendForm('service_qsajyk7', 'template_znuahar', this)
-            .then(() => {
-                alert('Herzlichen Dank! Deine Anfrage wurde erfolgreich übermittelt.');
-                document.getElementById('bookingForm').reset();
-                btn.innerText = 'Unverbindliche Anfrage senden';
-                btn.disabled = false;
-            }, (error) => {
-                alert('Fehler beim Senden. Mail an: bauer.roadtrip@gmail.com');
-                btn.innerText = 'Unverbindliche Anfrage senden';
-                btn.disabled = false;
-            });
-    });
-</script>
-<footer style="padding:20px; font-size:14px; background:#f5f5f5; color:#59968F;">
-  <h3 style="color:#59968F;">Impressum</h3>
-
-  <p>
-    Marcel Bauer<br>
-    Untere Stettwegäcker 2<br>
-    74586 Frankenhardt
-  </p>
-
-  <p>
-    📧 <a href="mailto:bauer.roadtrip@gmail.com" style="color:#59968F; text-decoration:none;">
-      bauer.roadtrip@gmail.com
-    </a><br>
-
-    ☎️ <a href="tel:+491712688508" style="color:#59968F; text-decoration:none;">
-      +49 171 2688508
-    </a><br>
-
-    ☎️ <a href="tel:+4917645821175" style="color:#59968F; text-decoration:none;">
-      +49 176 45821175
-    </a>
-  </p>
-
-  <p>
-    Verantwortlich für den Inhalt gemäß § 55 Abs. 2 RStV:<br>
-    Marcel Bauer
-  </p>
-</footer>
-
-
-    
+</div>
 
 </body>
 </html>
-
-
-
-
-
-
-
