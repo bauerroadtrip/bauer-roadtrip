@@ -1,201 +1,154 @@
-
 <!DOCTYPE html>
-<html lang="de">
+<html lang="de" class="scroll-smooth">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Datenschutzerklärung – Bauer Roadtrip</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Datenschutzerklärung – Bauer Roadtrip</title>
+    
+    <link rel="icon" type="image/png" href="Logo.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;0,900;1,700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
 
-<link rel="icon" type="image/png" href="Logo.png">
+    <style>
+        :root {
+            --primary: #5b7f6c;
+            --primary-light: #eef2f0;
+            --accent: #d4a373;
+            --text-dark: #2d3436;
+        }
 
-<style>
-body {
-    margin:0;
-    font-family:'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-    background:#f7f6f2;
-    color:#2b2b2b;
-}
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: var(--text-dark);
+            background-color: #fcfcf9;
+        }
 
-header {
-    background:white;
-    padding:15px 5%;
-    box-shadow:0 2px 10px rgba(0,0,0,0.05);
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-}
+        .font-serif {
+            font-family: 'Playfair Display', serif;
+        }
 
-header img { height:80px; }
+        .legal-content h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
 
-section {
-    max-width:900px;
-    margin:auto;
-    padding:60px 20px;
-}
+        .legal-content p, .legal-content ul {
+            margin-bottom: 1rem;
+            line-height: 1.7;
+            color: #4a4a4a;
+        }
 
-.box {
-    background:white;
-    padding:40px;
-    border-radius:20px;
-    box-shadow:0 10px 30px rgba(0,0,0,0.03);
-}
+        .legal-content ul {
+            list-style-type: disc;
+            padding-left: 1.5rem;
+        }
 
-h1 {
-    text-align:center;
-    margin-bottom:30px;
-}
-
-h2 {
-    margin-top:30px;
-    margin-bottom:15px;
-    color:#2b2b2b;
-}
-
-p, ul {
-    margin-bottom:15px;
-}
-
-ul li {
-    margin-bottom:8px;
-}
-
-a {
-    color:#5b7f6c;
-    text-decoration:none;
-}
-
-a:hover {
-    text-decoration:underline;
-}
-
-.btn {
-    background:#5b7f6c;
-    color:white;
-    padding:15px 30px;
-    border-radius:50px;
-    text-decoration:none;
-    display:inline-block;
-    margin-top:30px;
-}
-
-p.italic {
-    font-style:italic;
-    text-align:right;
-    color:#555;
-}
-</style>
+        .legal-content strong {
+            color: var(--text-dark);
+        }
+    </style>
 </head>
+<body class="bg-[#fcfcf9]">
 
-<body>
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-white/80 backdrop-blur-md border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
+            <a href="Index.html" class="flex items-center space-x-3 group">
+                <img src="Logo.png" alt="Logo" class="h-12 w-auto transition-transform group-hover:scale-105">
+                <span class="text-xl font-extrabold tracking-tight text-[#5b7f6c]">BAUER ROADTRIP</span>
+            </a>
+            <a href="Index.html" class="flex items-center text-sm font-semibold text-gray-600 hover:text-[#5b7f6c] transition-colors">
+                <i data-lucide="arrow-left" class="w-4 h-4 mr-2"></i>
+                Zurück zur Startseite
+            </a>
+        </div>
+    </nav>
 
-<header>
-<img src="Logo.png" alt="Logo">
-<a href="index.html" class="btn">⬅ Zurück zur Startseite</a>
-</header>
+    <main class="pt-32 pb-20 px-6">
+        <div class="max-w-4xl mx-auto">
+            <!-- Header -->
+            <div class="text-center mb-16">
+                <h1 class="text-4xl md:text-5xl font-serif font-black text-[#2d3436] mb-6">Datenschutzerklärung</h1>
+                <div class="w-24 h-1 bg-[#d4a373] mx-auto rounded-full"></div>
+            </div>
 
-<section>
-<div class="box">
+            <!-- Content Box -->
+            <div class="bg-white rounded-[2rem] p-8 md:p-12 shadow-sm border border-gray-100 legal-content">
+                
+                <h2>1. Datenschutz auf einen Blick</h2>
+                <p>Diese Datenschutzerklärung informiert Sie darüber, wie wir mit Ihren personenbezogenen Daten umgehen, wenn Sie unsere Website besuchen oder unseren Wohnwagen mieten.</p>
 
-<h1>Datenschutzerklärung – Bauer Roadtrip</h1>
-<p class="italic"><strong>Stand:</strong> Februar 2026</p>
-<p>Wir nehmen den Schutz Ihrer persönlichen Daten sehr ernst und behandeln Ihre personenbezogenen Daten vertraulich und entsprechend der gesetzlichen Datenschutzvorschriften (DSGVO, BDSG).</p>
+                <h2>2. Verantwortliche Stelle</h2>
+                <p>
+                    Bauer Roadtrip<br>
+                    Inhaber: [Dein Name/Vorname]<br>
+                    [Straße, Hausnummer]<br>
+                    [PLZ, Ort]<br>
+                    E-Mail: bauer.roadtrip@gmail.com
+                </p>
 
-<h2>1. Verantwortlicher</h2>
-<p><strong>Marcel Bauer</strong><br>
-Untere Stettwegäcker 2<br>
-74586 Frankenhardt<br>
-📧 <a href="mailto:bauer.roadtrip@gmail.com">bauer.roadtrip@gmail.com</a></p>
-<p>Für Fragen zum Datenschutz können Sie sich jederzeit an uns wenden.</p>
+                <h2>3. Erfassung von Daten</h2>
+                <p>Wir erfassen Daten, die Sie uns über das Buchungsformular mitteilen (Name, E-Mail, Zeitraum, Nachricht). Zudem fallen technische Daten (IP-Adresse, Browser) automatisch beim Besuch der Website an.</p>
 
-<h2>2. Erhebung und Verarbeitung personenbezogener Daten</h2>
-<p>Wir erheben personenbezogene Daten nur, soweit dies für die Nutzung unserer Website, die Bearbeitung von Anfragen oder den Abschluss eines Mietvertrages erforderlich ist. Dazu gehören insbesondere:</p>
-<ul>
-  <li>Name, Vorname</li>
-  <li>Anschrift</li>
-  <li>E-Mail-Adresse</li>
-  <li>Telefonnummer</li>
-  <li>Geburtsdatum / Führerscheindaten (für Mietvertrag / Versicherung)</li>
-  <li>Zahlungsinformationen (z. B. für Kaution, Mietpreis)</li>
-</ul>
-<p><strong>Zweck der Verarbeitung:</strong></p>
-<ul>
-  <li>Bearbeitung von Buchungen und Anfragen</li>
-  <li>Erfüllung des Mietvertrags</li>
-  <li>Kontaktaufnahme bei Rückfragen</li>
-  <li>Versicherungs- und Abrechnungszwecke</li>
-</ul>
-<p><strong>Rechtsgrundlage:</strong></p>
-<ul>
-  <li>Vertragserfüllung gemäß Art. 6 Abs. 1 b DSGVO</li>
-  <li>Einwilligung gemäß Art. 6 Abs. 1 a DSGVO (nur für freiwillige Marketing-Maßnahmen, z. B. Newsletter)</li>
-</ul>
+                <h2>4. Zweck der Datenverarbeitung</h2>
+                <p>Die Verarbeitung erfolgt zur Vertragsanbahnung, Abwicklung von Mietanfragen sowie zur Kommunikation mit unseren Kunden.</p>
 
-<h2>3. Weitergabe von Daten</h2>
-<p>Eine Weitergabe Ihrer Daten erfolgt nur, soweit dies zur Vertragserfüllung notwendig ist, z. B.:</p>
-<ul>
-  <li>An Versicherungen zur Deckung von Schäden</li>
-  <li>Zur Abwicklung von Zahlungen</li>
-  <li>Bei gesetzlicher Verpflichtung</li>
-</ul>
-<p>Eine Weitergabe an Dritte für Werbezwecke erfolgt <strong>nicht</strong>.</p>
+                <h2>5. Rechtsgrundlage</h2>
+                <p>Die Verarbeitung erfolgt auf Basis von Art. 6 Abs. 1 lit. b DSGVO (Vertragserfüllung) sowie Ihrem berechtigten Interesse an einer reibungslosen Buchung.</p>
 
-<h2>4. Server-Logfiles</h2>
-<p>Unser Provider erhebt automatisch Daten in sogenannten Server-Logfiles, z. B.:</p>
-<ul>
-  <li>IP-Adresse (anonymisiert, soweit möglich)</li>
-  <li>Datum und Uhrzeit des Zugriffs</li>
-  <li>Browsertyp und Version</li>
-  <li>Besuchte Seiten</li>
-</ul>
-<p><strong>Zweck:</strong> Sicherstellung des Betriebs, Verbesserung der Website, Missbrauchsabwehr.</p>
+                <h2>6. Weitergabe an Dritte</h2>
+                <p>Ihre Daten werden nicht an Dritte weitergegeben, es sei denn, dies ist zur Vertragsabwicklung (z. B. Versicherung im Schadensfall) zwingend erforderlich oder gesetzlich vorgeschrieben.</p>
 
-<h2>5. Cookies</h2>
-<p>Unsere Website kann Cookies verwenden. Cookies sind kleine Textdateien, die auf Ihrem Endgerät gespeichert werden.</p>
-<ul>
-  <li>Notwendige Cookies: für technische Funktionen der Website</li>
-  <li>Optional / Statistik / Social Media: Nutzung nur nach Einwilligung (Opt-In)</li>
-</ul>
-<p>Sie können die Speicherung von Cookies in Ihrem Browser deaktivieren. Bitte beachten Sie, dass dann eventuell einige Funktionen der Website eingeschränkt sein können.</p>
+                <h2>7. Ihre Rechte</h2>
+                <p>Sie haben folgende Rechte bezüglich Ihrer bei uns gespeicherten Daten:</p>
+                <ul>
+                    <li><strong>Auskunft:</strong> Welche Daten haben wir von Ihnen?</li>
+                    <li><strong>Berichtigung:</strong> Korrektur fehlerhafter Daten.</li>
+                    <li><strong>Löschung:</strong> Entfernung Ihrer Daten, sofern keine Aufbewahrungspflicht besteht.</li>
+                    <li><strong>Einschränkung:</strong> Begrenzung der Verarbeitung.</li>
+                    <li><strong>Datenübertragbarkeit:</strong> Übermittlung Ihrer Daten in gängigen Formaten.</li>
+                </ul>
 
-<h2>6. Social Media Links</h2>
-<p>Auf unserer Website finden Sie Links zu <strong>Instagram</strong> und <strong>TikTok</strong>.<br>
-Durch Anklicken der Links werden keine Daten automatisch übertragen. Wenn Sie Inhalte der Plattformen direkt nutzen, gelten die Datenschutzrichtlinien der jeweiligen Anbieter.</p>
+                <h2>8. Widerruf Ihrer Einwilligung</h2>
+                <p>Falls Sie uns eine freiwillige Einwilligung gegeben haben, können Sie diese jederzeit widerrufen. Der Widerruf berührt nicht die Rechtmäßigkeit der bis dahin erfolgten Verarbeitung.</p>
 
-<h2>7. Rechte der betroffenen Personen</h2>
-<p>Sie haben folgende Rechte:</p>
-<ul>
-  <li><strong>Auskunft:</strong> Welche Daten werden von uns gespeichert?</li>
-  <li><strong>Berichtigung:</strong> Korrektur unrichtiger Daten</li>
-  <li><strong>Löschung:</strong> Daten löschen lassen, soweit keine gesetzliche Aufbewahrungspflicht besteht</li>
-  <li><strong>Einschränkung der Verarbeitung</strong></li>
-  <li><strong>Widerspruch:</strong> gegen Verarbeitung aus berechtigtem Interesse</li>
-  <li><strong>Datenübertragbarkeit:</strong> Übermittlung Ihrer Daten in gängigen Formaten</li>
-</ul>
-<p>Zur Ausübung Ihrer Rechte können Sie uns jederzeit per E-Mail oder schriftlich kontaktieren.</p>
+                <h2>9. Datenspeicherung / Löschung</h2>
+                <p>Ihre personenbezogenen Daten werden nach Abschluss des Mietvertrages und Ablauf gesetzlicher Aufbewahrungspflichten gelöscht.</p>
 
-<h2>8. Widerruf Ihrer Einwilligung</h2>
-<p>Falls Sie uns eine freiwillige Einwilligung gegeben haben (z. B. Newsletter, Marketing), können Sie diese jederzeit widerrufen. Der Widerruf berührt nicht die Rechtmäßigkeit der bis dahin erfolgten Verarbeitung.</p>
+                <h2>10. SSL-Verschlüsselung</h2>
+                <p>Unsere Website nutzt SSL-Verschlüsselung, um die Sicherheit Ihrer Daten bei der Übertragung zu gewährleisten.</p>
 
-<h2>9. Datenspeicherung / Löschung</h2>
-<p>Ihre personenbezogenen Daten werden nach Abschluss des Mietvertrages und Ablauf gesetzlicher Aufbewahrungspflichten (z. B. steuerliche Aufbewahrungspflichten) gelöscht, soweit keine weiteren gesetzlichen Aufbewahrungsfristen bestehen.</p>
+                <h2>11. Kontaktformular & Buchungsformular</h2>
+                <ul>
+                    <li>Die Eingabe Ihrer Daten erfolgt freiwillig.</li>
+                    <li>Mit dem Absenden erklären Sie, dass Sie unsere Datenschutzerklärung gelesen haben.</li>
+                    <li>Ihre Daten werden nur zur Bearbeitung Ihrer Anfrage verwendet.</li>
+                </ul>
 
-<h2>10. SSL-Verschlüsselung</h2>
-<p>Unsere Website nutzt SSL-Verschlüsselung, um die Sicherheit Ihrer Daten bei der Übertragung zu gewährleisten.</p>
+                <h2>12. Kleinunternehmer-Hinweis</h2>
+                <p>Gemäß §19 UStG wird auf Rechnungen <strong>keine Umsatzsteuer ausgewiesen</strong>.</p>
+            </div>
+        </div>
+    </main>
 
-<h2>11. Kontaktformular & Buchungsformular</h2>
-<ul>
-  <li>Die Eingabe Ihrer Daten erfolgt freiwillig.</li>
-  <li>Mit dem Absenden erklären Sie, dass Sie unsere Datenschutzerklärung gelesen haben und akzeptieren (aktive Checkbox erforderlich).</li>
-  <li>Ihre Daten werden nur zur Bearbeitung Ihrer Anfrage bzw. Buchung verwendet.</li>
-</ul>
+    <!-- Footer -->
+    <footer class="bg-white border-t border-gray-100 py-12">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <p class="text-gray-500 text-sm">© 2024 Bauer Roadtrip. Alle Rechte vorbehalten.</p>
+            <div class="mt-4 flex justify-center space-x-6 text-sm font-medium">
+                <a href="Index.html" class="text-gray-600 hover:text-[#5b7f6c]">Startseite</a>
+                <a href="#" class="text-[#5b7f6c]">Datenschutz</a>
+            </div>
+        </div>
+    </footer>
 
-<h2>12. Kleinunternehmer-Hinweis</h2>
-<p>Gemäß §19 UStG wird auf Rechnungen <strong>keine Umsatzsteuer ausgewiesen</strong>.</p>
-
-<a href="index.html" class="btn">⬅ Zurück zur Startseite</a>
-
-</div>
-</section>
-
+    <script>
+        lucide.createIcons();
+    </script>
 </body>
 </html>
