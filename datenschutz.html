@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Datenschutzerklärung – Bauer Roadtrip</title>
     
+    <!-- Hinweis: Stellen Sie sicher, dass Logo.png im selben Ordner liegt -->
     <link rel="icon" type="image/png" href="Logo.png">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;0,900;1,700&display=swap" rel="stylesheet">
@@ -58,8 +59,9 @@
     <!-- Navigation -->
     <nav class="fixed w-full z-50 bg-white/80 backdrop-blur-md border-b border-gray-100">
         <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
+            <!-- Link zur Startseite (Kleinschreibung beachten) -->
             <a href="index.html" class="flex items-center space-x-3 group">
-                <img src="Logo.png" alt="Logo" class="h-12 w-auto transition-transform group-hover:scale-105">
+                <img src="Logo.png" alt="Logo" class="h-12 w-auto transition-transform group-hover:scale-105" onerror="this.style.display='none'">
                 <span class="text-xl font-extrabold tracking-tight text-[#5b7f6c]">BAUER ROADTRIP</span>
             </a>
             <a href="index.html" class="flex items-center text-sm font-semibold text-gray-600 hover:text-[#5b7f6c] transition-colors">
@@ -85,13 +87,11 @@
 
                 <h2>2. Verantwortliche Stelle</h2>
                 <p>
-                    Bauer Roadtrip<br>
+                    <strong>Bauer Roadtrip</strong><br>
                     Inhaber: Marcel Bauer<br>
                     Untere Stettwegäcker 2<br>
                     74586 Frankenhardt<br>
-                   📩E-Mail: bauer.roadtrip@gmail.com
-  max.mustermann@example.com
-</a>
+                    📩 E-Mail: <a href="mailto:bauer.roadtrip@gmail.com" class="text-[#5b7f6c] hover:underline">bauer.roadtrip@gmail.com</a>
                 </p>
 
                 <h2>3. Erfassung von Daten</h2>
@@ -150,8 +150,8 @@
     </footer>
 
     <script>
+        // Initialisierung der Lucide Icons
         lucide.createIcons();
     </script>
 </body>
 </html>
-
