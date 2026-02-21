@@ -5,15 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <title>Bauer Roadtrip – Wohnwagenvermietung Frankenhardt</title>
     <meta name="description" content="Miete unseren hundefreundlichen Wohnwagen 'Lotte' in Frankenhardt. Perfekt für Familienabenteuer mit bis zu 5 Personen.">
-    <link rel="icon" type="image/png" href="Logo.png">
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;0,900;1,700&display=swap" rel="stylesheet">
-    <!-- Flatpickr CSS -->
+    
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/material_green.css">
-    <!-- Swiper CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <script src="https://unpkg.com/lucide@latest"></script>
+
     <style>
         :root {
             --primary: #5b7f6c;
@@ -21,324 +21,255 @@
             --accent: #d4a373;
             --bg-soft: #fbfbf9;
         }
+
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
             background-color: var(--bg-soft);
             color: #2d3436;
-            overflow-x: hidden;
             width: 100%;
-            -webkit-tap-highlight-color: transparent;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
         }
+
         .font-serif { font-family: 'Playfair Display', serif; }
 
-        /* Hero Collage Optimierung */
+        /* Responsive Hero Collage */
         .hero-collage {
             display: grid;
             grid-template-columns: repeat(12, 1fr);
-            grid-template-rows: repeat(6, 6vh);
-            gap: 8px;
-            padding: 8px;
-            max-width: 1600px;
+            gap: 12px;
+            max-width: 1400px;
             margin: 0 auto;
+            padding: 1rem;
         }
+
         .collage-item {
             position: relative;
             overflow: hidden;
-            border-radius: 16px;
-            background-color: #e5e7eb;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border-radius: 20px;
+            background-color: #eee;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
         }
+
         .collage-item img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
         }
-        .img-1 { grid-column: 1 / 5; grid-row: 1 / 7; }
-        .img-2 { grid-column: 5 / 9; grid-row: 1 / 4; }
-        .img-3 { grid-column: 5 / 7; grid-row: 4 / 7; }
-        .img-4 { grid-column: 7 / 9; grid-row: 4 / 7; }
-        .img-5 { grid-column: 9 / 13; grid-row: 1 / 7; }
 
-        @media (max-width: 768px) {
+        @media (min-width: 1024px) {
+            .hero-collage { grid-template-rows: repeat(6, 100px); }
+            .img-1 { grid-column: 1 / 5; grid-row: 1 / 7; }
+            .img-2 { grid-column: 5 / 9; grid-row: 1 / 4; }
+            .img-3 { grid-column: 5 / 7; grid-row: 4 / 7; }
+            .img-4 { grid-column: 7 / 9; grid-row: 4 / 7; }
+            .img-5 { grid-column: 9 / 13; grid-row: 1 / 7; }
+        }
+
+        @media (max-width: 1023px) {
             .hero-collage {
                 grid-template-columns: repeat(2, 1fr);
-                grid-template-rows: repeat(2, 22vh);
-                gap: 8px;
-                padding: 8px;
+                grid-auto-rows: 180px;
             }
-            .img-1 { grid-column: 1 / 3; grid-row: 1 / 2; }
-            .img-2 { grid-column: 1 / 2; grid-row: 2 / 3; }
-            .img-5 { grid-column: 2 / 3; grid-row: 2 / 3; }
+            .img-1 { grid-column: 1 / 3; grid-row: 1 / 3; }
+            .img-2 { grid-column: 1 / 2; grid-row: 3 / 4; }
+            .img-5 { grid-column: 2 / 3; grid-row: 3 / 4; }
             .img-3, .img-4 { display: none; }
-            .collage-item { border-radius: 20px; }
         }
 
-        .hero-text-container {
-            position: absolute;
-            top: 55%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 20;
-            text-align: center;
-            width: 92%;
-            pointer-events: none;
-        }
-        .hero-title {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(1.8rem, 8vw, 4.5rem);
-            color: white;
-            text-shadow: 0 2px 20px rgba(0,0,0,0.4);
-            line-height: 1.1;
-        }
         .glass-header {
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(12px);
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
             border-bottom: 1px solid rgba(0,0,0,0.05);
         }
-        .nav-link {
-            font-size: 11px;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
-            color: #636e72;
-            transition: all 0.3s ease;
-        }
-        .btn-primary {
-            background-color: var(--primary);
-            color: white;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-        .feature-card {
-            background: white;
-            border-radius: 28px;
-            padding: 1.5rem;
-            transition: all 0.4s ease;
-            border: 1px solid rgba(0,0,0,0.03);
-        }
-        @media (min-width: 768px) { .feature-card { padding: 2.5rem; border-radius: 32px; } }
 
-        /* Fix für Mobile Formulare */
-        input, textarea { font-size: 16px !important; } /* Verhindert Auto-Zoom auf iOS */
-        
-        .swiper { width: 100%; height: 100%; }
+        input, textarea { font-size: 16px !important; }
+
+        .legal-modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: white;
+            z-index: 200;
+            overflow-y: auto;
+            padding: 2rem;
+        }
+
         #customAlert {
             display: none;
             position: fixed;
             inset: 0;
+            background: rgba(0,0,0,0.8);
             z-index: 1000;
-            background: rgba(0,0,0,0.6);
             align-items: center;
             justify-content: center;
             padding: 20px;
         }
     </style>
 </head>
-<body class="antialiased">
+<body>
+
     <!-- Header -->
-    <header class="glass-header sticky top-0 z-[100]">
-        <div class="max-w-7xl mx-auto px-4 md:px-6 py-3 md:py-4 flex justify-between items-center">
-            <div class="flex items-center gap-2 md:gap-4 cursor-pointer" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
-                <img src="Logo.png" alt="Logo" class="h-9 md:h-12 w-auto">
+    <header class="glass-header sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center gap-3 cursor-pointer" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+                <img src="Logo.png" alt="Logo" class="h-10 w-auto">
                 <div>
-                    <span class="block text-base md:text-xl font-black text-[#3e5f50] leading-none uppercase tracking-tighter">Bauer</span>
-                    <span class="block text-[8px] md:text-[10px] font-bold text-[#5b7f6c] tracking-[0.2em] uppercase">Roadtrip</span>
+                    <span class="block text-lg font-black text-[#3e5f50] leading-none uppercase tracking-tighter">Bauer</span>
+                    <span class="block text-[8px] font-bold text-[#5b7f6c] tracking-[0.2em] uppercase">Roadtrip</span>
                 </div>
             </div>
-            <nav class="hidden lg:flex items-center gap-10">
-                <a href="#about" class="nav-link">Lotte</a>
-                <a href="#features" class="nav-link">Details</a>
-                <a href="#booking" class="nav-link">Anfrage</a>
-                <a href="Impressum.html" class="nav-link">Rechtliches</a>
+            <nav class="hidden md:flex gap-6 text-[10px] font-bold uppercase tracking-widest text-gray-500">
+                <a href="#about" class="hover:text-[#5b7f6c]">Lotte</a>
+                <a href="#features" class="hover:text-[#5b7f6c]">Details</a>
+                <a href="#booking" class="hover:text-[#5b7f6c]">Anfrage</a>
             </nav>
-            <a href="#booking" class="btn-primary px-4 md:px-7 py-2.5 md:py-3 rounded-full text-[9px] md:text-[11px] font-black uppercase tracking-widest shadow-sm">Jetzt Anfragen</a>
+            <a href="#booking" class="btn-primary bg-[#5b7f6c] text-white px-5 py-2.5 rounded-full text-[10px] font-black uppercase tracking-widest">Anfragen</a>
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="relative pt-2">
-        <div class="hero-collage">
-            <div class="collage-item img-1"><img src="17.jpg" alt="Camping Moment"></div>
-            <div class="collage-item img-2"><img src="11.jpg" alt="Camping Moment"></div>
-            <div class="collage-item img-3"><img src="14.jpg" alt="Camping Moment"></div>
-            <div class="collage-item img-4"><img src="12.jpg" alt="Camping Moment"></div>
-            <div class="collage-item img-5"><img src="16.jpg" alt="Camping Moment"></div>
+    <!-- Hero -->
+    <section class="py-6 lg:py-12">
+        <div class="max-w-7xl mx-auto px-4 text-center mb-8">
+            <span class="text-[10px] font-black uppercase tracking-widest text-[#5b7f6c] mb-2 block">Mieten in Frankenhardt</span>
+            <h1 class="text-4xl lg:text-7xl font-serif font-black text-gray-900 leading-tight mb-4">Abenteuer mit Lotte</h1>
+            <p class="text-gray-500 text-sm lg:text-xl">Dein gemütliches Zuhause auf Rädern.</p>
         </div>
-        <div class="hero-text-container">
-            <div class="bg-white/95 backdrop-blur-sm px-4 py-1.5 rounded-full inline-block mb-3 shadow-xl">
-                <span class="text-[9px] md:text-[10px] font-black uppercase tracking-[0.2em] text-[#5b7f6c]">Mieten in Frankenhardt</span>
-            </div>
-            <h1 class="hero-title">Abenteuer mit Lotte</h1>
-            <p class="text-white text-sm md:text-lg font-medium max-w-lg mx-auto drop-shadow-lg mt-2">Dein gemütliches Zuhause auf Rädern.</p>
+        <div class="hero-collage">
+            <div class="collage-item img-1"><img src="17.jpg" alt="Hauptbild"></div>
+            <div class="collage-item img-2"><img src="11.jpg" alt="Detail 1"></div>
+            <div class="collage-item img-3"><img src="14.jpg" alt="Detail 2"></div>
+            <div class="collage-item img-4"><img src="12.jpg" alt="Detail 3"></div>
+            <div class="collage-item img-5"><img src="16.jpg" alt="Detail 4"></div>
         </div>
     </section>
 
-    <main>
-        <!-- Willkommen Section -->
-        <section id="about" class="py-12 md:py-24 px-5">
-            <div class="max-w-7xl mx-auto">
-                <div class="grid lg:grid-cols-2 gap-10 lg:gap-20 items-center">
-                    <div class="order-2 lg:order-1">
-                        <h2 class="text-[clamp(1.8rem,5vw,4.5rem)] font-black leading-[1.1] mb-6 font-serif">
-                            Bereit für dein <br><span class="text-[#5b7f6c] italic">nächstes Kapitel?</span>
-                        </h2>
-                        <div class="space-y-4 text-gray-500 text-sm md:text-lg leading-relaxed">
-                            <p>Das ist <strong>Lotte</strong> – unser treuer Begleiter für alles, was nach Freiheit riecht. Wir haben sie mit viel Liebe ausgestattet.</p>
-                            <p>Ob Familie (bis 5 Personen) oder mit Hund: Lotte bietet dir den Komfort, den du brauchst.</p>
-                        </div>
-                        <div class="mt-8 flex flex-wrap gap-4 md:gap-8">
-                            <div class="flex items-center gap-3">
-                                <div class="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-[#5b7f6c]/10 flex items-center justify-center text-[#5b7f6c] shrink-0"><i data-lucide="users" class="w-5 h-5"></i></div>
-                                <div><p class="text-[9px] font-black uppercase tracking-widest text-gray-400">Kapazität</p><p class="font-bold text-sm">5 Personen</p></div>
-                            </div>
-                            <div class="flex items-center gap-3">
-                                <div class="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-[#d4a373]/10 flex items-center justify-center text-[#d4a373] shrink-0"><i data-lucide="dog" class="w-5 h-5"></i></div>
-                                <div><p class="text-[9px] font-black uppercase tracking-widest text-gray-400">Haustiere</p><p class="font-bold text-sm">Hunde willkommen</p></div>
-                            </div>
-                        </div>
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4">
+        
+        <!-- About -->
+        <section id="about" class="py-16 grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+                <h2 class="text-4xl lg:text-6xl font-serif font-bold mb-6">Freiheit auf <span class="text-[#5b7f6c] italic">vier Rädern.</span></h2>
+                <p class="text-gray-600 text-lg mb-8 leading-relaxed">
+                    Lotte ist unser treuer Begleiter für alles, was nach Freiheit riecht. Mit viel Liebe zum Detail ausgestattet, bietet sie Platz für bis zu 5 Personen. Auch dein vierbeiniger Freund ist bei uns herzlich willkommen!
+                </p>
+                <div class="flex gap-8 mb-8">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 bg-green-50 rounded-xl flex items-center justify-center text-[#5b7f6c]"><i data-lucide="users" class="w-5 h-5"></i></div>
+                        <div><p class="text-[10px] font-bold uppercase text-gray-400">Kapazität</p><p class="font-bold">5 Personen</p></div>
                     </div>
-                    
-                    <div class="order-1 lg:order-2">
-                        <div class="aspect-[4/5] rounded-[32px] md:rounded-[48px] overflow-hidden shadow-2xl bg-gray-100">
-                            <div class="swiper lotteSwiper">
-                                <div class="swiper-wrapper">
-                                    <div class="swiper-slide"><img src="1.png" alt="Lotte 1" class="w-full h-full object-cover"></div>
-                                    <div class="swiper-slide"><img src="2.png" alt="Lotte 2" class="w-full h-full object-cover"></div>
-                                    <div class="swiper-slide"><img src="3.png" alt="Lotte 3" class="w-full h-full object-cover"></div>
-                                    <div class="swiper-slide"><img src="4.png" alt="Lotte 4" class="w-full h-full object-cover"></div>
-                                    <div class="swiper-slide"><img src="5.png" alt="Lotte 5" class="w-full h-full object-cover"></div>
-                                </div>
-                                <div class="swiper-pagination"></div>
-                            </div>
-                        </div>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 bg-orange-50 rounded-xl flex items-center justify-center text-[#d4a373]"><i data-lucide="dog" class="w-5 h-5"></i></div>
+                        <div><p class="text-[10px] font-bold uppercase text-gray-400">Haustiere</p><p class="font-bold">Erlaubt</p></div>
                     </div>
+                </div>
+            </div>
+            <div class="rounded-[32px] overflow-hidden shadow-2xl aspect-[4/3]">
+                <div class="swiper lotteSwiper h-full">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide"><img src="1.png" class="w-full h-full object-cover"></div>
+                        <div class="swiper-slide"><img src="2.png" class="w-full h-full object-cover"></div>
+                        <div class="swiper-slide"><img src="3.png" class="w-full h-full object-cover"></div>
+                        <div class="swiper-slide"><img src="4.png" class="w-full h-full object-cover"></div>
+                        <div class="swiper-slide"><img src="5.png" class="w-full h-full object-cover"></div>
+                    </div>
+                    <div class="swiper-pagination"></div>
                 </div>
             </div>
         </section>
 
-        <!-- Features Grid -->
-        <section id="features" class="py-16 md:py-24 px-5 bg-[#f0f2f0]">
-            <div class="max-w-7xl mx-auto">
-                <div class="text-center mb-10">
-                    <h2 class="text-2xl md:text-5xl font-black mb-3 font-serif uppercase tracking-tight">Alles an Bord</h2>
-                    <p class="text-gray-500 uppercase tracking-widest text-[9px] font-bold">Technik & Komfort im Überblick</p>
+        <!-- Booking -->
+        <section id="booking" class="py-16">
+            <div class="bg-white rounded-[40px] p-6 lg:p-16 shadow-2xl border border-gray-50">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl lg:text-5xl font-serif mb-4">Jetzt unverbindlich anfragen</h2>
+                    <p class="text-gray-400 text-sm">Mindestmietdauer: 3 Tage.</p>
                 </div>
-                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <div class="feature-card">
-                        <div class="w-12 h-12 rounded-2xl bg-[#5b7f6c] text-white flex items-center justify-center mb-6 shadow-lg shadow-[#5b7f6c]/30"><i data-lucide="home" class="w-6 h-6"></i></div>
-                        <h3 class="text-lg font-black mb-2 uppercase tracking-tight">Viel Platz</h3>
-                        <p class="text-gray-500 text-sm">Doppelbett, Etagenbett und umbaubare Sitzgruppe.</p>
+                <form id="bookingForm" class="space-y-6">
+                    <div class="grid lg:grid-cols-2 gap-6">
+                        <div class="space-y-1">
+                            <label class="text-[10px] font-black uppercase text-gray-400 ml-2">Zeitraum</label>
+                            <input type="text" id="datePicker" name="trip_dates" required placeholder="Datum wählen" class="w-full p-4 bg-gray-50 rounded-2xl border-none focus:ring-2 focus:ring-[#5b7f6c] outline-none">
+                            <p id="durationError" class="text-red-500 text-[10px] mt-1 hidden font-bold">Mindestens 3 Tage auswählen!</p>
+                        </div>
+                        <div class="space-y-1">
+                            <label class="text-[10px] font-black uppercase text-gray-400 ml-2">Name</label>
+                            <input type="text" name="user_name" required placeholder="Dein Name" class="w-full p-4 bg-gray-50 rounded-2xl border-none focus:ring-2 focus:ring-[#5b7f6c] outline-none">
+                        </div>
                     </div>
-                    <div class="feature-card">
-                        <div class="w-12 h-12 rounded-2xl bg-[#d4a373] text-white flex items-center justify-center mb-6 shadow-lg shadow-[#d4a373]/30"><i data-lucide="utensils" class="w-6 h-6"></i></div>
-                        <h3 class="text-lg font-black mb-2 uppercase tracking-tight">Voll Ausgestattet</h3>
-                        <p class="text-gray-500 text-sm">Gasherd, Kühlschrank, Geschirr und Campingmöbel sind dabei.</p>
+                    <div class="grid lg:grid-cols-2 gap-6">
+                        <div class="space-y-1">
+                            <label class="text-[10px] font-black uppercase text-gray-400 ml-2">E-Mail</label>
+                            <input type="email" name="user_email" required placeholder="mail@beispiel.de" class="w-full p-4 bg-gray-50 rounded-2xl border-none focus:ring-2 focus:ring-[#5b7f6c] outline-none">
+                        </div>
+                        <div class="space-y-1">
+                            <label class="text-[10px] font-black uppercase text-gray-400 ml-2">Telefon</label>
+                            <input type="tel" name="user_phone" required placeholder="Handynummer" class="w-full p-4 bg-gray-50 rounded-2xl border-none focus:ring-2 focus:ring-[#5b7f6c] outline-none">
+                        </div>
                     </div>
-                    <div class="feature-card md:col-span-2 lg:col-span-1">
-                        <div class="w-12 h-12 rounded-2xl bg-gray-800 text-white flex items-center justify-center mb-6 shadow-lg shadow-black/20"><i data-lucide="shield-check" class="w-6 h-6"></i></div>
-                        <h3 class="text-lg font-black mb-2 uppercase tracking-tight">Sorgenfrei</h3>
-                        <p class="text-gray-500 text-sm">Vollkaskoversicherung inklusive und ausführliche Einweisung.</p>
-                    </div>
-                </div>
+                    <button type="submit" id="submitBtn" class="w-full py-5 bg-[#3e5f50] text-white rounded-2xl font-bold text-lg shadow-xl shadow-green-900/20 disabled:opacity-50">Anfrage absenden</button>
+                </form>
             </div>
         </section>
 
-        <!-- Buchungs-Sektion -->
-        <section id="booking" class="py-12 md:py-24 px-4 bg-stone-50">
-            <div class="max-w-4xl mx-auto">
-                <div class="bg-white rounded-[28px] md:rounded-[40px] p-6 md:p-20 shadow-2xl border border-stone-100">
-                    <div class="text-center mb-8 md:mb-16">
-                        <span class="text-emerald-800 font-bold uppercase tracking-widest text-[10px] block mb-2">Verfügbarkeit prüfen</span>
-                        <h2 class="text-2xl md:text-5xl font-display text-stone-800 mb-3">Deine Reise beginnt hier</h2>
-                        <p class="text-stone-500 text-xs md:text-base">Mindestmietdauer: 3 Tage. Deaktivierte Tage sind belegt.</p>
-                    </div>
-                    <form id="bookingForm" class="space-y-4 md:space-y-8">
-                        <div class="grid md:grid-cols-2 gap-4 md:gap-8">
-                            <div class="space-y-1">
-                                <label class="text-[10px] font-black uppercase tracking-widest text-stone-700 ml-2">Wunschzeitraum</label>
-                                <div class="relative">
-                                    <i data-lucide="calendar" class="absolute left-4 top-1/2 -translate-y-1/2 text-emerald-800 w-4 h-4"></i>
-                                    <input type="text" id="datePicker" name="trip_dates" required placeholder="Datum wählen"
-                                            class="w-full pl-10 pr-4 py-4 bg-stone-50 border-2 border-stone-100 rounded-2xl focus:border-emerald-800 focus:outline-none transition-all text-sm">
-                                </div>
-                                <p id="durationError" class="text-red-500 text-[10px] mt-1 hidden font-bold">Mindestens 3 Tage auswählen!</p>
-                            </div>
-                            <div class="space-y-1">
-                                <label class="text-[10px] font-black uppercase tracking-widest text-stone-700 ml-2">Dein Name</label>
-                                <input type="text" name="user_name" required placeholder="Vor- & Nachname"
-                                        class="w-full px-5 py-4 bg-stone-50 border-2 border-stone-100 rounded-2xl focus:border-emerald-800 focus:outline-none transition-all text-sm">
-                            </div>
-                        </div>
-                        <div class="grid md:grid-cols-2 gap-4 md:gap-8">
-                            <div class="space-y-1">
-                                <label class="text-[10px] font-black uppercase tracking-widest text-stone-700 ml-2">E-Mail</label>
-                                <input type="email" name="user_email" required placeholder="beispiel@mail.de"
-                                        class="w-full px-5 py-4 bg-stone-50 border-2 border-stone-100 rounded-2xl focus:border-emerald-800 focus:outline-none transition-all text-sm">
-                            </div>
-                            <div class="space-y-1">
-                                <label class="text-[10px] font-black uppercase tracking-widest text-stone-700 ml-2">Telefon</label>
-                                <input type="tel" name="user_phone" required placeholder="Für Rückfragen"
-                                        class="w-full px-5 py-4 bg-stone-50 border-2 border-stone-100 rounded-2xl focus:border-emerald-800 focus:outline-none transition-all text-sm">
-                            </div>
-                        </div>
-                        <button type="submit" id="submitBtn" class="w-full py-5 md:py-6 bg-emerald-800 text-white rounded-full font-bold text-sm md:text-lg hover:bg-emerald-700 transition-all shadow-xl disabled:opacity-50">
-                            Unverbindliche Anfrage senden
-                        </button>
-                    </form>
-                </div>
-            </div>
-        </section>
     </main>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-12 px-5">
-        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
-            <div class="lg:col-span-2">
-                <div class="flex items-center gap-3 mb-6">
-                    <img src="Logo.png" alt="Logo" class="h-12 w-auto">
-                    <div>
-                        <span class="block text-xl font-black uppercase tracking-tighter">Bauer Roadtrip</span>
-                        <span class="block text-[8px] font-bold text-gray-500 uppercase tracking-widest">Wohnwagenvermietung</span>
-                    </div>
-                </div>
-                <div class="flex gap-4 mb-4">
-                    <a href="https://www.instagram.com/bauer.roadtrip/" target="_blank" class="w-9 h-9 rounded-xl bg-white/5 flex items-center justify-center hover:bg-white/10 transition-colors"><i data-lucide="instagram" class="w-5 h-5"></i></a>
-                    <a href="https://www.tiktok.com/@bauer.roadtrip" target="_blank" class="w-9 h-9 rounded-xl bg-white/5 flex items-center justify-center hover:bg-white/10 transition-colors"><img src="https://cdn.simpleicons.org/tiktok/FFFFFF" class="w-4 h-4"></a>
-                </div>
+    <footer class="bg-gray-900 text-white mt-20 py-16 px-6">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-12 text-center md:text-left">
+            <div>
+                <img src="Logo.png" class="h-12 mx-auto md:mx-0 mb-6 brightness-0 invert">
+                <p class="text-gray-400 text-sm">Wohnwagenvermietung in Frankenhardt. <br>Marcel Bauer</p>
             </div>
             <div>
-                <h4 class="text-[9px] font-black uppercase tracking-widest text-gray-500 mb-4">Kontakt</h4>
-                <p class="text-gray-400 text-xs leading-relaxed">Marcel Bauer<br>74586 Frankenhardt<br><br><a href="mailto:bauer.roadtrip@gmail.com" class="text-white">bauer.roadtrip@gmail.com</a></p>
-            </div>
-            <div>
-                <h4 class="text-[9px] font-black uppercase tracking-widest text-gray-500 mb-4">Rechtliches</h4>
-                <ul class="space-y-2 text-xs text-gray-400">
-                    <li><a href="Impressum.html">Impressum</a></li>
-                    <li><a href="datenschutz.html">Datenschutz</a></li>
-                    <li><a href="AGB.html">AGB</a></li>
+                <h4 class="text-[10px] font-black uppercase tracking-widest text-gray-500 mb-6">Rechtliches</h4>
+                <ul class="space-y-4 text-sm font-medium">
+                    <li><button onclick="toggleLegal('impressum')" class="hover:text-[#5b7f6c]">Impressum</button></li>
+                    <li><button onclick="toggleLegal('agb')" class="hover:text-[#5b7f6c]">AGB</button></li>
+                    <li><button onclick="toggleLegal('datenschutz')" class="hover:text-[#5b7f6c]">Datenschutz</button></li>
                 </ul>
             </div>
+            <div>
+                <h4 class="text-[10px] font-black uppercase tracking-widest text-gray-500 mb-6">Social Media</h4>
+                <div class="flex justify-center md:justify-start gap-4">
+                    <a href="https://www.instagram.com/bauer.roadtrip/" target="_blank" class="w-10 h-10 bg-white/10 rounded-xl flex items-center justify-center hover:bg-white/20"><i data-lucide="instagram" class="w-5 h-5"></i></a>
+                    <a href="https://www.tiktok.com/@bauer.roadtrip" target="_blank" class="w-10 h-10 bg-white/10 rounded-xl flex items-center justify-center hover:bg-white/20"><i data-lucide="video" class="w-5 h-5"></i></a>
+                </div>
+            </div>
         </div>
-        <div class="max-w-7xl mx-auto mt-12 pt-6 border-t border-white/5 text-center">
-            <p class="text-[8px] text-gray-600 font-bold tracking-[0.3em] uppercase">© 2026 Bauer Roadtrip.</p>
+        <div class="max-w-7xl mx-auto mt-16 pt-8 border-t border-white/5 text-center text-[10px] font-bold uppercase tracking-[0.3em] text-gray-600">
+            © 2026 Bauer Roadtrip
         </div>
     </footer>
 
-    <!-- Custom Alert -->
+    <!-- Legal Modals -->
+    <div id="legalModal" class="legal-modal">
+        <div class="max-w-3xl mx-auto">
+            <button onclick="closeLegal()" class="mb-8 flex items-center gap-2 font-bold uppercase text-[10px] tracking-widest text-gray-400 hover:text-black">
+                <i data-lucide="arrow-left" class="w-4 h-4"></i> Zurück
+            </button>
+            <div id="legalContent" class="prose prose-stone max-w-none">
+                <!-- Content injected via JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Alert -->
     <div id="customAlert">
-        <div class="bg-white p-8 rounded-3xl max-w-xs w-full text-center shadow-2xl">
-            <div id="alertIcon" class="w-12 h-12 rounded-full mx-auto mb-4 flex items-center justify-center"></div>
-            <h3 id="alertTitle" class="text-lg font-black mb-1"></h3>
-            <p id="alertMessage" class="text-gray-500 text-xs mb-6"></p>
-            <button onclick="closeAlert()" class="w-full py-3 bg-emerald-800 text-white rounded-full font-bold text-sm">Schließen</button>
+        <div class="bg-white p-8 rounded-[32px] max-w-xs w-full text-center">
+            <div id="alertIcon" class="w-16 h-16 rounded-full mx-auto mb-6 flex items-center justify-center"></div>
+            <h3 id="alertTitle" class="text-xl font-bold mb-2"></h3>
+            <p id="alertMessage" class="text-gray-500 text-sm mb-8"></p>
+            <button onclick="closeAlert()" class="w-full py-4 bg-gray-900 text-white rounded-2xl font-bold">Verstanden</button>
         </div>
     </div>
 
     <!-- Scripts -->
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script src="https://npmcdn.com/flatpickr/dist/l10n/de.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
     <script>
         lucide.createIcons();
@@ -347,39 +278,50 @@
         const swiper = new Swiper('.lotteSwiper', {
             loop: true,
             pagination: { el: '.swiper-pagination', clickable: true },
-            autoplay: { delay: 4000 },
+            autoplay: { delay: 4000 }
         });
-
-        const belegteTermine = [{ from: "07.08.2026", to: "24.08.2026" }];
 
         flatpickr("#datePicker", {
             mode: "range",
             minDate: "today",
             locale: "de",
             dateFormat: "d.m.Y",
-            disable: belegteTermine,
             onChange: function(selectedDates) {
-                const errorEl = document.getElementById('durationError');
-                const submitBtn = document.getElementById('submitBtn');
+                const error = document.getElementById('durationError');
+                const btn = document.getElementById('submitBtn');
                 if (selectedDates.length === 2) {
                     const days = Math.ceil(Math.abs(selectedDates[1] - selectedDates[0]) / 86400000) + 1;
                     const valid = days >= 3;
-                    errorEl.classList.toggle('hidden', valid);
-                    submitBtn.disabled = !valid;
-                } else {
-                    errorEl.classList.add('hidden');
-                    submitBtn.disabled = true;
-                }
+                    error.classList.toggle('hidden', valid);
+                    btn.disabled = !valid;
+                } else { btn.disabled = true; }
             }
         });
+
+        const legalTexts = {
+            impressum: `<h1 class="text-3xl font-serif font-bold mb-6">Impressum</h1><p>Marcel Bauer<br>74586 Frankenhardt<br>Deutschland</p><p><strong>Kontakt:</strong><br>E-Mail: bauer.roadtrip@gmail.com</p>`,
+            agb: `<h1 class="text-3xl font-serif font-bold mb-6">Allgemeine Geschäftsbedingungen</h1><p>Unsere AGB regeln die Vermietung des Wohnwagens "Lotte"... [Hier Text einfügen]</p>`,
+            datenschutz: `<h1 class="text-3xl font-serif font-bold mb-6">Datenschutz</h1><p>Wir nehmen den Schutz Ihrer Daten ernst. Personenbezogene Daten werden nur im Rahmen der Anfragebearbeitung genutzt...</p>`
+        };
+
+        function toggleLegal(type) {
+            document.getElementById('legalContent').innerHTML = legalTexts[type];
+            document.getElementById('legalModal').style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLegal() {
+            document.getElementById('legalModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
 
         function showAlert(success, title, msg) {
             const modal = document.getElementById('customAlert');
             const icon = document.getElementById('alertIcon');
             document.getElementById('alertTitle').innerText = title;
             document.getElementById('alertMessage').innerText = msg;
-            icon.className = `w-12 h-12 rounded-full mx-auto mb-4 flex items-center justify-center ${success ? 'bg-emerald-100 text-emerald-600' : 'bg-red-100 text-red-600'}`;
-            icon.innerHTML = `<i data-lucide="${success ? 'check-circle' : 'alert-circle'}" class="w-7 h-7"></i>`;
+            icon.className = `w-16 h-16 rounded-full mx-auto mb-6 flex items-center justify-center ${success ? 'bg-green-100 text-green-600' : 'bg-red-100 text-red-600'}`;
+            icon.innerHTML = `<i data-lucide="${success ? 'check' : 'x'}" class="w-8 h-8"></i>`;
             lucide.createIcons();
             modal.style.display = 'flex';
         }
@@ -389,18 +331,16 @@
         document.getElementById('bookingForm').addEventListener('submit', function(e) {
             e.preventDefault();
             const btn = document.getElementById('submitBtn');
-            btn.innerHTML = 'Sende...';
+            btn.innerText = 'Wird gesendet...';
             btn.disabled = true;
             emailjs.sendForm('service_qsajyk7', 'template_znuahar', this)
                 .then(() => {
-                    showAlert(true, 'Gesendet!', 'Vielen Dank! Wir melden uns in Kürze.');
+                    showAlert(true, 'Gesendet!', 'Vielen Dank für deine Anfrage. Wir melden uns schnellstmöglich.');
                     this.reset();
-                    btn.innerHTML = 'Anfrage senden';
-                    btn.disabled = false;
+                    btn.innerText = 'Anfrage absenden';
                 }, () => {
-                    showAlert(false, 'Fehler', 'Leider gab es ein Problem. Bitte versuche es später noch einmal.');
+                    showAlert(false, 'Fehler', 'Senden fehlgeschlagen. Bitte versuche es später noch einmal.');
                     btn.disabled = false;
-                    btn.innerHTML = 'Anfrage senden';
                 });
         });
     </script>
