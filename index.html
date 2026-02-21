@@ -31,6 +31,7 @@
             font-family: 'Plus Jakarta Sans', sans-serif;
             background-color: var(--bg-soft);
             color: #2d3436;
+            overflow-x: hidden; /* Verhindert horizontales Scrollen auf Mobile */
         }
 
         .font-serif {
@@ -80,13 +81,13 @@
             transform: translate(-50%, -50%);
             z-index: 20;
             text-align: center;
-            width: 100%;
+            width: 90%; /* Etwas schmaler auf Mobile */
             pointer-events: none;
         }
 
         .hero-title {
             font-family: 'Playfair Display', serif;
-            font-size: clamp(2rem, 5vw, 4.5rem);
+            font-size: clamp(2.2rem, 8vw, 4.5rem);
             color: white;
             text-shadow: 0 4px 30px rgba(0,0,0,0.5);
             line-height: 1.1;
@@ -95,16 +96,24 @@
         @media (max-width: 768px) {
             .hero-collage {
                 grid-template-columns: repeat(2, 1fr);
-                grid-template-rows: repeat(2, 25vh);
+                grid-template-rows: repeat(2, 30vh); /* Höhere Boxen auf Mobile */
+                gap: 8px;
+                padding: 8px;
             }
             .img-1 { grid-column: 1 / 3; grid-row: 1 / 2; }
             .img-2 { grid-column: 1 / 2; grid-row: 2 / 3; }
             .img-5 { grid-column: 2 / 3; grid-row: 2 / 3; }
             .img-3, .img-4 { display: none; }
+            
+            /* Größere Klickflächen für Mobile Nav im Footer etc. */
+            .nav-link {
+                padding: 10px 0;
+                display: inline-block;
+            }
         }
 
         .glass-header {
-            background: rgba(255, 255, 255, 0.8);
+            background: rgba(255, 255, 255, 0.85);
             backdrop-filter: blur(12px);
             border-bottom: 1px solid rgba(0,0,0,0.05);
         }
@@ -137,9 +146,13 @@
         .feature-card {
             background: white;
             border-radius: 32px;
-            padding: 2.5rem;
+            padding: 2rem;
             transition: all 0.4s ease;
             border: 1px solid rgba(0,0,0,0.03);
+        }
+
+        @media (min-width: 768px) {
+            .feature-card { padding: 2.5rem; }
         }
 
         .feature-card:hover {
@@ -163,44 +176,61 @@
             background: var(--primary) !important;
         }
         
-        /* Sichtbare Pfeile für den Slider */
         .swiper-button-next, .swiper-button-prev {
             color: white !important;
             background: rgba(0,0,0,0.2);
-            width: 40px !important;
-            height: 40px !important;
+            width: 36px !important;
+            height: 36px !important;
             border-radius: 50%;
             backdrop-filter: blur(4px);
         }
+        @media (min-width: 768px) {
+            .swiper-button-next, .swiper-button-prev {
+                width: 40px !important;
+                height: 40px !important;
+            }
+        }
         .swiper-button-next:after, .swiper-button-prev:after {
-            font-size: 18px !important;
+            font-size: 16px !important;
             font-weight: bold;
+        }
+
+        /* Custom Modal / Alert Box */
+        #customAlert {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 1000;
+            background: rgba(0,0,0,0.5);
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
         }
     </style>
 </head>
 <body class="antialiased">
     <!-- Header -->
     <header class="glass-header sticky top-0 z-[100]">
-        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-            <div class="flex items-center gap-4 group cursor-pointer" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
-                <img src="Logo.png" alt="Logo" class="h-12 w-auto group-hover:rotate-6 transition-transform">
+        <div class="max-w-7xl mx-auto px-4 md:px-6 py-3 md:py-4 flex justify-between items-center">
+            <div class="flex items-center gap-3 md:gap-4 group cursor-pointer" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+                <img src="Logo.png" alt="Logo" class="h-10 md:h-12 w-auto group-hover:rotate-6 transition-transform">
                 <div>
-                    <span class="block text-xl font-black text-[#3e5f50] leading-none uppercase tracking-tighter">Bauer</span>
-                    <span class="block text-[10px] font-bold text-[#5b7f6c] tracking-[0.2em] uppercase">Roadtrip</span>
+                    <span class="block text-lg md:text-xl font-black text-[#3e5f50] leading-none uppercase tracking-tighter">Bauer</span>
+                    <span class="block text-[9px] md:text-[10px] font-bold text-[#5b7f6c] tracking-[0.2em] uppercase">Roadtrip</span>
                 </div>
             </div>
-            <nav class="hidden md:flex items-center gap-10">
+            <nav class="hidden lg:flex items-center gap-10">
                 <a href="#about" class="nav-link">Lotte</a>
                 <a href="#features" class="nav-link">Details</a>
                 <a href="#booking" class="nav-link">Anfrage</a>
                 <a href="Impressum.html" class="nav-link">Rechtliches</a>
             </nav>
-            <a href="#booking" class="btn-primary px-7 py-3 rounded-full text-[11px] font-black uppercase tracking-widest">Jetzt Anfragen</a>
+            <a href="#booking" class="btn-primary px-5 md:px-7 py-2.5 md:py-3 rounded-full text-[10px] md:text-[11px] font-black uppercase tracking-widest shadow-sm">Jetzt Anfragen</a>
         </div>
     </header>
 
     <!-- Hero Collage Section -->
-    <section class="relative pt-4">
+    <section class="relative pt-2 md:pt-4">
         <div class="hero-collage">
             <div class="collage-item img-1"><img src="17.jpg" alt="Camping Moment"></div>
             <div class="collage-item img-2"><img src="11.jpg" alt="Camping Moment"></div>
@@ -208,29 +238,29 @@
             <div class="collage-item img-4"><img src="12.jpg" alt="Camping Moment"></div>
             <div class="collage-item img-5"><img src="16.jpg" alt="Camping Moment"></div>
         </div>
-        <div class="hero-text-container px-6">
-            <div class="bg-white/90 backdrop-blur-sm px-5 py-2 rounded-full inline-block mb-4 shadow-xl pointer-events-auto">
-                <span class="text-[10px] font-black uppercase tracking-[0.2em] text-[#5b7f6c]">Mieten in Frankenhardt</span>
+        <div class="hero-text-container px-4">
+            <div class="bg-white/90 backdrop-blur-sm px-4 py-1.5 md:px-5 md:py-2 rounded-full inline-block mb-3 md:mb-4 shadow-xl pointer-events-auto">
+                <span class="text-[9px] md:text-[10px] font-black uppercase tracking-[0.2em] text-[#5b7f6c]">Mieten in Frankenhardt</span>
             </div>
             <h1 class="hero-title">Abenteuer mit Lotte</h1>
-            <p class="text-white text-lg font-medium max-w-lg mx-auto drop-shadow-2xl mt-4">Dein gemütliches Zuhause auf Rädern.</p>
+            <p class="text-white text-base md:text-lg font-medium max-w-lg mx-auto drop-shadow-2xl mt-3 md:mt-4">Dein gemütliches Zuhause auf Rädern.</p>
         </div>
     </section>
 
     <main>
         <!-- Willkommen Section -->
-        <section id="about" class="py-24 px-6 overflow-hidden">
+        <section id="about" class="py-16 md:py-24 px-6 overflow-hidden">
             <div class="max-w-7xl mx-auto">
-                <div class="grid md:grid-cols-2 gap-20 items-center">
-                    <div class="relative">
-                        <h2 class="text-[clamp(2.5rem,5vw,4.5rem)] font-black leading-[1.1] mb-8 font-serif">
+                <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+                    <div class="relative order-2 lg:order-1">
+                        <h2 class="text-[clamp(2.2rem,5vw,4.5rem)] font-black leading-[1.1] mb-6 md:mb-8 font-serif">
                             Bereit für dein <br><span class="text-[#5b7f6c] italic">nächstes Kapitel?</span>
                         </h2>
-                        <div class="space-y-6 text-gray-500 text-lg leading-relaxed">
+                        <div class="space-y-4 md:space-y-6 text-gray-500 text-base md:text-lg leading-relaxed">
                             <p>Das ist <strong>Lotte</strong> – unser treuer Begleiter für alles, was nach Freiheit riecht. Wir haben sie mit viel Liebe so ausgestattet, dass du einfach nur einsteigen und losfahren musst.</p>
                             <p>Ob du mit der ganzen Familie (bis zu 5 Personen) oder nur zu zweit mit deinem Hund unterwegs bist: Lotte bietet dir den Komfort, den du brauchst.</p>
                         </div>
-                        <div class="mt-12 flex flex-wrap gap-8">
+                        <div class="mt-8 md:mt-12 flex flex-wrap gap-6 md:gap-8">
                             <div class="flex items-center gap-4">
                                 <div class="w-12 h-12 rounded-2xl bg-[#5b7f6c]/10 flex items-center justify-center text-[#5b7f6c]"><i data-lucide="users" class="w-6 h-6"></i></div>
                                 <div><p class="text-[10px] font-black uppercase tracking-widest text-gray-400">Kapazität</p><p class="font-bold">5 Personen</p></div>
@@ -242,8 +272,8 @@
                         </div>
                     </div>
                     <!-- Bildbereich mit integriertem Slider -->
-                    <div class="relative">
-                        <div class="aspect-[4/5] rounded-[48px] overflow-hidden shadow-2xl rotate-2 hover:rotate-0 transition-transform duration-700 bg-gray-100">
+                    <div class="relative order-1 lg:order-2">
+                        <div class="aspect-[4/5] rounded-[32px] md:rounded-[48px] overflow-hidden shadow-2xl lg:rotate-2 hover:rotate-0 transition-transform duration-700 bg-gray-100">
                             <!-- Slider Container -->
                             <div class="swiper lotteSwiper">
                                 <div class="swiper-wrapper">
@@ -270,80 +300,80 @@
         </section>
 
         <!-- Features Grid -->
-        <section id="features" class="py-24 px-6 bg-[#f0f2f0]">
+        <section id="features" class="py-16 md:py-24 px-6 bg-[#f0f2f0]">
             <div class="max-w-7xl mx-auto">
-                <div class="text-center max-w-3xl mx-auto mb-20">
-                    <h2 class="text-4xl md:text-5xl font-black mb-6 font-serif uppercase tracking-tight">Alles an Bord</h2>
-                    <p class="text-gray-500 text-lg uppercase tracking-widest text-xs font-bold">Technik & Komfort im Überblick</p>
+                <div class="text-center max-w-3xl mx-auto mb-12 md:mb-20">
+                    <h2 class="text-3xl md:text-5xl font-black mb-4 md:mb-6 font-serif uppercase tracking-tight">Alles an Bord</h2>
+                    <p class="text-gray-500 uppercase tracking-widest text-[10px] md:text-xs font-bold">Technik & Komfort im Überblick</p>
                 </div>
-                <div class="grid md:grid-cols-3 gap-8">
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
                     <div class="feature-card">
-                        <div class="w-14 h-14 rounded-2xl bg-[#5b7f6c] text-white flex items-center justify-center mb-8 shadow-lg shadow-[#5b7f6c]/30"><i data-lucide="home" class="w-7 h-7"></i></div>
-                        <h3 class="text-xl font-black mb-4 uppercase tracking-tight">Viel Platz</h3>
-                        <p class="text-gray-500 leading-relaxed">Großes Doppelbett, Etagenbett für die Kids und eine umbaubare Sitzgruppe.</p>
+                        <div class="w-14 h-14 rounded-2xl bg-[#5b7f6c] text-white flex items-center justify-center mb-6 md:mb-8 shadow-lg shadow-[#5b7f6c]/30"><i data-lucide="home" class="w-7 h-7"></i></div>
+                        <h3 class="text-xl font-black mb-3 md:mb-4 uppercase tracking-tight">Viel Platz</h3>
+                        <p class="text-gray-500 leading-relaxed text-sm md:text-base">Großes Doppelbett, Etagenbett für die Kids und eine umbaubare Sitzgruppe.</p>
                     </div>
                     <div class="feature-card">
-                        <div class="w-14 h-14 rounded-2xl bg-[#d4a373] text-white flex items-center justify-center mb-8 shadow-lg shadow-[#d4a373]/30"><i data-lucide="utensils" class="w-7 h-7"></i></div>
-                        <h3 class="text-xl font-black mb-4 uppercase tracking-tight">Voll Ausgestattet</h3>
-                        <p class="text-gray-500 leading-relaxed">Küche mit Gasherd, Kühlschrank und Spüle. Geschirr und Campingmöbel sind dabei.</p>
+                        <div class="w-14 h-14 rounded-2xl bg-[#d4a373] text-white flex items-center justify-center mb-6 md:mb-8 shadow-lg shadow-[#d4a373]/30"><i data-lucide="utensils" class="w-7 h-7"></i></div>
+                        <h3 class="text-xl font-black mb-3 md:mb-4 uppercase tracking-tight">Voll Ausgestattet</h3>
+                        <p class="text-gray-500 leading-relaxed text-sm md:text-base">Küche mit Gasherd, Kühlschrank und Spüle. Geschirr und Campingmöbel sind dabei.</p>
                     </div>
-                    <div class="feature-card">
-                        <div class="w-14 h-14 rounded-2xl bg-gray-800 text-white flex items-center justify-center mb-8 shadow-lg shadow-black/20"><i data-lucide="shield-check" class="w-7 h-7"></i></div>
-                        <h3 class="text-xl font-black mb-4 uppercase tracking-tight">Sorgenfrei</h3>
-                        <p class="text-gray-500 leading-relaxed">Vollkaskoversicherung inklusive. Eine ausführliche Einweisung vorab.</p>
+                    <div class="feature-card md:col-span-2 lg:col-span-1">
+                        <div class="w-14 h-14 rounded-2xl bg-gray-800 text-white flex items-center justify-center mb-6 md:mb-8 shadow-lg shadow-black/20"><i data-lucide="shield-check" class="w-7 h-7"></i></div>
+                        <h3 class="text-xl font-black mb-3 md:mb-4 uppercase tracking-tight">Sorgenfrei</h3>
+                        <p class="text-gray-500 leading-relaxed text-sm md:text-base">Vollkaskoversicherung inklusive. Eine ausführliche Einweisung vorab.</p>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- Buchungs-Sektion -->
-        <section id="booking" class="py-24 px-6 bg-stone-50">
+        <section id="booking" class="py-16 md:py-24 px-4 md:px-6 bg-stone-50">
             <div class="max-w-4xl mx-auto">
-                <div class="bg-white rounded-[40px] p-12 md:p-20 shadow-2xl border border-stone-100">
-                    <div class="text-center mb-16">
-                        <span class="text-emerald-800 font-bold uppercase tracking-[0.3em] text-sm block mb-4">Verfügbarkeit prüfen</span>
-                        <h2 class="text-4xl md:text-5xl font-display text-stone-800 mb-6">Deine Reise beginnt hier</h2>
-                        <p class="text-stone-500">Wähle deinen Wunschzeitraum aus. Deaktivierte Tage sind bereits belegt. (Mindestmietdauer: 3 Tage)</p>
+                <div class="bg-white rounded-[32px] md:rounded-[40px] p-8 md:p-20 shadow-2xl border border-stone-100">
+                    <div class="text-center mb-10 md:mb-16">
+                        <span class="text-emerald-800 font-bold uppercase tracking-[0.3em] text-xs md:text-sm block mb-4">Verfügbarkeit prüfen</span>
+                        <h2 class="text-3xl md:text-5xl font-display text-stone-800 mb-4 md:mb-6">Deine Reise beginnt hier</h2>
+                        <p class="text-stone-500 text-sm md:text-base">Wähle deinen Wunschzeitraum aus. Deaktivierte Tage sind bereits belegt. (Mindestmietdauer: 3 Tage)</p>
                     </div>
 
-                    <form id="bookingForm" class="space-y-8">
-                        <div class="grid md:grid-cols-2 gap-8">
+                    <form id="bookingForm" class="space-y-6 md:space-y-8">
+                        <div class="grid md:grid-cols-2 gap-6 md:gap-8">
                             <div class="space-y-3">
                                 <label class="text-sm font-bold text-stone-700 ml-2">Wunschzeitraum</label>
                                 <div class="relative">
                                     <i data-lucide="calendar" class="absolute left-5 top-1/2 -translate-y-1/2 text-emerald-800 w-5 h-5"></i>
-                                    <input type="text" id="datePicker" name="trip_dates" required placeholder="Datum auswählen (Mind. 3 Tage)" 
-                                           class="w-full pl-14 pr-6 py-5 bg-stone-50 border-2 border-stone-100 rounded-3xl focus:border-emerald-800 focus:outline-none transition-all cursor-pointer">
+                                    <input type="text" id="datePicker" name="trip_dates" required placeholder="Datum auswählen" 
+                                           class="w-full pl-14 pr-6 py-4 md:py-5 bg-stone-50 border-2 border-stone-100 rounded-[20px] md:rounded-3xl focus:border-emerald-800 focus:outline-none transition-all cursor-pointer text-sm md:text-base">
                                 </div>
                                 <p id="durationError" class="text-red-500 text-xs mt-1 hidden">Bitte wähle einen Zeitraum von mindestens 3 Tagen aus.</p>
                             </div>
                             <div class="space-y-3">
                                 <label class="text-sm font-bold text-stone-700 ml-2">Dein Name</label>
                                 <input type="text" name="user_name" required placeholder="Vor- & Nachname" 
-                                       class="w-full px-6 py-5 bg-stone-50 border-2 border-stone-100 rounded-3xl focus:border-emerald-800 focus:outline-none transition-all">
+                                       class="w-full px-6 py-4 md:py-5 bg-stone-50 border-2 border-stone-100 rounded-[20px] md:rounded-3xl focus:border-emerald-800 focus:outline-none transition-all text-sm md:text-base">
                             </div>
                         </div>
 
-                        <div class="grid md:grid-cols-2 gap-8">
+                        <div class="grid md:grid-cols-2 gap-6 md:gap-8">
                             <div class="space-y-3">
                                 <label class="text-sm font-bold text-stone-700 ml-2">E-Mail Adresse</label>
                                 <input type="email" name="user_email" required placeholder="beispiel@mail.de" 
-                                       class="w-full px-6 py-5 bg-stone-50 border-2 border-stone-100 rounded-3xl focus:border-emerald-800 focus:outline-none transition-all">
+                                       class="w-full px-6 py-4 md:py-5 bg-stone-50 border-2 border-stone-100 rounded-[20px] md:rounded-3xl focus:border-emerald-800 focus:outline-none transition-all text-sm md:text-base">
                             </div>
                             <div class="space-y-3">
                                 <label class="text-sm font-bold text-stone-700 ml-2">Telefonnummer</label>
                                 <input type="tel" name="user_phone" required placeholder="Für Rückfragen" 
-                                       class="w-full px-6 py-5 bg-stone-50 border-2 border-stone-100 rounded-3xl focus:border-emerald-800 focus:outline-none transition-all">
+                                       class="w-full px-6 py-4 md:py-5 bg-stone-50 border-2 border-stone-100 rounded-[20px] md:rounded-3xl focus:border-emerald-800 focus:outline-none transition-all text-sm md:text-base">
                             </div>
                         </div>
 
                         <div class="space-y-3">
                             <label class="text-sm font-bold text-stone-700 ml-2">Deine Nachricht (Optional)</label>
                             <textarea name="message" rows="4" placeholder="Besondere Wünsche oder Fragen..." 
-                                      class="w-full px-6 py-5 bg-stone-50 border-2 border-stone-100 rounded-3xl focus:border-emerald-800 focus:outline-none transition-all resize-none"></textarea>
+                                      class="w-full px-6 py-4 md:py-5 bg-stone-50 border-2 border-stone-100 rounded-[20px] md:rounded-3xl focus:border-emerald-800 focus:outline-none transition-all resize-none text-sm md:text-base"></textarea>
                         </div>
 
-                        <button type="submit" id="submitBtn" class="w-full py-6 bg-emerald-800 text-white rounded-full font-bold text-lg hover:bg-emerald-700 transition-all hover:scale-[1.02] active:scale-95 shadow-xl disabled:opacity-50 disabled:cursor-not-allowed">
+                        <button type="submit" id="submitBtn" class="w-full py-5 md:py-6 bg-emerald-800 text-white rounded-full font-bold text-base md:text-lg hover:bg-emerald-700 transition-all hover:scale-[1.01] active:scale-95 shadow-xl disabled:opacity-50 disabled:cursor-not-allowed">
                             Unverbindliche Anfrage senden
                         </button>
                     </form>
@@ -353,41 +383,62 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-24 px-6">
-        <div class="max-w-7xl mx-auto grid md:grid-cols-4 gap-16">
-            <div class="col-span-2">
+    <footer class="bg-gray-900 text-white py-16 md:py-24 px-6">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-16">
+            <div class="lg:col-span-2">
                 <div class="flex items-center gap-4 mb-8">
-                    <img src="Logo.png" alt="Logo" class="h-20 w-auto">
+                    <img src="Logo.png" alt="Logo" class="h-16 md:h-20 w-auto">
                     <div>
-                        <span class="block text-xl font-black leading-none uppercase tracking-tighter">Bauer</span>
-                        <span class="block text-[10px] font-bold text-gray-100 tracking-[0.2em] uppercase">Roadtrip</span>
+                        <span class="block text-xl md:text-2xl font-black leading-none uppercase tracking-tighter">Bauer</span>
+                        <span class="block text-[10px] font-bold text-gray-400 tracking-[0.2em] uppercase">Roadtrip</span>
                     </div>
                 </div>
-                <div class="flex gap-4 items-center">
-                    <a href="https://www.instagram.com/bauer.roadtrip/" target="_blank" class="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center hover:bg-white/10 transition-colors"><i data-lucide="instagram" class="w-5 h-5"></i></a>
-                    <strong><p>bauer.roadtrip</p></strong> 
-                    <a href="https://www.tiktok.com/@bauer.roadtrip" target="_blank" class="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center hover:bg-white/10 transition-colors"><img src="https://cdn.simpleicons.org/tiktok/FFFFFF" class="w-5 h-5"></a>
-                    <strong>bauer.roadtrip</strong> 
-                    <p class="ml-4 text-xs text-gray-400">Folge uns auf Social Media</p>
+                <div class="space-y-6">
+                    <div class="flex flex-wrap gap-6 items-center">
+                        <div class="flex items-center gap-3">
+                            <a href="https://www.instagram.com/bauer.roadtrip/" target="_blank" class="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center hover:bg-white/10 transition-colors"><i data-lucide="instagram" class="w-5 h-5"></i></a>
+                            <span class="font-bold text-sm">bauer.roadtrip</span> 
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <a href="https://www.tiktok.com/@bauer.roadtrip" target="_blank" class="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center hover:bg-white/10 transition-colors"><img src="https://cdn.simpleicons.org/tiktok/FFFFFF" class="w-5 h-5"></a>
+                            <span class="font-bold text-sm">bauer.roadtrip</span> 
+                        </div>
+                    </div>
+                    <p class="text-xs text-gray-500 uppercase tracking-widest">Folge uns auf Sozial Media</p>
                 </div>
             </div>
             <div>
-                <h4 class="text-[10px] font-black uppercase tracking-[0.3em] text-gray-500 mb-8">Kontakt</h4>
-                <p class="text-gray-400 leading-relaxed">Marcel Bauer<br>Untere Stettwegäcker 2<br>74586 Frankenhardt<br><br><a href="mailto:bauer.roadtrip@gmail.com" class="text-white hover:text-[#5b7f6c]">bauer.roadtrip@gmail.com</a></p>
+                <h4 class="text-[10px] font-black uppercase tracking-[0.3em] text-gray-500 mb-6 md:mb-8">Kontakt</h4>
+                <p class="text-gray-400 leading-relaxed text-sm md:text-base">
+                    Marcel Bauer<br>
+                    Untere Stettwegäcker 2<br>
+                    74586 Frankenhardt<br><br>
+                    <a href="mailto:bauer.roadtrip@gmail.com" class="text-white hover:text-[#5b7f6c] transition-colors">bauer.roadtrip@gmail.com</a>
+                </p>
             </div>
             <div>
-                <h4 class="text-[10px] font-black uppercase tracking-[0.3em] text-gray-500 mb-8">Rechtliches</h4>
-                <ul class="space-y-4">
+                <h4 class="text-[10px] font-black uppercase tracking-[0.3em] text-gray-500 mb-6 md:mb-8">Rechtliches</h4>
+                <ul class="space-y-3 md:space-y-4 text-sm md:text-base">
                     <li><a href="Impressum.html" class="text-gray-400 hover:text-white transition-colors">Impressum</a></li>
                     <li><a href="datenschutz.html" class="text-gray-400 hover:text-white transition-colors">Datenschutz</a></li>
                     <li><a href="AGB.html" class="text-gray-400 hover:text-white transition-colors">AGB</a></li>
                 </ul>
             </div>
         </div>
-        <div class="max-w-7xl mx-auto mt-24 pt-8 border-t border-white/5 text-center">
-            <p class="text-[10px] text-gray-600 font-bold tracking-[0.4em] uppercase">© 2026 Bauer Roadtrip.</p>
+        <div class="max-w-7xl mx-auto mt-16 md:mt-24 pt-8 border-t border-white/5 text-center">
+            <p class="text-[9px] md:text-[10px] text-gray-600 font-bold tracking-[0.4em] uppercase">© 2026 Bauer Roadtrip.</p>
         </div>
     </footer>
+
+    <!-- Custom Alert Modal -->
+    <div id="customAlert">
+        <div class="bg-white p-8 rounded-3xl max-w-sm w-full text-center shadow-2xl">
+            <div id="alertIcon" class="w-16 h-16 rounded-full mx-auto mb-4 flex items-center justify-center"></div>
+            <h3 id="alertTitle" class="text-xl font-black mb-2"></h3>
+            <p id="alertMessage" class="text-gray-500 mb-6"></p>
+            <button onclick="closeAlert()" class="w-full py-3 bg-emerald-800 text-white rounded-full font-bold">Verstanden</button>
+        </div>
+    </div>
 
     <!-- Scripts -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
@@ -449,6 +500,28 @@
             }
         });
 
+        // Custom Alert Funktionen
+        function showAlert(success, title, msg) {
+            const modal = document.getElementById('customAlert');
+            const icon = document.getElementById('alertIcon');
+            document.getElementById('alertTitle').innerText = title;
+            document.getElementById('alertMessage').innerText = msg;
+            
+            if(success) {
+                icon.className = "w-16 h-16 rounded-full mx-auto mb-4 flex items-center justify-center bg-emerald-100 text-emerald-600";
+                icon.innerHTML = '<i data-lucide="check-circle" class="w-10 h-10"></i>';
+            } else {
+                icon.className = "w-16 h-16 rounded-full mx-auto mb-4 flex items-center justify-center bg-red-100 text-red-600";
+                icon.innerHTML = '<i data-lucide="alert-circle" class="w-10 h-10"></i>';
+            }
+            lucide.createIcons();
+            modal.style.display = 'flex';
+        }
+
+        function closeAlert() {
+            document.getElementById('customAlert').style.display = 'none';
+        }
+
         // Formular-Versand
         document.getElementById('bookingForm').addEventListener('submit', function(e) {
             e.preventDefault();
@@ -459,11 +532,12 @@
 
             emailjs.sendForm('service_qsajyk7', 'template_znuahar', this)
                 .then(() => {
-                    alert('Herzlichen Dank! Deine Anfrage ist bei uns eingegangen.');
+                    showAlert(true, 'Gesendet!', 'Herzlichen Dank! Deine Anfrage ist bei uns eingegangen. Wir melden uns in Kürze.');
                     this.reset();
                     btn.innerHTML = originalText;
+                    btn.disabled = false;
                 }, () => {
-                    alert('Fehler beim Senden. Bitte kontaktiere uns per Mail.');
+                    showAlert(false, 'Hoppla!', 'Es gab einen Fehler beim Senden. Bitte versuche es später noch einmal oder schreibe uns direkt eine E-Mail.');
                     btn.disabled = false;
                     btn.innerHTML = originalText;
                 });
