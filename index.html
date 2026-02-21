@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="de" class="scroll-smooth">
 <head>
@@ -88,6 +87,24 @@
             justify-content: center;
             padding: 20px;
         }
+
+        /* Sonnen-Aufkleber Badge */
+        .sun-badge {
+            width: 110px;
+            height: 110px;
+            background: #f1c40f;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            box-shadow: 0 8px 20px rgba(241, 196, 15, 0.3);
+            transform: rotate(-5deg);
+            border: 3px dashed #fff;
+            color: #2d3436;
+            margin-top: 1rem;
+        }
     </style>
 </head>
 <body>
@@ -103,7 +120,6 @@
             </div>
             <nav class="hidden md:flex gap-6 text-[10px] font-bold uppercase tracking-widest text-gray-500">
                 <a href="#about" class="hover:text-[#5b7f6c]">Lotte</a>
-                
                 <a href="#booking" class="hover:text-[#5b7f6c]">Anfrage</a>
             </nav>
             <a href="#booking" class="btn-primary bg-[#5b7f6c] text-white px-5 py-2.5 rounded-full text-[10px] font-black uppercase tracking-widest">Anfragen</a>
@@ -115,7 +131,7 @@
         <div class="max-w-7xl mx-auto px-4 text-center mb-8">
             <span class="text-[10px] font-black uppercase tracking-widest text-[#5b7f6c] mb-2 block">Mieten in Frankenhardt</span>
             <h1 class="text-4xl lg:text-7xl font-serif font-black text-gray-900 leading-tight mb-4">Abenteuer mit Lotte</h1>
-            <p class="text-gray-500 text-sm lg:text-xl">Dein gemütliches Zuhause auf Rädern.</p>
+            <p class="text-gray-500 text-sm lg:text-xl">Dein gemütliches Zuhause auf Rädern</p>
         </div>
         <div class="hero-collage">
             <div class="collage-item img-1"><img src="17.jpg" alt="Hauptbild"></div>
@@ -135,7 +151,8 @@
                 <p class="text-gray-600 text-lg mb-8 leading-relaxed">
                     Lotte ist unser treuer Begleiter für alles, was nach Freiheit riecht. Mit viel Liebe zum Detail ausgestattet, bietet sie Platz für bis zu 5 Personen. Auch dein vierbeiniger Freund ist bei uns herzlich willkommen!
                 </p>
-                <div class="flex gap-8 mb-8">
+                
+                <div class="flex flex-wrap gap-8 mb-4">
                     <div class="flex items-center gap-3">
                         <div class="w-10 h-10 bg-green-50 rounded-xl flex items-center justify-center text-[#5b7f6c]"><i data-lucide="users" class="w-5 h-5"></i></div>
                         <div><p class="text-[10px] font-bold uppercase text-gray-400">Kapazität</p><p class="font-bold">5 Personen</p></div>
@@ -145,40 +162,35 @@
                         <div><p class="text-[10px] font-bold uppercase text-gray-400">Haustiere</p><p class="font-bold">Erlaubt</p></div>
                     </div>
                 </div>
+
+                <!-- Badge direkt unter den Icons -->
+                <div class="sun-badge">
+                    <span class="text-[8px] font-bold uppercase leading-none">ab</span>
+                    <span class="text-2xl font-black">60€</span>
+                    <span class="text-[8px] font-bold uppercase leading-none">pro Tag</span>
+                </div>
             </div>
 
-
-
-
-
-
-
-
-
-
-
-            <div class="rounded-[32px] overflow-hidden shadow-2xl aspect-[4/3]">
+            <div class="rounded-[32px] overflow-hidden shadow-2xl aspect-[4/3] relative">
                 <div class="swiper lotteSwiper h-full">
                     <div class="swiper-wrapper">
                         <div class="swiper-slide"><img src="1.png" class="w-full h-full object-cover"></div>
                         <div class="swiper-slide"><img src="2.png" class="w-full h-full object-cover"></div>
                         <div class="swiper-slide"><img src="3.png" class="w-full h-full object-cover"></div>
                         <div class="swiper-slide"><img src="4.png" class="w-full h-full object-cover"></div>
-			<div class="swiper-slide"><img src="5.png" class="w-full h-full object-cover"></div>
-			<div class="swiper-slide"><img src="6.png" class="w-full h-full object-cover"></div>
-			<div class="swiper-slide"><img src="7.png" class="w-full h-full object-cover"></div>
-			<div class="swiper-slide"><img src="8.png" class="w-full h-full object-cover"></div>
+                        <div class="swiper-slide"><img src="5.png" class="w-full h-full object-cover"></div>
+                        <div class="swiper-slide"><img src="6.png" class="w-full h-full object-cover"></div>
+                        <div class="swiper-slide"><img src="7.png" class="w-full h-full object-cover"></div>
+                        <div class="swiper-slide"><img src="8.png" class="w-full h-full object-cover"></div>
                         <div class="swiper-slide"><img src="9.png" class="w-full h-full object-cover"></div>
-			<div class="swiper-slide"><img src="10.png" class="w-full h-full object-cover"></div>
+                        <div class="swiper-slide"><img src="10.png" class="w-full h-full object-cover"></div>
                     </div>
                     <div class="swiper-pagination"></div>
                 </div>
             </div>
         </section>
 
-
-
-<!-- Ausstattung Checkliste -->
+        <!-- Ausstattung Checkliste -->
         <section class="py-8">
             <div class="bg-white p-8 lg:p-12 rounded-[40px] border border-gray-100 shadow-sm max-w-4xl mx-auto">
                 <h3 class="text-sm font-black uppercase tracking-widest mb-8 text-center text-gray-400">Ausstattung unserer Lotte</h3>
@@ -252,7 +264,6 @@
                             <input type="tel" name="user_phone" required placeholder="Handynummer" class="w-full p-4 bg-gray-50 rounded-2xl border-none focus:ring-2 focus:ring-[#5b7f6c] outline-none">
                         </div>
                     </div>
-                    
                     <div class="space-y-1">
                         <label class="text-[10px] font-black uppercase text-gray-400 ml-2">Nachricht (Optional)</label>
                         <textarea name="user_message" rows="4" placeholder="Schreib uns deine Wünsche oder Fragen..." class="w-full p-4 bg-gray-50 rounded-2xl border-none focus:ring-2 focus:ring-[#5b7f6c] outline-none resize-none"></textarea>
@@ -268,13 +279,11 @@
     <footer class="bg-gray-900 text-white mt-20 py-16 px-6">
         <div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-12 text-center md:text-left">
             <div>
-                
-                <p class="text-gray-400 text-sm">Wohnwagenvermietung in Frankenhardt. </p>
+                <p class="text-gray-400 text-sm">Wohnwagenvermietung in Frankenhardt</p>
             </div>
             <div>
                 <h4 class="text-[10px] font-black uppercase tracking-widest text-gray-500 mb-6">Rechtliches</h4>
                 <ul class="space-y-4 text-sm font-medium">
-                    <!-- Verweise auf externe HTML-Seiten -->
                     <li><a href="Impressum.html" class="hover:text-[#5b7f6c]">Impressum</a></li>
                     <li><a href="AGB.html" class="hover:text-[#5b7f6c]">AGB</a></li>
                     <li><a href="datenschutz.html" class="hover:text-[#5b7f6c]">Datenschutz</a></li>
@@ -367,7 +376,3 @@
     </script>
 </body>
 </html>
-
-
-
-
