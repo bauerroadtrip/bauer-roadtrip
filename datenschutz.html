@@ -4,12 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Datenschutzerklärung – Bauer Roadtrip</title>
-    
     <link rel="icon" type="image/png" href="Logo.png">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;0,900;1,700&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
-
     <style>
         :root {
             --primary: #5b7f6c;
@@ -17,44 +15,61 @@
             --accent: #d4a373;
             --text-dark: #2d3436;
         }
-
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
             color: var(--text-dark);
             background-color: #fcfcf9;
         }
-
         .font-serif {
             font-family: 'Playfair Display', serif;
         }
-
         .legal-content h2 {
             font-family: 'Playfair Display', serif;
             font-size: 1.5rem;
             color: var(--primary);
-            margin-top: 2rem;
+            margin-top: 2.5rem;
             margin-bottom: 1rem;
             font-weight: 700;
+            border-bottom: 1px solid #f0f0f0;
+            padding-bottom: 0.5rem;
         }
-
         .legal-content p, .legal-content ul {
-            margin-bottom: 1rem;
-            line-height: 1.7;
+            margin-bottom: 1.25rem;
+            line-height: 1.8;
             color: #4a4a4a;
         }
-
         .legal-content ul {
-            list-style-type: disc;
-            padding-left: 1.5rem;
+            list-style-type: none;
+            padding-left: 0;
         }
-
+        .legal-content ul li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        .legal-content ul li::before {
+            content: "•";
+            color: var(--accent);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
         .legal-content strong {
             color: var(--text-dark);
+            font-weight: 600;
+        }
+        .legal-content a {
+            color: var(--primary);
+            text-decoration: none;
+            transition: opacity 0.2s;
+        }
+        .legal-content a:hover {
+            opacity: 0.8;
+            text-decoration: underline;
         }
     </style>
 </head>
 <body class="bg-[#fcfcf9]">
-
     <!-- Navigation -->
     <nav class="fixed w-full z-50 bg-white/80 backdrop-blur-md border-b border-gray-100">
         <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
@@ -75,83 +90,136 @@
             <div class="text-center mb-16">
                 <h1 class="text-4xl md:text-5xl font-serif font-black text-[#2d3436] mb-6">Datenschutzerklärung</h1>
                 <div class="w-24 h-1 bg-[#d4a373] mx-auto rounded-full"></div>
+                <p class="mt-4 text-gray-500 italic">Stand: Februar 2026</p>
             </div>
 
             <!-- Content Box -->
-           <div class="bg-white rounded-[2rem] p-8 md:p-12 shadow-sm border border-gray-100 legal-content">
+            <div class="bg-white rounded-[2rem] p-8 md:p-12 shadow-sm border border-gray-100 legal-content">
+                
+                <h2>1. Verantwortlicher</h2>
+                <p>Verantwortlich für die Datenverarbeitung auf dieser Website ist:</p>
+                <p>
+                    <strong>Bauer Roadtrip</strong><br>
+                    Inhaber: Marcel Bauer<br>
+                    Untere Stettwegäcker 2<br>
+                    74586 Frankenhardt<br>
+                    📩 E-Mail: <a href="mailto:bauer.roadtrip@gmail.com">bauer.roadtrip@gmail.com</a>
+                </p>
 
-    <h2>1. Datenschutz auf einen Blick</h2>
-    <p>Diese Datenschutzerklärung informiert Sie darüber, wie wir Ihre personenbezogenen Daten verarbeiten, wenn Sie unsere Website besuchen oder unseren Wohnwagen mieten. Der Schutz Ihrer Daten ist uns wichtig.</p>
+                <h2>2. Hosting über GitHub Pages</h2>
+                <p>Diese Website wird als statische Website über GitHub Pages bereitgestellt. Anbieter ist:</p>
+                <p>
+                    <strong>GitHub Inc.</strong><br>
+                    88 Colin P. Kelly Jr. Street<br>
+                    San Francisco, CA 94107, USA
+                </p>
+                <p>Beim Aufruf der Website werden durch GitHub automatisch Informationen in sogenannten Server-Logfiles erfasst. Dies sind insbesondere:</p>
+                <ul>
+                    <li>IP-Adresse des zugreifenden Rechners</li>
+                    <li>Datum und Uhrzeit der Anfrage</li>
+                    <li>Browsertyp und Browserversion</li>
+                    <li>Verwendetes Betriebssystem</li>
+                    <li>Referrer-URL (die zuvor besuchte Seite)</li>
+                </ul>
+                <p>Diese Daten sind technisch erforderlich, um die Website bereitzustellen und die Sicherheit der IT-Systeme zu gewährleisten. Rechtsgrundlage ist <strong>Art. 6 Abs. 1 lit. f DSGVO</strong> (berechtigtes Interesse an einem sicheren und stabilen Betrieb der Website).</p>
+                <p>Da GitHub ein US-amerikanisches Unternehmen ist, kann eine Übermittlung personenbezogener Daten in die USA nicht ausgeschlossen werden. Die Datenübermittlung erfolgt auf Grundlage geeigneter Garantien gemäß <strong>Art. 46 DSGVO</strong> (z. B. Standardvertragsklauseln).</p>
+                <p>Weitere Informationen: <a href="https://docs.github.com/de/site-policy/privacy-policies/github-privacy-statement" target="_blank">GitHub Privacy Statement</a></p>
 
-    <h2>2. Verantwortliche Stelle</h2>
-    <p><strong>Bauer Roadtrip</strong><br>
-       Inhaber: Marcel Bauer<br>
-       Untere Stettwegäcker 2<br>
-       74586 Frankenhardt<br>
-       📩 E-Mail: <a href="mailto:bauer.roadtrip@gmail.com" class="text-[#5b7f6c]">bauer.roadtrip@gmail.com</a>
-    </p>
+                <h2>3. Google Fonts</h2>
+                <p>Auf dieser Website werden externe Schriftarten („Google Fonts“) verwendet. Anbieter ist:</p>
+                <p>
+                    <strong>Google Ireland Limited</strong><br>
+                    Gordon House, Barrow Street<br>
+                    Dublin  Dublin 4, Irland
+                </p>
+                <p>Beim Aufruf einer Seite lädt Ihr Browser die benötigten Schriftarten direkt von Servern von Google. Dabei wird Ihre IP-Adresse an Google übermittelt. Die Verarbeitung erfolgt auf Grundlage von <strong>Art. 6 Abs. 1 lit. f DSGVO</strong>. Unser berechtigtes Interesse liegt in einer einheitlichen und ansprechenden Darstellung unserer Website.</p>
+                <p>Es kann nicht ausgeschlossen werden, dass Daten auch an Server der Google LLC in den USA übertragen werden. Die Übermittlung erfolgt auf Grundlage geeigneter Garantien gemäß <strong>Art. 46 DSGVO</strong>.</p>
+                <p>Weitere Informationen: <a href="https://policies.google.com/privacy" target="_blank">Google Datenschutzerklärung</a></p>
 
-    <h2>3. Erfassung von Daten</h2>
-    <ul>
-        <li>Wir erfassen Daten, die Sie uns über das Buchungs- oder Kontaktformular mitteilen (z. B. Name, E-Mail, Buchungszeitraum, Nachricht).</li>
-        <li>Beim Besuch der Website werden automatisch technische Daten erfasst (z. B. IP-Adresse, Browsertyp, Betriebssystem, Datum und Uhrzeit), die durch den Hosting-Provider in Server-Logfiles gespeichert werden.</li>
-        <li>Diese Daten dienen der technischen Sicherheit und Funktionsfähigkeit der Website und werden nach 7 Tagen gelöscht.</li>
-        <li>Unsere Website verwendet ausschließlich technisch notwendige Cookies. Eine Analyse oder ein Tracking zu Werbezwecken erfolgt nicht.</li>
-        <li>Bei Nutzung von Google Fonts kann es zu einer Datenübermittlung in die USA kommen. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse). GitHub und Google verpflichten sich zur Einhaltung der Standardvertragsklauseln (SCC) der EU-Kommission.</li>
-    </ul>
+                <h2>4. Kontakt- und Buchungsformular (EmailJS)</h2>
+                <p>Für die technische Übermittlung von Anfragen über unser Kontakt- bzw. Buchungsformular nutzen wir den Dienst <strong>EmailJS</strong>.</p>
+                <p>Anbieter: <strong>EmailJS Ltd.</strong></p>
+                <p>Wenn Sie unser Formular nutzen, werden folgende Daten verarbeitet:</p>
+                <ul>
+                    <li>Name</li>
+                    <li>E-Mail-Adresse</li>
+                    <li>Reisezeitraum</li>
+                    <li>Nachricht / Buchungsdetails</li>
+                </ul>
+                <p>Diese Daten werden an Server von EmailJS übermittelt, dort verarbeitet und als E-Mail an uns weitergeleitet. Rechtsgrundlagen sind:</p>
+                <ul>
+                    <li><strong>Art. 6 Abs. 1 lit. b DSGVO</strong> (Vertragsanbahnung und Vertragserfüllung)</li>
+                    <li><strong>Art. 6 Abs. 1 lit. f DSGVO</strong> (berechtigtes Interesse an effizienter Kommunikation)</li>
+                </ul>
+                <p>EmailJS kann Daten außerhalb der Europäischen Union (z. B. in den USA) verarbeiten. Die Datenübermittlung erfolgt auf Grundlage geeigneter Garantien gemäß <strong>Art. 46 DSGVO</strong>.</p>
+                <p>Weitere Informationen: <a href="https://www.emailjs.com/legal/privacy-policy/" target="_blank">EmailJS Privacy Policy</a></p>
 
-    <h2>4. Zweck der Datenverarbeitung</h2>
-    <p>Ihre Daten werden verarbeitet, um Buchungsanfragen zu bearbeiten, Mietverträge abzuwickeln und mit Ihnen zu kommunizieren.</p>
+                <h2>5. Speicherdauer</h2>
+                <p>Personenbezogene Daten werden nur so lange gespeichert, wie es für die jeweiligen Zwecke erforderlich ist:</p>
+                <ul>
+                    <li><strong>Buchungs- und vertragsrelevante Daten:</strong> 6 bis 10 Jahre gemäß handels- und steuerrechtlicher Aufbewahrungspflichten.</li>
+                    <li><strong>Reine Kontaktanfragen ohne Vertragsabschluss:</strong> Löschung spätestens nach 12 Monaten.</li>
+                </ul>
 
-    <h2>5. Rechtsgrundlage</h2>
-    <ul>
-        <li>Art. 6 Abs. 1 lit. b DSGVO: Verarbeitung zur Vertragserfüllung oder Vertragsanbahnung</li>
-        <li>Art. 6 Abs. 1 lit. f DSGVO: berechtigtes Interesse an der technischen Sicherheit und Funktionsfähigkeit der Website</li>
-        <li>Sie haben das Recht, sich bei einer Datenschutz-Aufsichtsbehörde über die Verarbeitung Ihrer personenbezogenen Daten zu beschweren. Zuständig ist die Behörde Ihres Wohnsitzes oder des Unternehmenssitzes.</li>
-    </ul>
+                <h2>6. Weitergabe von Daten</h2>
+                <p>Eine Weitergabe personenbezogener Daten erfolgt nur:</p>
+                <ul>
+                    <li>wenn dies zur Vertragserfüllung erforderlich ist</li>
+                    <li>wenn eine gesetzliche Verpflichtung besteht</li>
+                    <li>wenn Sie ausdrücklich eingewilligt hast</li>
+                </ul>
+                <p>Eine Weitergabe zu Werbezwecken erfolgt nicht.</p>
 
-    <h2>6. Weitergabe an Dritte</h2>
-    <p>Eine Weitergabe Ihrer Daten erfolgt nur, wenn sie zur Vertragsabwicklung erforderlich ist (z. B. Versicherung im Schadensfall) oder gesetzlich vorgeschrieben ist.</p>
+                <h2>7. Cookies und Tracking</h2>
+                <p>Diese Website verwendet keine Analyse- oder Tracking-Tools (z. B. kein Google Analytics). Es werden keine Marketing- oder Tracking-Cookies eingesetzt. Technisch notwendige Verbindungsdaten werden ausschließlich im Rahmen des Hostings verarbeitet.</p>
 
-    <h2>7. Datenspeicherung / Löschung</h2>
-    <p>Ihre personenbezogenen Daten werden nach Abschluss des Mietvertrages und Ablauf gesetzlicher Aufbewahrungsfristen gelöscht.</p>
+                <h2>8. SSL-/TLS-Verschlüsselung</h2>
+                <p>Diese Website nutzt eine SSL- bzw. TLS-Verschlüsselung zur sicheren Übertragung von Daten. Dies erkennen Sie an dem Schlosssymbol in Ihrer Browserzeile.</p>
 
-    <h2>8. Hosting</h2>
-    <p>Unsere Website wird bei GitHub Pages (GitHub, USA) gehostet. Dabei kann es zu einer Übermittlung personenbezogener Daten in die USA kommen. GitHub verpflichtet sich zur Einhaltung der Standardvertragsklauseln (SCC) der EU-Kommission. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO.</p>
+                <h2>9. Ihre Rechte</h2>
+                <p>Sie haben gemäß DSGVO folgende Rechte:</p>
+                <ul>
+                    <li><strong>Auskunft (Art. 15 DSGVO)</strong></li>
+                    <li><strong>Berichtigung (Art. 16 DSGVO)</strong></li>
+                    <li><strong>Löschung (Art. 17 DSGVO)</strong></li>
+                    <li><strong>Einschränkung der Verarbeitung (Art. 18 DSGVO)</strong></li>
+                    <li><strong>Datenübertragbarkeit (Art. 20 DSGVO)</strong></li>
+                    <li><strong>Widerspruch (Art. 21 DSGVO)</strong></li>
+                </ul>
+                <p>Zur Ausübung Ihrer Rechte genügt eine formlose Mitteilung per E-Mail an die oben genannte Adresse.</p>
 
-    <h2>9. SSL-Verschlüsselung</h2>
-    <p>Die Website nutzt SSL-Verschlüsselung (https), um Ihre Daten bei der Übertragung zu schützen.</p>
+                <h2>10. Widerruf einer Einwilligung</h2>
+                <p>Sofern eine Verarbeitung auf einer Einwilligung beruht, können Sie diese jederzeit mit Wirkung für die Zukunft widerrufen.</p>
 
-    <h2>10. Ihre Rechte</h2>
-    <ul>
-        <li>Auskunft: Welche Daten haben wir von Ihnen?</li>
-        <li>Berichtigung: Korrektur fehlerhafter Daten</li>
-        <li>Löschung: Entfernung Ihrer Daten, sofern keine gesetzliche Aufbewahrungspflicht besteht</li>
-        <li>Einschränkung: Begrenzung der Verarbeitung</li>
-        <li>Datenübertragbarkeit: Übermittlung Ihrer Daten in gängigen Formaten</li>
-        <li>Widerruf einer Einwilligung: Für freiwillige Einwilligungen jederzeit möglich</li>
-        <li>Beschwerde bei einer Aufsichtsbehörde: Zuständig ist die Behörde Ihres Wohnsitzes oder des Unternehmenssitzes</li>
-    </ul>
+                <h2>11. Beschwerderecht</h2>
+                <p>Sie haben das Recht, sich gemäß <strong>Art. 77 DSGVO</strong> bei einer Datenschutz-Aufsichtsbehörde zu beschweren, wenn Sie der Ansicht sind, dass die Verarbeitung Ihrer personenbezogenen Daten gegen geltendes Datenschutzrecht verstößt.</p>
 
-    <h2>11. Kontaktformular & Buchungsformular</h2>
-    <ul>
-        <li>Die Angabe Ihrer Daten erfolgt zur Bearbeitung Ihrer Anfrage und ist für die Buchungsabwicklung erforderlich.</li>
-        <li>Mit dem Absenden erklären Sie, dass Sie unsere Datenschutzerklärung gelesen haben.</li>
-        <li>Ihre Daten werden ausschließlich für die Bearbeitung Ihrer Anfrage oder zur Vertragserfüllung verwendet.</li>
-    </ul>
+                <h2>12. Kleinunternehmer-Hinweis</h2>
+                <p>Gemäß §19 UStG wird auf Rechnungen keine Umsatzsteuer ausgewiesen.</p>
 
-    <h2>12. Kleinunternehmer-Hinweis</h2>
-    <p>Gemäß §19 UStG wird auf Rechnungen keine Umsatzsteuer ausgewiesen.</p>
-
-</div>
+            </div>
+        </div>
     </main>
 
     <!-- Footer -->
-    <footer class="bg-white border-t border-gray-100 py-12">
-        <div class="max-w-7xl mx-auto px-6 text-center">
-            <p class="text-gray-500 text-sm">© 2026 Bauer Roadtrip. Alle Rechte vorbehalten.</p>
-            <div class="mt-4 flex justify-center space-x-6 text-sm font-medium">
+   <footer class="bg-white border-t border-gray-100 py-12 px-6">
+        <div class="max-w-7xl mx-auto text-center">
+            <div class="flex flex-col items-center gap-4 mb-6">
+                <img src="Logo.png" alt="Logo" class="h-12 w-auto">
+                <div class="leading-none text-center">
+                    <span class="block text-xl font-black text-[#3e5f50] uppercase tracking-tighter">Bauer</span>
+                    <span class="block text-[8px] font-bold text-[#5b7f6c] tracking-[0.2em] uppercase">Roadtrip</span>
+                </div>
+            </div>
+
+            
+            <p class="text-[10px] text-gray-400 font-bold tracking-[0.2em] uppercase mb-4">
+                © 2026 Bauer Roadtrip. Made with <i data-lucide="heart" class="w-3 h-3 inline text-red-500 fill-current"></i> in Frankenhardt.
+            </p>
+
+            <div class="flex justify-center space-x-6 text-sm font-medium">
                 <a href="index.html" class="text-gray-600 hover:text-[#5b7f6c]">Startseite</a>
+                <a href="Impressum.html" class="text-gray-600 hover:text-[#5b7f6c]">Impressum</a>
                 <a href="#" class="text-[#5b7f6c]">Datenschutz</a>
             </div>
         </div>
