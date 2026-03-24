@@ -75,6 +75,7 @@
             backdrop-filter: blur(10px);
             border-bottom: 1px solid rgba(0,0,0,0.05);
         }
+        input, textarea { font-size: 16px !important; }
         
         #customAlert {
             display: none;
@@ -104,6 +105,7 @@
             margin-top: 1rem;
         }
 
+        /* Ausgegraute Tage im Kalender */
         .flatpickr-day.flatpickr-disabled, 
         .flatpickr-day.flatpickr-disabled:hover {
             background: #f3f4f6 !important;
@@ -118,7 +120,7 @@
     <header class="glass-header sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
             <div class="flex items-center gap-3 cursor-pointer" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
-                <img src="Logo.png" alt="Logo" class="h-10 w-auto" onerror="this.style.opacity='0'">
+                <img src="Logo.png" alt="Logo" class="h-10 w-auto">
                 <div>
                     <span class="block text-lg font-black text-[#3e5f50] leading-none uppercase tracking-tighter">Bauer</span>
                     <span class="block text-[8px] font-bold text-[#5b7f6c] tracking-[0.2em] uppercase">Roadtrip</span>
@@ -189,6 +191,50 @@
             </div>
         </section>
 
+        <section class="py-8">
+            <div class="bg-white p-8 lg:p-12 rounded-[40px] border border-gray-100 shadow-sm max-w-4xl mx-auto">
+                <h3 class="text-sm font-black uppercase tracking-widest mb-8 text-center text-gray-400">Ausstattung unserer Lotte</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-y-5 gap-x-12">
+                    <div class="flex items-center gap-4 text-gray-700">
+                        <div class="w-6 h-6 rounded-full bg-green-50 flex items-center justify-center flex-shrink-0">
+                            <i data-lucide="check" class="w-4 h-4 text-[#5b7f6c]"></i>
+                        </div>
+                        <span class="font-medium">Voll ausgestattete Küche</span>
+                    </div>
+                    <div class="flex items-center gap-4 text-gray-700">
+                        <div class="w-6 h-6 rounded-full bg-green-50 flex items-center justify-center flex-shrink-0">
+                            <i data-lucide="check" class="w-4 h-4 text-[#5b7f6c]"></i>
+                        </div>
+                        <span class="font-medium">Campingmöbel & Vorzeltzubehör</span>
+                    </div>
+                    <div class="flex items-center gap-4 text-gray-700">
+                        <div class="w-6 h-6 rounded-full bg-green-50 flex items-center justify-center flex-shrink-0">
+                            <i data-lucide="check" class="w-4 h-4 text-[#5b7f6c]"></i>
+                        </div>
+                        <span class="font-medium">Kühlschrank mit Eisfach</span>
+                    </div>
+                    <div class="flex items-center gap-4 text-gray-700">
+                        <div class="w-6 h-6 rounded-full bg-green-50 flex items-center justify-center flex-shrink-0">
+                            <i data-lucide="check" class="w-4 h-4 text-[#5b7f6c]"></i>
+                        </div>
+                        <span class="font-medium">Fernseher + Sat. Schüssel</span>
+                    </div>
+                    <div class="flex items-center gap-4 text-gray-700">
+                        <div class="w-6 h-6 rounded-full bg-green-50 flex items-center justify-center flex-shrink-0">
+                            <i data-lucide="check" class="w-4 h-4 text-[#5b7f6c]"></i>
+                        </div>
+                        <span class="font-medium">Vorzelt oder Sackmarkise</span>
+                    </div>
+                    <div class="flex items-center gap-4 text-gray-700">
+                        <div class="w-6 h-6 rounded-full bg-green-50 flex items-center justify-center flex-shrink-0">
+                            <i data-lucide="check" class="w-4 h-4 text-[#5b7f6c]"></i>
+                        </div>
+                        <span class="font-medium">Klimaanlage uvm.</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <section id="booking" class="py-16">
             <div class="bg-white rounded-[40px] p-6 lg:p-16 shadow-2xl border border-gray-50">
                 <div class="text-center mb-12">
@@ -243,17 +289,8 @@
             <div>
                 <h4 class="text-[10px] font-black uppercase tracking-widest text-gray-500 mb-6">Social Media</h4>
                 <div class="flex justify-center md:justify-start gap-4">
-                    <!-- Instagram Icon FIX: Direktes SVG eingebettet -->
-                    <a href="https://www.instagram.com/bauer.roadtrip/" target="_blank" class="w-10 h-10 bg-white/10 rounded-xl flex items-center justify-center hover:bg-white/20 transition-colors">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-instagram">
-                            <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
-                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                            <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line>
-                        </svg>
-                    </a>
-                    <a href="https://www.tiktok.com/@bauer.roadtrip" target="_blank" class="w-10 h-10 bg-white/10 rounded-xl flex items-center justify-center hover:bg-white/20 transition-colors">
-                        <i data-lucide="video" class="w-5 h-5"></i>
-                    </a>
+                    <a href="https://www.instagram.com/bauer.roadtrip/" target="_blank" class="w-10 h-10 bg-white/10 rounded-xl flex items-center justify-center hover:bg-white/20"><i data-lucide="instagram" class="w-5 h-5"></i></a>
+                    <a href="https://www.tiktok.com/@bauer.roadtrip" target="_blank" class="w-10 h-10 bg-white/10 rounded-xl flex items-center justify-center hover:bg-white/20"><i data-lucide="video" class="w-5 h-5"></i></a>
                 </div>
             </div>
         </div>
@@ -276,12 +313,14 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script>
-        // Initialisiere Lucide für alle Icons außer Instagram (das jetzt fest im Code ist)
         lucide.createIcons();
         emailjs.init("psDLSmm0PzMVXF_ws");
 
+        // BLOCKIERTE TERMINE HIER EINTRAGEN
+        // Format: { from: "YYYY-MM-DD", to: "YYYY-MM-DD" }
         const blockedDates = [
             { from: "2026-08-06", to: "2026-08-22" },
+            
         ];
 
         const swiper = new Swiper('.lotteSwiper', {
@@ -295,7 +334,7 @@
             minDate: "today",
             locale: "de",
             dateFormat: "d.m.Y",
-            disable: blockedDates,
+            disable: blockedDates, // Hier werden die Sperren angewendet
             onChange: function(selectedDates) {
                 const error = document.getElementById('durationError');
                 const btn = document.getElementById('submitBtn');
@@ -303,6 +342,7 @@
                 if (selectedDates.length === 2) {
                     const days = Math.ceil(Math.abs(selectedDates[1] - selectedDates[0]) / 86400000) + 1;
                     
+                    // Prüfen ob ein blockiertes Datum im gewählten Bereich liegt
                     let containsBlocked = false;
                     blockedDates.forEach(range => {
                         const start = new Date(range.from);
