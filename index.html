@@ -242,6 +242,976 @@
         </section>
     </main>
 
+<!-- =========================
+     BAUER ROADTRIP BEWERTUNGEN
+========================= -->
+
+<section id="bewertungen" class="py-16">
+
+    <div class="max-w-7xl mx-auto px-4">
+
+        <div class="bg-white rounded-[40px] p-6 lg:p-16 shadow-2xl border border-gray-50">
+
+            <!-- Überschrift -->
+            <div class="text-center mb-12">
+
+                <span class="text-[10px] font-black uppercase tracking-widest text-[#5b7f6c] mb-2 block">
+                    Eure Erfahrungen
+                </span>
+
+                <h2 class="text-3xl lg:text-5xl font-serif mb-4">
+                    Das sagen unsere Gäste
+                </h2>
+
+                <p class="text-gray-400 text-sm max-w-2xl mx-auto">
+                    Du warst mit Lotte unterwegs? Teile deine Erfahrung mit anderen Campern.
+                </p>
+
+                <div class="inline-flex items-center gap-3 mt-6 px-5 py-3 bg-[#fbfbf9] rounded-2xl">
+
+                    <span id="bewertungSterne"
+                          class="text-[#d4a373] text-xl tracking-widest">
+                        ★★★★★
+                    </span>
+
+                    <span id="bewertungDurchschnitt"
+                          class="text-sm font-bold text-[#3e5f50]">
+                        Bewertungen werden geladen ...
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- FREIGEGEBENE BEWERTUNGEN -->
+
+            <div id="bewertungenListe"
+                 class="grid lg:grid-cols-3 gap-6 mb-12">
+
+                <div class="lg:col-span-3 text-center py-10">
+
+                    <div class="text-[#d4a373] text-3xl mb-3">
+                        ★★★★★
+                    </div>
+
+                    <p class="text-gray-400 text-sm">
+                        Bewertungen werden geladen ...
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- BEWERTUNG ABGEBEN -->
+
+            <div class="max-w-3xl mx-auto bg-[#fbfbf9] rounded-[32px] p-6 lg:p-10">
+
+                <div class="text-center mb-8">
+
+                    <span class="text-[10px] font-black uppercase tracking-widest text-[#5b7f6c]">
+                        Deine Meinung zählt
+                    </span>
+
+                    <h3 class="text-2xl lg:text-3xl font-serif mt-2 mb-3">
+                        Jetzt Bewertung abgeben
+                    </h3>
+
+                    <p class="text-gray-400 text-sm">
+                        Deine Bewertung wird vor der Veröffentlichung von uns geprüft.
+                    </p>
+
+                </div>
+
+
+                <!-- Unsichtbarer iframe für Google Apps Script -->
+                <iframe
+                    name="bewertungResponseFrame"
+                    id="bewertungResponseFrame"
+                    style="display:none;"
+                    title="Bewertung senden">
+                </iframe>
+
+
+                <form
+                    id="bewertungsForm"
+                    method="POST"
+                    target="bewertungResponseFrame"
+                    class="space-y-6">
+
+
+                    <!-- Anti-Spam Feld -->
+                    <div style="display:none !important; position:absolute; left:-9999px;">
+
+                        <label>
+                            Website
+
+                            <input
+                                type="text"
+                                name="website"
+                                tabindex="-1"
+                                autocomplete="off">
+                        </label>
+
+                    </div>
+
+
+                    <!-- NAME -->
+
+                    <div class="space-y-1">
+
+                        <label class="text-[10px] font-black uppercase text-gray-400 ml-2">
+                            Dein Name
+                        </label>
+
+                        <input
+                            type="text"
+                            name="review_name"
+                            required
+                            maxlength="80"
+                            placeholder="z. B. Familie Müller"
+                            class="w-full p-4 bg-white rounded-2xl border-none focus:ring-2 focus:ring-[#5b7f6c] outline-none">
+
+                    </div>
+
+
+                    <!-- REISEZEITRAUM -->
+
+                    <div class="space-y-1">
+
+                        <label class="text-[10px] font-black uppercase text-gray-400 ml-2">
+                            Reisezeitraum
+                        </label>
+
+                        <input
+                            type="text"
+                            name="review_period"
+                            required
+                            maxlength="50"
+                            placeholder="z. B. August 2026"
+                            class="w-full p-4 bg-white rounded-2xl border-none focus:ring-2 focus:ring-[#5b7f6c] outline-none">
+
+                    </div>
+
+
+                    <!-- STERNE -->
+
+                    <div>
+
+                        <label class="text-[10px] font-black uppercase text-gray-400 ml-2 block mb-2">
+                            Deine Bewertung
+                        </label>
+
+                        <div class="review-stars">
+
+                            <input
+                                type="radio"
+                                id="reviewStar5"
+                                name="review_stars"
+                                value="5"
+                                required>
+
+                            <label for="reviewStar5">
+                                ★
+                            </label>
+
+
+                            <input
+                                type="radio"
+                                id="reviewStar4"
+                                name="review_stars"
+                                value="4">
+
+                            <label for="reviewStar4">
+                                ★
+                            </label>
+
+
+                            <input
+                                type="radio"
+                                id="reviewStar3"
+                                name="review_stars"
+                                value="3">
+
+                            <label for="reviewStar3">
+                                ★
+                            </label>
+
+
+                            <input
+                                type="radio"
+                                id="reviewStar2"
+                                name="review_stars"
+                                value="2">
+
+                            <label for="reviewStar2">
+                                ★
+                            </label>
+
+
+                            <input
+                                type="radio"
+                                id="reviewStar1"
+                                name="review_stars"
+                                value="1">
+
+                            <label for="reviewStar1">
+                                ★
+                            </label>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- BEWERTUNG -->
+
+                    <div class="space-y-1">
+
+                        <label class="text-[10px] font-black uppercase text-gray-400 ml-2">
+                            Deine Bewertung
+                        </label>
+
+                        <textarea
+                            name="review_text"
+                            required
+                            maxlength="1000"
+                            rows="5"
+                            placeholder="Wie hat dir der Urlaub mit Lotte gefallen?"
+                            class="w-full p-4 bg-white rounded-2xl border-none focus:ring-2 focus:ring-[#5b7f6c] outline-none resize-none"></textarea>
+
+                        <p class="text-[10px] text-gray-400 ml-2">
+                            Maximal 1.000 Zeichen
+                        </p>
+
+                    </div>
+
+
+                    <!-- ZUSTIMMUNG -->
+
+                    <label class="flex items-start gap-3 text-xs text-gray-500 leading-relaxed">
+
+                        <input
+                            type="checkbox"
+                            name="review_consent"
+                            value="Ja"
+                            required
+                            class="mt-1">
+
+                        <span>
+                            Ich stimme zu, dass meine Bewertung mit meinem angegebenen Namen
+                            auf der Bauer-Roadtrip-Homepage veröffentlicht werden darf.
+                        </span>
+
+                    </label>
+
+
+                    <!-- BUTTON -->
+
+                    <button
+                        type="submit"
+                        id="reviewSubmitBtn"
+                        class="w-full py-5 bg-[#3e5f50] text-white rounded-2xl font-bold text-lg shadow-xl shadow-green-900/20 hover:bg-[#5b7f6c] transition-colors">
+
+                        ⭐ Bewertung absenden
+
+                    </button>
+
+
+                    <!-- ERFOLGSMELDUNG -->
+
+                    <div
+                        id="bewertungErfolg"
+                        class="hidden bg-green-50 text-[#3e5f50] rounded-2xl p-5 text-center text-sm">
+
+                        Vielen Dank! Deine Bewertung wurde übermittelt
+                        und wird von uns geprüft.
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         CSS
+    ========================== -->
+
+    <style>
+
+        .review-stars {
+
+            display: flex;
+
+            flex-direction: row-reverse;
+
+            justify-content: flex-end;
+
+            gap: 2px;
+
+        }
+
+
+        .review-stars input {
+
+            position: absolute;
+
+            opacity: 0;
+
+            pointer-events: none;
+
+        }
+
+
+        .review-stars label {
+
+            font-size: 2.6rem;
+
+            line-height: 1;
+
+            color: #d1d5db;
+
+            cursor: pointer;
+
+            transition: all 0.15s ease;
+
+        }
+
+
+        .review-stars label:hover,
+        .review-stars label:hover ~ label,
+        .review-stars input:checked ~ label {
+
+            color: #d4a373;
+
+        }
+
+
+        .review-stars label:hover {
+
+            transform: scale(1.08);
+
+        }
+
+
+        .live-review-card {
+
+            background: #fbfbf9;
+
+            border-radius: 28px;
+
+            padding: 28px;
+
+        }
+
+
+        .live-review-stars {
+
+            color: #d4a373;
+
+            font-size: 20px;
+
+            letter-spacing: 3px;
+
+            margin-bottom: 18px;
+
+        }
+
+
+        .live-review-text {
+
+            color: #4b5563;
+
+            font-size: 14px;
+
+            line-height: 1.7;
+
+            margin-bottom: 24px;
+
+            white-space: pre-line;
+
+        }
+
+
+        .live-review-author {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+
+        }
+
+
+        .live-review-avatar {
+
+            width: 44px;
+
+            height: 44px;
+
+            border-radius: 50%;
+
+            background: #5b7f6c;
+
+            color: white;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-weight: 700;
+
+        }
+
+
+        .live-review-name {
+
+            font-weight: 700;
+
+            color: #3e5f50;
+
+        }
+
+
+        .live-review-period {
+
+            font-size: 12px;
+
+            color: #9ca3af;
+
+            margin-top: 2px;
+
+        }
+
+    </style>
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================== -->
+
+    <script>
+
+        const BEWERTUNGS_API =
+            "https://script.google.com/macros/s/AKfycbwuOB0kWhzaTyVwSLgt6-ZtYA9-4xZGoAW8WVgF9TT1-WsC6S8EIpQa6Qy5jh_1hS86fw/exec";
+
+
+        const bewertungsForm =
+            document.getElementById("bewertungsForm");
+
+        const reviewButton =
+            document.getElementById("reviewSubmitBtn");
+
+        const reviewSuccess =
+            document.getElementById("bewertungErfolg");
+
+
+        /* Google-Adresse ins Formular einsetzen */
+
+        bewertungsForm.action =
+            BEWERTUNGS_API;
+
+
+        /* Antwort von Google empfangen */
+
+        window.addEventListener(
+            "message",
+            function(event) {
+
+                if (
+                    !event.data ||
+                    event.data.type !== "bauerRoadtripReview"
+                ) {
+
+                    return;
+
+                }
+
+
+                if (event.data.success) {
+
+                    bewertungsForm.reset();
+
+                    reviewButton.disabled = false;
+
+                    reviewButton.innerText =
+                        "⭐ Bewertung absenden";
+
+                    reviewSuccess.classList.remove("hidden");
+
+
+                    setTimeout(
+                        function() {
+
+                            reviewSuccess.classList.add("hidden");
+
+                        },
+                        8000
+                    );
+
+
+                } else {
+
+                    reviewButton.disabled = false;
+
+                    reviewButton.innerText =
+                        "⭐ Bewertung absenden";
+
+
+                    if (
+                        typeof showAlert === "function"
+                    ) {
+
+                        showAlert(
+                            false,
+                            "Fehler",
+                            event.data.message ||
+                            "Die Bewertung konnte nicht gespeichert werden."
+                        );
+
+                    } else {
+
+                        alert(
+                            event.data.message ||
+                            "Die Bewertung konnte nicht gespeichert werden."
+                        );
+
+                    }
+
+                }
+
+            }
+        );
+
+
+        /* Formular abschicken */
+
+        bewertungsForm.addEventListener(
+            "submit",
+            function(event) {
+
+                event.preventDefault();
+
+
+                const stars =
+                    document.querySelector(
+                        'input[name="review_stars"]:checked'
+                    );
+
+
+                if (!stars) {
+
+                    if (
+                        typeof showAlert === "function"
+                    ) {
+
+                        showAlert(
+                            false,
+                            "Bewertung fehlt",
+                            "Bitte wähle zuerst deine Sternebewertung aus."
+                        );
+
+                    } else {
+
+                        alert(
+                            "Bitte wähle zuerst deine Sternebewertung aus."
+                        );
+
+                    }
+
+                    return;
+
+                }
+
+
+                reviewButton.disabled = true;
+
+                reviewButton.innerText =
+                    "Wird gesendet...";
+
+
+                bewertungsForm.submit();
+
+            }
+        );
+
+
+        /* =========================
+           FREIGEGEBENE BEWERTUNGEN LADEN
+        ========================== */
+
+        function ladeBewertungen() {
+
+            const script =
+                document.createElement("script");
+
+
+            const callbackName =
+                "bauerRoadtripBewertungenCallback";
+
+
+            window[callbackName] =
+                function(data) {
+
+                    if (
+                        !data ||
+                        !data.ok ||
+                        !Array.isArray(data.reviews)
+                    ) {
+
+                        zeigeKeineBewertungen();
+
+                        return;
+
+                    }
+
+
+                    renderBewertungen(
+                        data.reviews
+                    );
+
+                };
+
+
+            script.src =
+                BEWERTUNGS_API +
+                "?callback=" +
+                callbackName +
+                "&t=" +
+                Date.now();
+
+
+            script.onerror =
+                function() {
+
+                    zeigeKeineBewertungen();
+
+                };
+
+
+            document.body.appendChild(script);
+
+        }
+
+
+        /* =========================
+           BEWERTUNGEN ANZEIGEN
+        ========================== */
+
+        function renderBewertungen(
+            reviews
+        ) {
+
+            const container =
+                document.getElementById(
+                    "bewertungenListe"
+                );
+
+
+            const averageElement =
+                document.getElementById(
+                    "bewertungDurchschnitt"
+                );
+
+
+            const starsElement =
+                document.getElementById(
+                    "bewertungSterne"
+                );
+
+
+            container.innerHTML = "";
+
+
+            if (!reviews.length) {
+
+                zeigeKeineBewertungen();
+
+                return;
+
+            }
+
+
+            let totalStars = 0;
+
+
+            reviews.forEach(
+                function(review) {
+
+                    totalStars +=
+                        Number(review.stars);
+
+
+                    const card =
+                        document.createElement(
+                            "article"
+                        );
+
+
+                    card.className =
+                        "live-review-card";
+
+
+                    const stars =
+                        document.createElement(
+                            "div"
+                        );
+
+
+                    stars.className =
+                        "live-review-stars";
+
+
+                    const reviewStars =
+                        Number(
+                            review.stars
+                        );
+
+
+                    stars.textContent =
+                        "★".repeat(
+                            reviewStars
+                        ) +
+                        "☆".repeat(
+                            5 - reviewStars
+                        );
+
+
+                    const text =
+                        document.createElement(
+                            "p"
+                        );
+
+
+                    text.className =
+                        "live-review-text";
+
+
+                    text.textContent =
+                        "„" +
+                        review.text +
+                        "“";
+
+
+                    const author =
+                        document.createElement(
+                            "div"
+                        );
+
+
+                    author.className =
+                        "live-review-author";
+
+
+                    const avatar =
+                        document.createElement(
+                            "div"
+                        );
+
+
+                    avatar.className =
+                        "live-review-avatar";
+
+
+                    avatar.textContent =
+                        (
+                            review.name || "?"
+                        )
+                        .charAt(0)
+                        .toUpperCase();
+
+
+                    const details =
+                        document.createElement(
+                            "div"
+                        );
+
+
+                    const name =
+                        document.createElement(
+                            "div"
+                        );
+
+
+                    name.className =
+                        "live-review-name";
+
+
+                    name.textContent =
+                        review.name;
+
+
+                    const period =
+                        document.createElement(
+                            "div"
+                        );
+
+
+                    period.className =
+                        "live-review-period";
+
+
+                    period.textContent =
+                        review.period;
+
+
+                    details.appendChild(
+                        name
+                    );
+
+                    details.appendChild(
+                        period
+                    );
+
+
+                    author.appendChild(
+                        avatar
+                    );
+
+                    author.appendChild(
+                        details
+                    );
+
+
+                    card.appendChild(
+                        stars
+                    );
+
+                    card.appendChild(
+                        text
+                    );
+
+                    card.appendChild(
+                        author
+                    );
+
+
+                    container.appendChild(
+                        card
+                    );
+
+                }
+            );
+
+
+            const average =
+                totalStars /
+                reviews.length;
+
+
+            averageElement.textContent =
+                average.toFixed(1) +
+                " / 5 aus " +
+                reviews.length +
+                " Bewertungen";
+
+
+            const rounded =
+                Math.round(
+                    average
+                );
+
+
+            starsElement.textContent =
+                "★".repeat(
+                    rounded
+                ) +
+                "☆".repeat(
+                    5 - rounded
+                );
+
+        }
+
+
+        /* =========================
+           NOCH KEINE BEWERTUNGEN
+        ========================== */
+
+        function zeigeKeineBewertungen() {
+
+            const container =
+                document.getElementById(
+                    "bewertungenListe"
+                );
+
+
+            const averageElement =
+                document.getElementById(
+                    "bewertungDurchschnitt"
+                );
+
+
+            const starsElement =
+                document.getElementById(
+                    "bewertungSterne"
+                );
+
+
+            container.innerHTML = `
+
+                <div class="lg:col-span-3 text-center py-10">
+
+                    <div class="text-[#d4a373] text-3xl mb-3">
+                        ★★★★★
+                    </div>
+
+                    <p class="text-gray-500 text-sm">
+                        Noch keine freigegebenen Bewertungen.
+                    </p>
+
+                </div>
+
+            `;
+
+
+            averageElement.textContent =
+                "Noch keine Bewertungen";
+
+
+            starsElement.textContent =
+                "★★★★★";
+
+        }
+
+
+        /* Bewertungen beim Laden holen */
+
+        ladeBewertungen();
+
+    </script>
+
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
     <footer class="bg-gray-900 text-white mt-20 py-16 px-6">
         <div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-12 text-center md:text-left">
             <div>
