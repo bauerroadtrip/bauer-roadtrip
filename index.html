@@ -1,540 +1,368 @@
 <!DOCTYPE html>
 <html lang="de" class="scroll-smooth">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-    <meta name="google-site-verification" content="zIn265P5-CepRa6DBrCG4ab-0CznAW8A1bUDyrPAnMk" />
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+
+    <meta name="google-site-verification"
+          content="zIn265P5-CepRa6DBrCG4ab-0CznAW8A1bUDyrPAnMk">
+
     <title>Bauer Roadtrip – Wohnwagenvermietung Frankenhardt</title>
-    
- <link rel="icon" type="image/png" sizes="512x512" href="./Logo.png">
-<link rel="apple-touch-icon" sizes="512x512" href="./Logo.png">
-    <meta name="description" content="Miete unseren hundefreundlichen Wohnwagen 'Lotte' in Frankenhardt. Perfekt für Familienabenteuer mit bis zu 5 Personen.">
-     <meta name="application-name" content="Bauer Roadtrip">
+
+    <link rel="icon"
+          type="image/png"
+          sizes="512x512"
+          href="./Logo.png">
+
+    <link rel="apple-touch-icon"
+          sizes="512x512"
+          href="./Logo.png">
+
+    <meta name="description"
+          content="Miete unseren hundefreundlichen Wohnwagen 'Lotte' in Frankenhardt. Perfekt für Familienabenteuer mit bis zu 5 Personen.">
+
+    <meta name="application-name"
+          content="Bauer Roadtrip">
+
+
+    <!-- SEO -->
 
     <script type="application/ld+json">
+
     {
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      "name": "Bauer Roadtrip",
-      "alternateName": "Bauer Roadtrip – Wohnwagenvermietung Frankenhardt",
-      "url": "https://bauerroadtrip.github.io/bauer-roadtrip/"
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Bauer Roadtrip",
+        "alternateName": "Bauer Roadtrip – Wohnwagenvermietung Frankenhardt",
+        "url": "https://bauerroadtrip.github.io/bauer-roadtrip/"
     }
+
     </script>
-    
+
+
+    <!-- Tailwind -->
+
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;0,900;1,700&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-    <link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/material_green.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+
+    <!-- Google Fonts -->
+
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;0,900;1,700&display=swap"
+          rel="stylesheet">
+
+
+    <!-- Flatpickr -->
+
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
+    <link rel="stylesheet"
+          type="text/css"
+          href="https://npmcdn.com/flatpickr/dist/themes/material_green.css">
+
+
+    <!-- Swiper -->
+
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+
+
+    <!-- Lucide -->
+
     <script src="https://unpkg.com/lucide@latest"></script>
 
+
     <style>
+
         :root {
+
             --primary: #5b7f6c;
             --primary-dark: #3e5f50;
             --accent: #d4a373;
             --bg-soft: #fbfbf9;
+
         }
+
+
         body {
+
             font-family: 'Plus Jakarta Sans', sans-serif;
+
             background-color: var(--bg-soft);
+
             color: #2d3436;
+
             width: 100%;
+
             overflow-x: hidden;
+
             -webkit-font-smoothing: antialiased;
+
         }
-        .font-serif { font-family: 'Playfair Display', serif; }
-        
+
+
+        .font-serif {
+
+            font-family: 'Playfair Display', serif;
+
+        }
+
+
+        /* =========================
+           HERO COLLAGE
+        ========================= */
+
         .hero-collage {
+
             display: grid;
+
             grid-template-columns: repeat(12, 1fr);
+
             gap: 12px;
+
             max-width: 1400px;
+
             margin: 0 auto;
+
             padding: 1rem;
+
         }
+
+
         .collage-item {
+
             position: relative;
+
             overflow: hidden;
+
             border-radius: 20px;
+
             background-color: #eee;
+
             box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+
         }
+
+
         .collage-item img {
+
             width: 100%;
+
             height: 100%;
+
             object-fit: cover;
+
         }
+
+
         @media (min-width: 1024px) {
-            .hero-collage { grid-template-rows: repeat(6, 100px); }
-            .img-1 { grid-column: 1 / 5; grid-row: 1 / 7; }
-            .img-2 { grid-column: 5 / 9; grid-row: 1 / 4; }
-            .img-3 { grid-column: 5 / 7; grid-row: 4 / 7; }
-            .img-4 { grid-column: 7 / 9; grid-row: 4 / 7; }
-            .img-5 { grid-column: 9 / 13; grid-row: 1 / 7; }
-        }
-        @media (max-width: 1023px) {
+
             .hero-collage {
-                grid-template-columns: repeat(2, 1fr);
-                grid-auto-rows: 180px;
+
+                grid-template-rows: repeat(6, 100px);
+
             }
-            .img-1 { grid-column: 1 / 3; grid-row: 1 / 3; }
-            .img-2 { grid-column: 1 / 2; grid-row: 3 / 4; }
-            .img-5 { grid-column: 2 / 3; grid-row: 3 / 4; }
-            .img-3, .img-4 { display: none; }
+
+
+            .img-1 {
+
+                grid-column: 1 / 5;
+
+                grid-row: 1 / 7;
+
+            }
+
+
+            .img-2 {
+
+                grid-column: 5 / 9;
+
+                grid-row: 1 / 4;
+
+            }
+
+
+            .img-3 {
+
+                grid-column: 5 / 7;
+
+                grid-row: 4 / 7;
+
+            }
+
+
+            .img-4 {
+
+                grid-column: 7 / 9;
+
+                grid-row: 4 / 7;
+
+            }
+
+
+            .img-5 {
+
+                grid-column: 9 / 13;
+
+                grid-row: 1 / 7;
+
+            }
+
         }
+
+
+        @media (max-width: 1023px) {
+
+            .hero-collage {
+
+                grid-template-columns: repeat(2, 1fr);
+
+                grid-auto-rows: 180px;
+
+            }
+
+
+            .img-1 {
+
+                grid-column: 1 / 3;
+
+                grid-row: 1 / 3;
+
+            }
+
+
+            .img-2 {
+
+                grid-column: 1 / 2;
+
+                grid-row: 3 / 4;
+
+            }
+
+
+            .img-5 {
+
+                grid-column: 2 / 3;
+
+                grid-row: 3 / 4;
+
+            }
+
+
+            .img-3,
+            .img-4 {
+
+                display: none;
+
+            }
+
+        }
+
+
+        /* =========================
+           HEADER
+        ========================= */
 
         .glass-header {
+
             background: rgba(255, 255, 255, 0.95);
+
             backdrop-filter: blur(10px);
+
             border-bottom: 1px solid rgba(0,0,0,0.05);
+
         }
-        
+
+
+        /* =========================
+           ALERT
+        ========================= */
+
         #customAlert {
+
             display: none;
+
             position: fixed;
+
             inset: 0;
+
             background: rgba(0,0,0,0.8);
+
             z-index: 1000;
+
             align-items: center;
+
             justify-content: center;
+
             padding: 20px;
+
         }
+
+
+        /* =========================
+           SUN BADGE
+        ========================= */
 
         .sun-badge {
+
             width: 110px;
+
             height: 110px;
+
             background: #f1c40f;
+
             border-radius: 50%;
+
             display: flex;
+
             flex-direction: column;
+
             align-items: center;
+
             justify-content: center;
+
             text-align: center;
+
             box-shadow: 0 8px 20px rgba(241, 196, 15, 0.3);
+
             transform: rotate(-5deg);
+
             border: 3px dashed #fff;
+
             color: #2d3436;
+
             margin-top: 1rem;
+
         }
 
-        .flatpickr-day.flatpickr-disabled, 
+
+        /* =========================
+           FLATPICKR
+        ========================= */
+
+        .flatpickr-day.flatpickr-disabled,
         .flatpickr-day.flatpickr-disabled:hover {
+
             background: #f3f4f6 !important;
+
             color: #d1d5db !important;
+
             cursor: not-allowed !important;
+
             text-decoration: line-through;
+
             border-color: transparent !important;
+
         }
-    </style>
-</head>
-<body>
-    <header class="glass-header sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
-            <div class="flex items-center gap-3 cursor-pointer" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
-                <img src="Logo.png" alt="Logo" class="h-10 w-auto" onerror="this.style.opacity='0'">
-                <div>
-                    <span class="block text-lg font-black text-[#3e5f50] leading-none uppercase tracking-tighter">Bauer</span>
-                    <span class="block text-[8px] font-bold text-[#5b7f6c] tracking-[0.2em] uppercase">Roadtrip</span>
-                </div>
-            </div>
-            <nav class="hidden md:flex gap-6 text-[10px] font-bold uppercase tracking-widest text-gray-500">
-                <a href="#about" class="hover:text-[#5b7f6c]">Lotte</a>
-                <a href="#booking" class="hover:text-[#5b7f6c]">Anfrage</a>
-		<a href="#bewertungen" class="hover:text-[#5b7f6c]">Bewertungen</a>
-            </nav>
-            <a href="#booking" class="btn-primary bg-[#5b7f6c] text-white px-5 py-2.5 rounded-full text-[10px] font-black uppercase tracking-widest">Anfragen</a>
-        </div>
-    </header>
 
-    <section class="py-6 lg:py-12">
-        <div class="max-w-7xl mx-auto px-4 text-center mb-8">
-            <span class="text-[10px] font-black uppercase tracking-widest text-[#5b7f6c] mb-2 block">Mieten in Frankenhardt</span>
-            <h1 class="text-4xl lg:text-7xl font-serif font-black text-gray-900 leading-tight mb-4">Abenteuer mit Lotte</h1>
-            <p class="text-gray-500 text-sm lg:text-xl">Dein gemütliches Zuhause auf Rädern</p>
-        </div>
-        <div class="hero-collage">
-            <div class="collage-item img-1"><img src="17.jpg" alt="Hauptbild"></div>
-            <div class="collage-item img-2"><img src="11.jpg" alt="Detail 1"></div>
-            <div class="collage-item img-3"><img src="14.jpg" alt="Detail 2"></div>
-            <div class="collage-item img-4"><img src="12.jpg" alt="Detail 3"></div>
-            <div class="collage-item img-5"><img src="16.jpg" alt="Detail 4"></div>
-        </div>
-    </section>
 
-    <main class="max-w-7xl mx-auto px-4">
-        <section id="about" class="py-16 grid lg:grid-cols-2 gap-12 items-center">
-            <div>
-                <h2 class="text-4xl lg:text-6xl font-serif font-bold mb-6">Freiheit auf <span class="text-[#5b7f6c] italic">zwei Rädern.</span></h2>
-                <p class="text-gray-600 text-lg mb-8 leading-relaxed">
-                    Lotte ist unser treuer Begleiter für alles, was nach Freiheit riecht. Mit viel Liebe zum Detail ausgestattet, bietet sie Platz für bis zu 5 Personen. Auch dein vierbeiniger Freund ist bei uns herzlich willkommen!
-                </p>
-                <div class="flex flex-wrap gap-8 mb-4">
-                    <div class="flex items-center gap-3">
-                        <div class="w-10 h-10 bg-green-50 rounded-xl flex items-center justify-center text-[#5b7f6c]"><i data-lucide="users" class="w-5 h-5"></i></div>
-                        <div><p class="text-[10px] font-bold uppercase text-gray-400">Kapazität</p><p class="font-bold">5 Personen</p></div>
-                    </div>
-                    <div class="flex items-center gap-3">
-                        <div class="w-10 h-10 bg-orange-50 rounded-xl flex items-center justify-center text-[#d4a373]"><i data-lucide="dog" class="w-5 h-5"></i></div>
-                        <div><p class="text-[10px] font-bold uppercase text-gray-400">Haustiere</p><p class="font-bold">Erlaubt</p></div>
-                    </div>
-                </div>
-                <div class="sun-badge">
-                    <span class="text-[8px] font-bold uppercase leading-none">ab</span>
-                    <span class="text-2xl font-black">60€</span>
-                    <span class="text-[8px] font-bold uppercase leading-none">pro Tag</span>
-                </div>
-            </div>
-            <div class="rounded-[32px] overflow-hidden shadow-2xl aspect-[4/3] relative">
-                <div class="swiper lotteSwiper h-full">
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide"><img src="1.png" class="w-full h-full object-cover"></div>
-                        <div class="swiper-slide"><img src="2.png" class="w-full h-full object-cover"></div>
-                        <div class="swiper-slide"><img src="3.png" class="w-full h-full object-cover"></div>
-                        <div class="swiper-slide"><img src="4.png" class="w-full h-full object-cover"></div>
-                        <div class="swiper-slide"><img src="5.png" class="w-full h-full object-cover"></div>
-                        <div class="swiper-slide"><img src="6.png" class="w-full h-full object-cover"></div>
-                        <div class="swiper-slide"><img src="7.png" class="w-full h-full object-cover"></div>
-                        <div class="swiper-slide"><img src="8.png" class="w-full h-full object-cover"></div>
-                        <div class="swiper-slide"><img src="9.png" class="w-full h-full object-cover"></div>
-                        <div class="swiper-slide"><img src="10.png" class="w-full h-full object-cover"></div>
-                    </div>
-                    <div class="swiper-pagination"></div>
-                </div>
-            </div>
-        </section>
-
-        <section id="booking" class="py-16">
-            <div class="bg-white rounded-[40px] p-6 lg:p-16 shadow-2xl border border-gray-50">
-                <div class="text-center mb-12">
-                    <h2 class="text-3xl lg:text-5xl font-serif mb-4">Jetzt unverbindlich anfragen</h2>
-                    <p class="text-gray-400 text-sm"><b>Mindestmietdauer: 3 Tage</b></p>
-                </div>
-                <form id="bookingForm" class="space-y-6">
-                    <div class="grid lg:grid-cols-2 gap-6">
-                        <div class="space-y-1">
-                            <label class="text-[10px] font-black uppercase text-gray-400 ml-2">Zeitraum</label>
-                            <input type="text" id="datePicker" name="trip_dates" required placeholder="Datum wählen" class="w-full p-4 bg-gray-50 rounded-2xl border-none focus:ring-2 focus:ring-[#5b7f6c] outline-none">
-                            <p id="durationError" class="text-red-500 text-[10px] mt-1 hidden font-bold">Mindestens 3 Tage auswählen!</p>
-                        </div>
-                        <div class="space-y-1">
-                            <label class="text-[10px] font-black uppercase text-gray-400 ml-2">Name</label>
-                            <input type="text" name="user_name" required placeholder="Dein Name" class="w-full p-4 bg-gray-50 rounded-2xl border-none focus:ring-2 focus:ring-[#5b7f6c] outline-none">
-                        </div>
-                    </div>
-                    <div class="grid lg:grid-cols-2 gap-6">
-                        <div class="space-y-1">
-                            <label class="text-[10px] font-black uppercase text-gray-400 ml-2">E-Mail</label>
-                            <input type="email" name="user_email" required placeholder="mail@beispiel.de" class="w-full p-4 bg-gray-50 rounded-2xl border-none focus:ring-2 focus:ring-[#5b7f6c] outline-none">
-                        </div>
-                        <div class="space-y-1">
-                            <label class="text-[10px] font-black uppercase text-gray-400 ml-2">Telefon</label>
-                            <input type="tel" name="user_phone" required placeholder="Handynummer" class="w-full p-4 bg-gray-50 rounded-2xl border-none focus:ring-2 focus:ring-[#5b7f6c] outline-none">
-                        </div>
-                    </div>
-                    <div class="space-y-1">
-                        <label class="text-[10px] font-black uppercase text-gray-400 ml-2">Nachricht (Optional)</label>
-                        <textarea name="user_message" rows="4" placeholder="Schreib uns deine Wünsche oder Fragen..." class="w-full p-4 bg-gray-50 rounded-2xl border-none focus:ring-2 focus:ring-[#5b7f6c] outline-none resize-none"></textarea>
-                    </div>
-                    <button type="submit" id="submitBtn" class="w-full py-5 bg-[#3e5f50] text-white rounded-2xl font-bold text-lg shadow-xl shadow-green-900/20 disabled:opacity-50">Anfrage absenden</button>
-                </form>
-            </div>
-        </section>
-    </main>
-
-
-
-
-<!-- =========================
-     BAUER ROADTRIP BEWERTUNGEN
-========================= -->
-
-<section id="bewertungen" class="py-16">
-
-    <div class="max-w-7xl mx-auto px-4">
-
-        <div class="bg-white rounded-[40px] p-6 lg:p-16 shadow-2xl border border-gray-50">
-
-            <!-- Überschrift -->
-
-            <div class="text-center mb-12">
-
-                <span class="text-[10px] font-black uppercase tracking-widest text-[#5b7f6c] mb-2 block">
-                    Eure Erfahrungen
-                </span>
-
-                <h2 class="text-3xl lg:text-5xl font-serif mb-4">
-                    Das sagen unsere Gäste
-                </h2>
-
-                <p class="text-gray-400 text-sm max-w-2xl mx-auto">
-                    Du warst mit Lotte unterwegs? Teile deine Erfahrung mit anderen Campern.
-                </p>
-
-                <div class="inline-flex items-center gap-3 mt-6 px-5 py-3 bg-[#fbfbf9] rounded-2xl">
-
-                    <span id="bewertungSterne"
-                          class="text-[#d4a373] text-xl tracking-widest">
-                        ★★★★★
-                    </span>
-
-                    <span id="bewertungDurchschnitt"
-                          class="text-sm font-bold text-[#3e5f50]">
-                        Noch keine Bewertungen
-                    </span>
-
-                </div>
-
-            </div>
-
-
-            <!-- Bewertungen -->
-
-            <div id="bewertungenListe"
-                 class="grid lg:grid-cols-3 gap-6 mb-12">
-
-                <div class="lg:col-span-3 text-center py-10">
-
-                    <div class="text-[#d4a373] text-3xl mb-3">
-                        ★★★★★
-                    </div>
-
-                    <p class="text-gray-500 text-sm">
-                        Noch keine freigegebenen Bewertungen.
-                    </p>
-
-                </div>
-
-            </div>
-
-
-            <!-- Formular -->
-
-            <div class="max-w-3xl mx-auto bg-[#fbfbf9] rounded-[32px] p-6 lg:p-10">
-
-                <div class="text-center mb-8">
-
-                    <span class="text-[10px] font-black uppercase tracking-widest text-[#5b7f6c]">
-                        Deine Meinung zählt
-                    </span>
-
-                    <h3 class="text-2xl lg:text-3xl font-serif mt-2 mb-3">
-                        Jetzt Bewertung abgeben
-                    </h3>
-
-                    <p class="text-gray-400 text-sm">
-                      
-                    </p>
-
-                </div>
-
-
-                <!-- Unsichtbares Ziel für Google -->
-
-                <iframe
-                    name="bewertungFrame"
-                    id="bewertungFrame"
-                    style="display:none;"
-                    title="Bewertung">
-                </iframe>
-
-
-                <!-- FORMULAR -->
-
-                <form
-                    id="bewertungsForm"
-                    action="https://script.google.com/macros/s/AKfycbwuOB0kWhzaTyVwSLgt6-ZtYA9-4xZGoAW8WVgF9TT1-WsC6S8EIpQa6Qy5jh_1hS86fw/exec"
-                    method="POST"
-                    target="bewertungFrame"
-                    class="space-y-6"
-                >
-
-
-                    <!-- Name -->
-
-                    <div class="space-y-1">
-
-                        <label class="text-[10px] font-black uppercase text-gray-400 ml-2">
-                            Dein Name
-                        </label>
-
-                        <input
-                            type="text"
-                            name="review_name"
-                            required
-                            maxlength="80"
-                            placeholder="z. B. Familie Müller"
-                            class="w-full p-4 bg-white rounded-2xl border-none focus:ring-2 focus:ring-[#5b7f6c] outline-none"
-                        >
-
-                    </div>
-
-
-                    <!-- Reisezeitraum -->
-
-                    <div class="space-y-1">
-
-                        <label class="text-[10px] font-black uppercase text-gray-400 ml-2">
-                            Reisezeitraum
-                        </label>
-
-                        <input
-                            type="text"
-                            name="review_period"
-                            required
-                            maxlength="50"
-                            placeholder="z. B. August 2026"
-                            class="w-full p-4 bg-white rounded-2xl border-none focus:ring-2 focus:ring-[#5b7f6c] outline-none"
-                        >
-
-                    </div>
-
-
-                    <!-- Sterne -->
-
-                    <div>
-
-                        <label class="text-[10px] font-black uppercase text-gray-400 ml-2 block mb-2">
-                            Deine Bewertung
-                        </label>
-
-                        <div class="bewertung-sterne">
-
-                            <input
-                                type="radio"
-                                id="stern5"
-                                name="review_stars"
-                                value="5"
-                                required
-                            >
-
-                            <label for="stern5">★</label>
-
-
-                            <input
-                                type="radio"
-                                id="stern4"
-                                name="review_stars"
-                                value="4"
-                            >
-
-                            <label for="stern4">★</label>
-
-
-                            <input
-                                type="radio"
-                                id="stern3"
-                                name="review_stars"
-                                value="3"
-                            >
-
-                            <label for="stern3">★</label>
-
-
-                            <input
-                                type="radio"
-                                id="stern2"
-                                name="review_stars"
-                                value="2"
-                            >
-
-                            <label for="stern2">★</label>
-
-
-                            <input
-                                type="radio"
-                                id="stern1"
-                                name="review_stars"
-                                value="1"
-                            >
-
-                            <label for="stern1">★</label>
-
-                        </div>
-
-                    </div>
-
-
-                    <!-- Text -->
-
-                    <div class="space-y-1">
-
-                        <label class="text-[10px] font-black uppercase text-gray-400 ml-2">
-                            Deine Bewertung
-                        </label>
-
-                        <textarea
-                            name="review_text"
-                            required
-                            maxlength="1000"
-                            rows="5"
-                            placeholder="Wie hat dir der Urlaub mit Lotte gefallen?"
-                            class="w-full p-4 bg-white rounded-2xl border-none focus:ring-2 focus:ring-[#5b7f6c] outline-none resize-none"
-                        ></textarea>
-
-                        <p class="text-[10px] text-gray-400 ml-2">
-                            Maximal 1.000 Zeichen
-                        </p>
-
-                    </div>
-
-
-                    <!-- Zustimmung -->
-
-                    <label class="flex items-start gap-3 text-xs text-gray-500 leading-relaxed">
-
-                        <input
-                            type="checkbox"
-                            name="review_consent"
-                            value="Ja"
-                            required
-                            class="mt-1"
-                        >
-
-                        <span>
-                            Ich stimme zu, dass meine Bewertung mit meinem angegebenen Namen
-                            auf der Bauer-Roadtrip-Homepage veröffentlicht werden darf.
-                        </span>
-
-                    </label>
-
-
-                    <!-- Absenden -->
-
-                    <button
-                        type="submit"
-                        id="reviewSubmitBtn"
-                        class="w-full py-5 bg-[#3e5f50] text-white rounded-2xl font-bold text-lg shadow-xl shadow-green-900/20 hover:bg-[#5b7f6c] transition-colors"
-                    >
-                        ⭐ Bewertung absenden
-                    </button>
-
-
-                    <!-- Nachricht -->
-
-                    <div
-                        id="bewertungErfolg"
-                        class="hidden bg-green-50 text-[#3e5f50] rounded-2xl p-5 text-center text-sm"
-                    >
-                        Vielen Dank! Deine Bewertung wurde übermittelt
-                        und wird von uns geprüft.
-                    </div>
-
-                </form>
-
-            </div>
-
-        </div>
-
-    </div>
-
-
-    <!-- =========================
-         CSS
-    ========================== -->
-
-    <style>
+        /* =========================
+           BEWERTUNGSFORMULAR
+        ========================= */
 
         .bewertung-sterne {
 
@@ -591,6 +419,10 @@
         }
 
 
+        /* =========================
+           BEWERTUNGSKARTE
+        ========================= */
+
         .bewertung-card {
 
             background: #fbfbf9;
@@ -598,6 +430,16 @@
             border-radius: 28px;
 
             padding: 28px;
+
+            height: 100%;
+
+            min-height: 270px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            box-sizing: border-box;
 
         }
 
@@ -638,6 +480,8 @@
 
             gap: 12px;
 
+            margin-top: auto;
+
         }
 
 
@@ -661,6 +505,8 @@
 
             font-weight: 700;
 
+            flex-shrink: 0;
+
         }
 
 
@@ -673,24 +519,1486 @@
         }
 
 
-        .bewertung-zeitraum {
+        /* =========================
+           BEWERTUNGS-SLIDER
+        ========================= */
 
-            font-size: 12px;
+        .bewertungenSwiper {
 
-            color: #9ca3af;
+            padding: 10px 55px 55px;
 
-            margin-top: 2px;
+        }
+
+
+        .bewertungenSwiper .swiper-slide {
+
+            height: auto;
+
+            box-sizing: border-box;
+
+        }
+
+
+        /* Pfeile */
+
+        .bewertung-prev,
+        .bewertung-next {
+
+            color: #3e5f50 !important;
+
+        }
+
+
+        .bewertung-prev::after,
+        .bewertung-next::after {
+
+            font-size: 20px !important;
+
+            font-weight: 800;
+
+        }
+
+
+        /* Punkte */
+
+        .bewertung-pagination {
+
+            bottom: 5px !important;
+
+        }
+
+
+        .bewertung-pagination .swiper-pagination-bullet {
+
+            background: #d1d5db;
+
+            opacity: 1;
+
+        }
+
+
+        .bewertung-pagination .swiper-pagination-bullet-active {
+
+            background: #5b7f6c;
+
+            width: 22px;
+
+            border-radius: 10px;
+
+        }
+
+
+        /* Mobil */
+
+        @media (max-width: 767px) {
+
+            .bewertungenSwiper {
+
+                padding-left: 10px;
+
+                padding-right: 10px;
+
+                padding-bottom: 50px;
+
+            }
+
+
+            .bewertung-prev,
+            .bewertung-next {
+
+                display: none;
+
+            }
 
         }
 
     </style>
 
+</head>
+
+
+<body>
+
 
     <!-- =========================
-         JAVASCRIPT
-    ========================== -->
+         HEADER
+    ========================= -->
+
+    <header class="glass-header sticky top-0 z-50">
+
+        <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+
+            <div class="flex items-center gap-3 cursor-pointer"
+                 onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+
+                <img src="Logo.png"
+                     alt="Logo"
+                     class="h-10 w-auto"
+                     onerror="this.style.opacity='0'">
+
+                <div>
+
+                    <span class="block text-lg font-black text-[#3e5f50] leading-none uppercase tracking-tighter">
+                        Bauer
+                    </span>
+
+                    <span class="block text-[8px] font-bold text-[#5b7f6c] tracking-[0.2em] uppercase">
+                        Roadtrip
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <nav class="hidden md:flex gap-6 text-[10px] font-bold uppercase tracking-widest text-gray-500">
+
+                <a href="#about"
+                   class="hover:text-[#5b7f6c]">
+                    Lotte
+                </a>
+
+                <a href="#booking"
+                   class="hover:text-[#5b7f6c]">
+                    Anfrage
+                </a>
+
+                <a href="#bewertungen"
+                   class="hover:text-[#5b7f6c]">
+                    Bewertungen
+                </a>
+
+            </nav>
+
+
+            <a href="#booking"
+               class="btn-primary bg-[#5b7f6c] text-white px-5 py-2.5 rounded-full text-[10px] font-black uppercase tracking-widest">
+                Anfragen
+            </a>
+
+        </div>
+
+    </header>
+
+
+    <!-- =========================
+         HERO
+    ========================= -->
+
+    <section class="py-6 lg:py-12">
+
+        <div class="max-w-7xl mx-auto px-4 text-center mb-8">
+
+            <span class="text-[10px] font-black uppercase tracking-widest text-[#5b7f6c] mb-2 block">
+                Mieten in Frankenhardt
+            </span>
+
+            <h1 class="text-4xl lg:text-7xl font-serif font-black text-gray-900 leading-tight mb-4">
+                Abenteuer mit Lotte
+            </h1>
+
+            <p class="text-gray-500 text-sm lg:text-xl">
+                Dein gemütliches Zuhause auf Rädern
+            </p>
+
+        </div>
+
+
+        <div class="hero-collage">
+
+            <div class="collage-item img-1">
+                <img src="17.jpg" alt="Hauptbild">
+            </div>
+
+            <div class="collage-item img-2">
+                <img src="11.jpg" alt="Detail 1">
+            </div>
+
+            <div class="collage-item img-3">
+                <img src="14.jpg" alt="Detail 2">
+            </div>
+
+            <div class="collage-item img-4">
+                <img src="12.jpg" alt="Detail 3">
+            </div>
+
+            <div class="collage-item img-5">
+                <img src="16.jpg" alt="Detail 4">
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         MAIN
+    ========================= -->
+
+    <main class="max-w-7xl mx-auto px-4">
+
+
+        <!-- =========================
+             ABOUT
+        ========================= -->
+
+        <section id="about"
+                 class="py-16 grid lg:grid-cols-2 gap-12 items-center">
+
+            <div>
+
+                <h2 class="text-4xl lg:text-6xl font-serif font-bold mb-6">
+
+                    Freiheit auf
+
+                    <span class="text-[#5b7f6c] italic">
+                        zwei Rädern.
+                    </span>
+
+                </h2>
+
+
+                <p class="text-gray-600 text-lg mb-8 leading-relaxed">
+
+                    Lotte ist unser treuer Begleiter für alles, was nach Freiheit riecht.
+                    Mit viel Liebe zum Detail ausgestattet, bietet sie Platz für bis zu 5 Personen.
+                    Auch dein vierbeiniger Freund ist bei uns herzlich willkommen!
+
+                </p>
+
+
+                <div class="flex flex-wrap gap-8 mb-4">
+
+
+                    <div class="flex items-center gap-3">
+
+                        <div class="w-10 h-10 bg-green-50 rounded-xl flex items-center justify-center text-[#5b7f6c]">
+
+                            <i data-lucide="users"
+                               class="w-5 h-5">
+                            </i>
+
+                        </div>
+
+                        <div>
+
+                            <p class="text-[10px] font-bold uppercase text-gray-400">
+                                Kapazität
+                            </p>
+
+                            <p class="font-bold">
+                                5 Personen
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="flex items-center gap-3">
+
+                        <div class="w-10 h-10 bg-orange-50 rounded-xl flex items-center justify-center text-[#d4a373]">
+
+                            <i data-lucide="dog"
+                               class="w-5 h-5">
+                            </i>
+
+                        </div>
+
+                        <div>
+
+                            <p class="text-[10px] font-bold uppercase text-gray-400">
+                                Haustiere
+                            </p>
+
+                            <p class="font-bold">
+                                Erlaubt
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="sun-badge">
+
+                    <span class="text-[8px] font-bold uppercase leading-none">
+                        ab
+                    </span>
+
+                    <span class="text-2xl font-black">
+                        60€
+                    </span>
+
+                    <span class="text-[8px] font-bold uppercase leading-none">
+                        pro Tag
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- LOTTE SLIDER -->
+
+            <div class="rounded-[32px] overflow-hidden shadow-2xl aspect-[4/3] relative">
+
+                <div class="swiper lotteSwiper h-full">
+
+                    <div class="swiper-wrapper">
+
+                        <div class="swiper-slide">
+                            <img src="1.png"
+                                 class="w-full h-full object-cover"
+                                 alt="Lotte Innenraum">
+                        </div>
+
+                        <div class="swiper-slide">
+                            <img src="2.png"
+                                 class="w-full h-full object-cover"
+                                 alt="Lotte">
+                        </div>
+
+                        <div class="swiper-slide">
+                            <img src="3.png"
+                                 class="w-full h-full object-cover"
+                                 alt="Lotte">
+                        </div>
+
+                        <div class="swiper-slide">
+                            <img src="4.png"
+                                 class="w-full h-full object-cover"
+                                 alt="Lotte">
+                        </div>
+
+                        <div class="swiper-slide">
+                            <img src="5.png"
+                                 class="w-full h-full object-cover"
+                                 alt="Lotte">
+                        </div>
+
+                        <div class="swiper-slide">
+                            <img src="6.png"
+                                 class="w-full h-full object-cover"
+                                 alt="Lotte">
+                        </div>
+
+                        <div class="swiper-slide">
+                            <img src="7.png"
+                                 class="w-full h-full object-cover"
+                                 alt="Lotte">
+                        </div>
+
+                        <div class="swiper-slide">
+                            <img src="8.png"
+                                 class="w-full h-full object-cover"
+                                 alt="Lotte">
+                        </div>
+
+                        <div class="swiper-slide">
+                            <img src="9.png"
+                                 class="w-full h-full object-cover"
+                                 alt="Lotte">
+                        </div>
+
+                        <div class="swiper-slide">
+                            <img src="10.png"
+                                 class="w-full h-full object-cover"
+                                 alt="Lotte">
+                        </div>
+
+                    </div>
+
+
+                    <div class="swiper-pagination"></div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             BOOKING
+        ========================= -->
+
+        <section id="booking"
+                 class="py-16">
+
+            <div class="bg-white rounded-[40px] p-6 lg:p-16 shadow-2xl border border-gray-50">
+
+
+                <div class="text-center mb-12">
+
+                    <h2 class="text-3xl lg:text-5xl font-serif mb-4">
+                        Jetzt unverbindlich anfragen
+                    </h2>
+
+                    <p class="text-gray-400 text-sm">
+
+                        <b>
+                            Mindestmietdauer: 3 Tage
+                        </b>
+
+                    </p>
+
+                </div>
+
+
+                <form id="bookingForm"
+                      class="space-y-6">
+
+
+                    <div class="grid lg:grid-cols-2 gap-6">
+
+
+                        <div class="space-y-1">
+
+                            <label class="text-[10px] font-black uppercase text-gray-400 ml-2">
+                                Zeitraum
+                            </label>
+
+                            <input type="text"
+                                   id="datePicker"
+                                   name="trip_dates"
+                                   required
+                                   placeholder="Datum wählen"
+                                   class="w-full p-4 bg-gray-50 rounded-2xl border-none focus:ring-2 focus:ring-[#5b7f6c] outline-none">
+
+                            <p id="durationError"
+                               class="text-red-500 text-[10px] mt-1 hidden font-bold">
+
+                                Mindestens 3 Tage auswählen!
+
+                            </p>
+
+                        </div>
+
+
+                        <div class="space-y-1">
+
+                            <label class="text-[10px] font-black uppercase text-gray-400 ml-2">
+                                Name
+                            </label>
+
+                            <input type="text"
+                                   name="user_name"
+                                   required
+                                   placeholder="Dein Name"
+                                   class="w-full p-4 bg-gray-50 rounded-2xl border-none focus:ring-2 focus:ring-[#5b7f6c] outline-none">
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="grid lg:grid-cols-2 gap-6">
+
+
+                        <div class="space-y-1">
+
+                            <label class="text-[10px] font-black uppercase text-gray-400 ml-2">
+                                E-Mail
+                            </label>
+
+                            <input type="email"
+                                   name="user_email"
+                                   required
+                                   placeholder="mail@beispiel.de"
+                                   class="w-full p-4 bg-gray-50 rounded-2xl border-none focus:ring-2 focus:ring-[#5b7f6c] outline-none">
+
+                        </div>
+
+
+                        <div class="space-y-1">
+
+                            <label class="text-[10px] font-black uppercase text-gray-400 ml-2">
+                                Telefon
+                            </label>
+
+                            <input type="tel"
+                                   name="user_phone"
+                                   required
+                                   placeholder="Handynummer"
+                                   class="w-full p-4 bg-gray-50 rounded-2xl border-none focus:ring-2 focus:ring-[#5b7f6c] outline-none">
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="space-y-1">
+
+                        <label class="text-[10px] font-black uppercase text-gray-400 ml-2">
+                            Nachricht (Optional)
+                        </label>
+
+                        <textarea name="user_message"
+                                  rows="4"
+                                  placeholder="Schreib uns deine Wünsche oder Fragen..."
+                                  class="w-full p-4 bg-gray-50 rounded-2xl border-none focus:ring-2 focus:ring-[#5b7f6c] outline-none resize-none">
+                        </textarea>
+
+                    </div>
+
+
+                    <button type="submit"
+                            id="submitBtn"
+                            class="w-full py-5 bg-[#3e5f50] text-white rounded-2xl font-bold text-lg shadow-xl shadow-green-900/20 disabled:opacity-50">
+
+                        Anfrage absenden
+
+                    </button>
+
+                </form>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================================================
+         BEWERTUNGEN
+    ========================================================== -->
+
+    <section id="bewertungen"
+             class="py-16">
+
+        <div class="max-w-7xl mx-auto px-4">
+
+            <div class="bg-white rounded-[40px] p-6 lg:p-16 shadow-2xl border border-gray-50">
+
+
+                <!-- Überschrift -->
+
+                <div class="text-center mb-12">
+
+                    <span class="text-[10px] font-black uppercase tracking-widest text-[#5b7f6c] mb-2 block">
+
+                        Eure Erfahrungen
+
+                    </span>
+
+
+                    <h2 class="text-3xl lg:text-5xl font-serif mb-4">
+
+                        Das sagen unsere Gäste
+
+                    </h2>
+
+
+                    <p class="text-gray-400 text-sm max-w-2xl mx-auto">
+
+                        Du warst mit Lotte unterwegs? Teile deine Erfahrung mit anderen Campern.
+
+                    </p>
+
+
+                    <!-- Durchschnitt -->
+
+                    <div class="inline-flex items-center gap-3 mt-6 px-5 py-3 bg-[#fbfbf9] rounded-2xl">
+
+                        <span id="bewertungSterne"
+                              class="text-[#d4a373] text-xl tracking-widest">
+
+                            ★★★★★
+
+                        </span>
+
+
+                        <span id="bewertungDurchschnitt"
+                              class="text-sm font-bold text-[#3e5f50]">
+
+                            Noch keine Bewertungen
+
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                     BEWERTUNGS-SLIDER
+                ================================================== -->
+
+                <div class="relative mb-12">
+
+
+                    <div class="swiper bewertungenSwiper">
+
+
+                        <div id="bewertungenListe"
+                             class="swiper-wrapper">
+
+
+                            <!-- Fallback -->
+
+                            <div class="swiper-slide">
+
+                                <article class="bewertung-card">
+
+
+                                    <div class="bewertung-card-sterne">
+
+                                        ★★★★★
+
+                                    </div>
+
+
+                                    <p class="bewertung-card-text">
+
+                                        Noch keine freigegebenen Bewertungen.
+
+                                    </p>
+
+
+                                    <div class="bewertung-card-autor">
+
+
+                                        <div class="bewertung-avatar">
+
+                                            B
+
+                                        </div>
+
+
+                                        <div>
+
+                                            <div class="bewertung-name">
+
+                                                Bauer Roadtrip
+
+                                            </div>
+
+                                        </div>
+
+
+                                    </div>
+
+
+                                </article>
+
+                            </div>
+
+
+                        </div>
+
+
+                        <!-- Pfeil links -->
+
+                        <div class="swiper-button-prev bewertung-prev"></div>
+
+
+                        <!-- Pfeil rechts -->
+
+                        <div class="swiper-button-next bewertung-next"></div>
+
+
+                        <!-- Punkte -->
+
+                        <div class="swiper-pagination bewertung-pagination"></div>
+
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                     BEWERTUNGSFORMULAR
+                ================================================== -->
+
+                <div class="max-w-3xl mx-auto bg-[#fbfbf9] rounded-[32px] p-6 lg:p-10">
+
+
+                    <div class="text-center mb-8">
+
+
+                        <span class="text-[10px] font-black uppercase tracking-widest text-[#5b7f6c]">
+
+                            Deine Meinung zählt
+
+                        </span>
+
+
+                        <h3 class="text-2xl lg:text-3xl font-serif mt-2 mb-3">
+
+                            Jetzt Bewertung abgeben
+
+                        </h3>
+
+
+                    </div>
+
+
+                    <!-- Unsichtbares Ziel -->
+
+                    <iframe name="bewertungFrame"
+                            id="bewertungFrame"
+                            style="display:none;"
+                            title="Bewertung">
+                    </iframe>
+
+
+                    <!-- Formular -->
+
+                    <form id="bewertungsForm"
+                          action="https://script.google.com/macros/s/AKfycbwuOB0kWhzaTyVwSLgt6-ZtYA9-4xZGoAW8WVgF9TT1-WsC6S8EIpQa6Qy5jh_1hS86fw/exec"
+                          method="POST"
+                          target="bewertungFrame"
+                          class="space-y-6">
+
+
+                        <!-- Name -->
+
+                        <div class="space-y-1">
+
+                            <label class="text-[10px] font-black uppercase text-gray-400 ml-2">
+
+                                Dein Name
+
+                            </label>
+
+
+                            <input type="text"
+                                   name="review_name"
+                                   required
+                                   maxlength="80"
+                                   placeholder="z. B. Familie Müller"
+                                   class="w-full p-4 bg-white rounded-2xl border-none focus:ring-2 focus:ring-[#5b7f6c] outline-none">
+
+                        </div>
+
+
+                        <!-- Reisezeitraum -->
+
+                        <div class="space-y-1">
+
+                            <label class="text-[10px] font-black uppercase text-gray-400 ml-2">
+
+                                Reisezeitraum
+
+                            </label>
+
+
+                            <input type="text"
+                                   name="review_period"
+                                   required
+                                   maxlength="50"
+                                   placeholder="z. B. August 2026"
+                                   class="w-full p-4 bg-white rounded-2xl border-none focus:ring-2 focus:ring-[#5b7f6c] outline-none">
+
+                        </div>
+
+
+                        <!-- Sterne -->
+
+                        <div>
+
+                            <label class="text-[10px] font-black uppercase text-gray-400 ml-2 block mb-2">
+
+                                Deine Bewertung
+
+                            </label>
+
+
+                            <div class="bewertung-sterne">
+
+
+                                <input type="radio"
+                                       id="stern5"
+                                       name="review_stars"
+                                       value="5"
+                                       required>
+
+                                <label for="stern5">
+                                    ★
+                                </label>
+
+
+                                <input type="radio"
+                                       id="stern4"
+                                       name="review_stars"
+                                       value="4">
+
+                                <label for="stern4">
+                                    ★
+                                </label>
+
+
+                                <input type="radio"
+                                       id="stern3"
+                                       name="review_stars"
+                                       value="3">
+
+                                <label for="stern3">
+                                    ★
+                                </label>
+
+
+                                <input type="radio"
+                                       id="stern2"
+                                       name="review_stars"
+                                       value="2">
+
+                                <label for="stern2">
+                                    ★
+                                </label>
+
+
+                                <input type="radio"
+                                       id="stern1"
+                                       name="review_stars"
+                                       value="1">
+
+                                <label for="stern1">
+                                    ★
+                                </label>
+
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- Text -->
+
+                        <div class="space-y-1">
+
+
+                            <label class="text-[10px] font-black uppercase text-gray-400 ml-2">
+
+                                Deine Bewertung
+
+                            </label>
+
+
+                            <textarea name="review_text"
+                                      required
+                                      maxlength="1000"
+                                      rows="5"
+                                      placeholder="Wie hat dir der Urlaub mit Lotte gefallen?"
+                                      class="w-full p-4 bg-white rounded-2xl border-none focus:ring-2 focus:ring-[#5b7f6c] outline-none resize-none">
+                            </textarea>
+
+
+                            <p class="text-[10px] text-gray-400 ml-2">
+
+                                Maximal 1.000 Zeichen
+
+                            </p>
+
+
+                        </div>
+
+
+                        <!-- Zustimmung -->
+
+                        <label class="flex items-start gap-3 text-xs text-gray-500 leading-relaxed">
+
+
+                            <input type="checkbox"
+                                   name="review_consent"
+                                   value="Ja"
+                                   required
+                                   class="mt-1">
+
+
+                            <span>
+
+                                Ich stimme zu, dass meine Bewertung mit meinem angegebenen Namen
+                                auf der Bauer-Roadtrip-Homepage veröffentlicht werden darf.
+
+                            </span>
+
+
+                        </label>
+
+
+                        <!-- Button -->
+
+                        <button type="submit"
+                                id="reviewSubmitBtn"
+                                class="w-full py-5 bg-[#3e5f50] text-white rounded-2xl font-bold text-lg shadow-xl shadow-green-900/20 hover:bg-[#5b7f6c] transition-colors">
+
+                            ⭐ Bewertung absenden
+
+                        </button>
+
+
+                        <!-- Erfolg -->
+
+                        <div id="bewertungErfolg"
+                             class="hidden bg-green-50 text-[#3e5f50] rounded-2xl p-5 text-center text-sm">
+
+                            Vielen Dank! Deine Bewertung wurde übermittelt
+                            und wird von uns geprüft.
+
+                        </div>
+
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         FOOTER
+    ========================= -->
+
+    <footer class="bg-gray-900 text-white mt-20 py-16 px-6">
+
+
+        <div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-12 text-center md:text-left">
+
+
+            <div>
+
+                <p class="text-gray-400 text-sm">
+
+                    Wohnwagenvermietung in Frankenhardt
+
+                </p>
+
+            </div>
+
+
+            <div>
+
+                <h4 class="text-[10px] font-black uppercase tracking-widest text-gray-500 mb-6">
+
+                    Rechtliches
+
+                </h4>
+
+
+                <ul class="space-y-4 text-sm font-medium">
+
+
+                    <li>
+
+                        <a href="Impressum.html"
+                           class="hover:text-[#5b7f6c]">
+
+                            Impressum
+
+                        </a>
+
+                    </li>
+
+
+                    <li>
+
+                        <a href="AGB.html"
+                           class="hover:text-[#5b7f6c]">
+
+                            AGB
+
+                        </a>
+
+                    </li>
+
+
+                    <li>
+
+                        <a href="datenschutz.html"
+                           class="hover:text-[#5b7f6c]">
+
+                            Datenschutz
+
+                        </a>
+
+                    </li>
+
+
+                </ul>
+
+            </div>
+
+
+            <div>
+
+                <h4 class="text-[10px] font-black uppercase tracking-widest text-gray-500 mb-6">
+
+                    Social Media
+
+                </h4>
+
+
+                <div class="flex justify-center md:justify-start gap-4">
+
+
+                    <!-- Instagram -->
+
+                    <a href="https://www.instagram.com/bauer.roadtrip/"
+                       target="_blank"
+                       class="w-10 h-10 bg-white/10 rounded-xl flex items-center justify-center hover:bg-white/20 transition-colors">
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                             width="20"
+                             height="20"
+                             viewBox="0 0 24 24"
+                             fill="none"
+                             stroke="currentColor"
+                             stroke-width="2"
+                             stroke-linecap="round"
+                             stroke-linejoin="round"
+                             class="lucide lucide-instagram">
+
+
+                            <rect width="20"
+                                  height="20"
+                                  x="2"
+                                  y="2"
+                                  rx="5"
+                                  ry="5">
+                            </rect>
+
+
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z">
+                            </path>
+
+
+                            <line x1="17.5"
+                                  x2="17.51"
+                                  y1="6.5"
+                                  y2="6.5">
+                            </line>
+
+
+                        </svg>
+
+                    </a>
+
+
+                    <!-- TikTok -->
+
+                    <a href="https://www.tiktok.com/@bauer.roadtrip"
+                       target="_blank"
+                       class="w-10 h-10 bg-white/10 rounded-xl flex items-center justify-center hover:bg-white/20 transition-colors">
+
+                        <i data-lucide="video"
+                           class="w-5 h-5">
+                        </i>
+
+                    </a>
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="max-w-7xl mx-auto mt-16 pt-8 border-t border-white/5 text-center text-[10px] font-bold uppercase tracking-[0.3em] text-gray-600">
+
+            © 2026 Bauer Roadtrip
+
+        </div>
+
+
+    </footer>
+
+
+    <!-- =========================
+         ALERT
+    ========================= -->
+
+    <div id="customAlert">
+
+
+        <div class="bg-white p-8 rounded-[32px] max-w-xs w-full text-center">
+
+
+            <div id="alertIcon"
+                 class="w-16 h-16 rounded-full mx-auto mb-6 flex items-center justify-center">
+            </div>
+
+
+            <h3 id="alertTitle"
+                class="text-xl font-bold mb-2 text-gray-900">
+            </h3>
+
+
+            <p id="alertMessage"
+               class="text-gray-500 text-sm mb-8">
+            </p>
+
+
+            <button onclick="closeAlert()"
+                    class="w-full py-4 bg-gray-900 text-white rounded-2xl font-bold">
+
+                Verstanden
+
+            </button>
+
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         SCRIPTS
+    ========================= -->
+
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+    <script src="https://npmcdn.com/flatpickr/dist/l10n/de.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <script type="text/javascript"
+            src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+    </script>
+
 
     <script>
+
+
+        /* =================================================
+           LUCIDE
+        ================================================= */
+
+        lucide.createIcons();
+
+
+        /* =================================================
+           EMAILJS
+        ================================================= */
+
+        emailjs.init(
+            "Yv54L7PtosQeWg7P6"
+        );
+
+
+        /* =================================================
+           BELEGTE ZEITRÄUME
+        ================================================= */
+
+        const blockedDates = [
+
+            // Hier kannst du später belegte Zeiträume eintragen.
+
+        ];
+
+
+        /* =================================================
+           LOTTE SLIDER
+        ================================================= */
+
+        const swiper =
+            new Swiper(
+                ".lotteSwiper",
+                {
+
+                    loop: true,
+
+                    pagination: {
+
+                        el:
+                            ".lotteSwiper .swiper-pagination",
+
+                        clickable: true
+
+                    },
+
+                    autoplay: {
+
+                        delay: 4000
+
+                    }
+
+                }
+            );
+
+
+        /* =================================================
+           FLATPICKR
+        ================================================= */
+
+        flatpickr(
+            "#datePicker",
+            {
+
+                mode: "range",
+
+                minDate: "today",
+
+                locale: "de",
+
+                dateFormat: "d.m.Y",
+
+                disable: blockedDates,
+
+
+                onChange:
+                    function(selectedDates) {
+
+                        const error =
+                            document.getElementById(
+                                "durationError"
+                            );
+
+                        const btn =
+                            document.getElementById(
+                                "submitBtn"
+                            );
+
+
+                        if (
+                            selectedDates.length === 2
+                        ) {
+
+
+                            const days =
+                                Math.ceil(
+                                    Math.abs(
+                                        selectedDates[1] -
+                                        selectedDates[0]
+                                    ) /
+                                    86400000
+                                ) + 1;
+
+
+                            let containsBlocked =
+                                false;
+
+
+                            blockedDates.forEach(
+                                function(range) {
+
+                                    const start =
+                                        new Date(
+                                            range.from
+                                        );
+
+
+                                    const end =
+                                        new Date(
+                                            range.to
+                                        );
+
+
+                                    if (
+                                        selectedDates[0] <= end &&
+                                        selectedDates[1] >= start
+                                    ) {
+
+                                        containsBlocked =
+                                            true;
+
+                                    }
+
+                                }
+                            );
+
+
+                            const valid =
+                                days >= 3 &&
+                                !containsBlocked;
+
+
+                            error.classList.toggle(
+                                "hidden",
+                                days >= 3
+                            );
+
+
+                            btn.disabled =
+                                !valid;
+
+
+                            if (
+                                containsBlocked
+                            ) {
+
+                                btn.innerText =
+                                    "Zeitraum belegt";
+
+                            } else {
+
+                                btn.innerText =
+                                    "Anfrage absenden";
+
+                            }
+
+
+                        } else {
+
+                            btn.disabled =
+                                true;
+
+                        }
+
+                    }
+
+            }
+        );
+
+
+        /* =================================================
+           ALERT
+        ================================================= */
+
+        function showAlert(
+            success,
+            title,
+            msg
+        ) {
+
+
+            const modal =
+                document.getElementById(
+                    "customAlert"
+                );
+
+
+            const icon =
+                document.getElementById(
+                    "alertIcon"
+                );
+
+
+            document.getElementById(
+                "alertTitle"
+            ).innerText =
+                title;
+
+
+            document.getElementById(
+                "alertMessage"
+            ).innerText =
+                msg;
+
+
+            icon.className =
+                `w-16 h-16 rounded-full mx-auto mb-6 flex items-center justify-center ${
+                    success
+                    ? "bg-green-100 text-green-600"
+                    : "bg-red-100 text-red-600"
+                }`;
+
+
+            icon.innerHTML =
+                `<i data-lucide="${
+                    success ? "check" : "x"
+                }" class="w-8 h-8"></i>`;
+
+
+            lucide.createIcons();
+
+
+            modal.style.display =
+                "flex";
+
+        }
+
+
+        function closeAlert() {
+
+            document.getElementById(
+                "customAlert"
+            ).style.display =
+                "none";
+
+        }
+
+
+        /* =================================================
+           BUCHUNGSFORMULAR
+        ================================================= */
+
+        document.getElementById(
+            "bookingForm"
+        ).addEventListener(
+            "submit",
+            function(e) {
+
+                e.preventDefault();
+
+
+                const btn =
+                    document.getElementById(
+                        "submitBtn"
+                    );
+
+
+                btn.innerText =
+                    "Wird gesendet...";
+
+
+                btn.disabled =
+                    true;
+
+
+                emailjs.sendForm(
+                    "service_jul3zgv",
+                    "template_znuahar",
+                    this
+                )
+
+
+                .then(
+                    function() {
+
+                        showAlert(
+                            true,
+                            "Gesendet!",
+                            "Vielen Dank für deine Anfrage. Wir melden uns schnellstmöglich."
+                        );
+
+
+                        this.reset();
+
+
+                        btn.innerText =
+                            "Anfrage absenden";
+
+                    }.bind(this),
+
+
+                    function() {
+
+                        showAlert(
+                            false,
+                            "Fehler",
+                            "Senden fehlgeschlagen. Bitte versuche es später noch einmal."
+                        );
+
+
+                        btn.disabled =
+                            false;
+
+
+                        btn.innerText =
+                            "Anfrage absenden";
+
+                    }
+
+                );
+
+            }
+        );
+
+
+        /* =================================================
+           BEWERTUNGSFORMULAR
+        ================================================= */
 
         const bewertungForm =
             document.getElementById(
@@ -710,17 +2018,10 @@
             );
 
 
-        /*
-         * Wichtig:
-         * Kein event.preventDefault().
-         *
-         * Dadurch wird das Formular wirklich
-         * an Google Apps Script gesendet.
-         */
-
         bewertungForm.addEventListener(
             "submit",
             function() {
+
 
                 const sterne =
                     document.querySelector(
@@ -739,31 +2040,33 @@
                 }
 
 
-                bewertungButton.disabled = true;
+                bewertungButton.disabled =
+                    true;
+
 
                 bewertungButton.innerText =
                     "Wird gesendet...";
 
 
-                /*
-                 * Kleine Verzögerung:
-                 * Danach wird die Erfolgsmeldung
-                 * angezeigt.
-                 */
-
                 setTimeout(
                     function() {
+
 
                         bewertungErfolg.classList.remove(
                             "hidden"
                         );
 
+
                         bewertungForm.reset();
 
-                        bewertungButton.disabled = false;
+
+                        bewertungButton.disabled =
+                            false;
+
 
                         bewertungButton.innerText =
                             "⭐ Bewertung absenden";
+
 
                     },
                     1500
@@ -774,13 +2077,16 @@
 
 
         /* =================================================
-           FREIGEGEBENE BEWERTUNGEN LADEN
+           BEWERTUNGEN AUS GOOGLE APPS SCRIPT LADEN
         ================================================= */
 
         function ladeBewertungen() {
 
+
             const script =
-                document.createElement("script");
+                document.createElement(
+                    "script"
+                );
 
 
             const callback =
@@ -790,10 +2096,13 @@
             window[callback] =
                 function(data) {
 
+
                     if (
                         !data ||
                         !data.ok ||
-                        !Array.isArray(data.reviews)
+                        !Array.isArray(
+                            data.reviews
+                        )
                     ) {
 
                         return;
@@ -828,14 +2137,25 @@
                     }
 
 
-                    liste.innerHTML = "";
+                    /*
+                     * Fallback entfernen
+                     */
+
+                    liste.innerHTML =
+                        "";
 
 
-                    let gesamteSterne = 0;
+                    let gesamteSterne =
+                        0;
 
+
+                    /*
+                     * Jede Bewertung
+                     */
 
                     data.reviews.forEach(
                         function(review) {
+
 
                             gesamteSterne +=
                                 Number(
@@ -843,19 +2163,43 @@
                                 );
 
 
+                            /*
+                             * Slide
+                             */
+
+                            const slide =
+                                document.createElement(
+                                    "div"
+                                );
+
+
+                            slide.className =
+                                "swiper-slide";
+
+
+                            /*
+                             * Karte
+                             */
+
                             const card =
                                 document.createElement(
                                     "article"
                                 );
 
+
                             card.className =
                                 "bewertung-card";
 
+
+                            /*
+                             * Sterne
+                             */
 
                             const stars =
                                 document.createElement(
                                     "div"
                                 );
+
 
                             stars.className =
                                 "bewertung-card-sterne";
@@ -875,10 +2219,15 @@
                                 );
 
 
+                            /*
+                             * Text
+                             */
+
                             const text =
                                 document.createElement(
                                     "p"
                                 );
+
 
                             text.className =
                                 "bewertung-card-text";
@@ -890,19 +2239,29 @@
                                 "“";
 
 
+                            /*
+                             * Autor
+                             */
+
                             const author =
                                 document.createElement(
                                     "div"
                                 );
 
+
                             author.className =
                                 "bewertung-card-autor";
 
+
+                            /*
+                             * Avatar
+                             */
 
                             const avatar =
                                 document.createElement(
                                     "div"
                                 );
+
 
                             avatar.className =
                                 "bewertung-avatar";
@@ -913,6 +2272,10 @@
                                     .charAt(0)
                                     .toUpperCase();
 
+
+                            /*
+                             * Name
+                             */
 
                             const details =
                                 document.createElement(
@@ -925,59 +2288,193 @@
                                     "div"
                                 );
 
+
                             name.className =
                                 "bewertung-name";
+
 
                             name.textContent =
                                 review.name;
 
 
-
-
-
-
-
-
-
-
-                            
-
                             details.appendChild(
                                 name
                             );
-
-                       
 
 
                             author.appendChild(
                                 avatar
                             );
 
+
                             author.appendChild(
                                 details
                             );
 
 
+                            /*
+                             * Karte zusammenbauen
+                             */
+
                             card.appendChild(
                                 stars
                             );
 
+
                             card.appendChild(
                                 text
                             );
+
 
                             card.appendChild(
                                 author
                             );
 
 
-                            liste.appendChild(
+                            /*
+                             * Karte in Slide
+                             */
+
+                            slide.appendChild(
                                 card
+                            );
+
+
+                            liste.appendChild(
+                                slide
                             );
 
                         }
                     );
 
+
+                    /*
+                     * Bewertungs-Slider
+                     *
+                     * Desktop maximal 3
+                     */
+
+                    if (
+                        window.bewertungenSwiper
+                    ) {
+
+                        window.bewertungenSwiper.destroy(
+                            true,
+                            true
+                        );
+
+                    }
+
+
+                    window.bewertungenSwiper =
+                        new Swiper(
+                            ".bewertungenSwiper",
+                            {
+
+                                /*
+                                 * Handy = 1
+                                 */
+
+                                slidesPerView:
+                                    1,
+
+
+                                spaceBetween:
+                                    24,
+
+
+                                /*
+                                 * Nur bei mehr
+                                 * als 3 loopen
+                                 */
+
+                                loop:
+                                    data.reviews.length > 3,
+
+
+                                /*
+                                 * Automatisch
+                                 */
+
+                                autoplay: {
+
+                                    delay:
+                                        5000,
+
+                                    disableOnInteraction:
+                                        false
+
+                                },
+
+
+                                /*
+                                 * Punkte
+                                 */
+
+                                pagination: {
+
+                                    el:
+                                        ".bewertung-pagination",
+
+                                    clickable:
+                                        true
+
+                                },
+
+
+                                /*
+                                 * Pfeile
+                                 */
+
+                                navigation: {
+
+                                    nextEl:
+                                        ".bewertung-next",
+
+                                    prevEl:
+                                        ".bewertung-prev"
+
+                                },
+
+
+                                /*
+                                 * Tablet = 2
+                                 * Desktop = 3
+                                 */
+
+                                breakpoints: {
+
+
+                                    768: {
+
+                                        slidesPerView:
+                                            2,
+
+                                        spaceBetween:
+                                            24
+
+                                    },
+
+
+                                    1024: {
+
+                                        slidesPerView:
+                                            3,
+
+                                        spaceBetween:
+                                            24
+
+                                    }
+
+                                }
+
+                            }
+                        );
+
+
+                    /*
+                     * Durchschnitt
+                     */
 
                     const average =
                         gesamteSterne /
@@ -991,6 +2488,10 @@
                         " Bewertungen";
 
 
+                    /*
+                     * Sterne im Durchschnitt
+                     */
+
                     const rounded =
                         Math.round(
                             average
@@ -1002,18 +2503,27 @@
                             rounded
                         ) +
                         "☆".repeat(
-                            5 - rounded
+                            5 -
+                            rounded
                         );
 
                 };
 
 
+            /*
+             * Google Apps Script URL
+             */
+
             script.src =
                 "https://script.google.com/macros/s/AKfycbwuOB0kWhzaTyVwSLgt6-ZtYA9-4xZGoAW8WVgF9TT1-WsC6S8EIpQa6Qy5jh_1hS86fw/exec"
-                + "?callback="
-                + callback
-                + "&t="
-                + Date.now();
+                +
+                "?callback="
+                +
+                callback
+                +
+                "&t="
+                +
+                Date.now();
 
 
             document.body.appendChild(
@@ -1023,163 +2533,20 @@
         }
 
 
+        /*
+         * Bewertungen laden
+         *
+         * Wichtig:
+         * Swiper ist zu diesem Zeitpunkt
+         * bereits geladen.
+         */
+
         ladeBewertungen();
 
+
     </script>
 
-</section>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-
-    <footer class="bg-gray-900 text-white mt-20 py-16 px-6">
-        <div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-12 text-center md:text-left">
-            <div>
-                <p class="text-gray-400 text-sm">Wohnwagenvermietung in Frankenhardt</p>
-            </div>
-            <div>
-                <h4 class="text-[10px] font-black uppercase tracking-widest text-gray-500 mb-6">Rechtliches</h4>
-                <ul class="space-y-4 text-sm font-medium">
-                    <li><a href="Impressum.html" class="hover:text-[#5b7f6c]">Impressum</a></li>
-                    <li><a href="AGB.html" class="hover:text-[#5b7f6c]">AGB</a></li>
-                    <li><a href="datenschutz.html" class="hover:text-[#5b7f6c]">Datenschutz</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4 class="text-[10px] font-black uppercase tracking-widest text-gray-500 mb-6">Social Media</h4>
-                <div class="flex justify-center md:justify-start gap-4">
-                    <!-- Instagram Icon FIX: Direktes SVG eingebettet -->
-                    <a href="https://www.instagram.com/bauer.roadtrip/" target="_blank" class="w-10 h-10 bg-white/10 rounded-xl flex items-center justify-center hover:bg-white/20 transition-colors">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-instagram">
-                            <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
-                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                            <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line>
-                        </svg>
-                    </a>
-                    <a href="https://www.tiktok.com/@bauer.roadtrip" target="_blank" class="w-10 h-10 bg-white/10 rounded-xl flex items-center justify-center hover:bg-white/20 transition-colors">
-                        <i data-lucide="video" class="w-5 h-5"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-        <div class="max-w-7xl mx-auto mt-16 pt-8 border-t border-white/5 text-center text-[10px] font-bold uppercase tracking-[0.3em] text-gray-600">
-            © 2026 Bauer Roadtrip
-        </div>
-    </footer>
-
-    <div id="customAlert">
-        <div class="bg-white p-8 rounded-[32px] max-w-xs w-full text-center">
-            <div id="alertIcon" class="w-16 h-16 rounded-full mx-auto mb-6 flex items-center justify-center"></div>
-            <h3 id="alertTitle" class="text-xl font-bold mb-2 text-gray-900"></h3>
-            <p id="alertMessage" class="text-gray-500 text-sm mb-8"></p>
-            <button onclick="closeAlert()" class="w-full py-4 bg-gray-900 text-white rounded-2xl font-bold">Verstanden</button>
-        </div>
-    </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-    <script src="https://npmcdn.com/flatpickr/dist/l10n/de.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-    <script>
-        // Initialisiere Lucide für alle Icons außer Instagram (das jetzt fest im Code ist)
-        lucide.createIcons();
-        emailjs.init("Yv54L7PtosQeWg7P6");
-
-        const blockedDates = [
-          
-           
-        ];
-
-        const swiper = new Swiper('.lotteSwiper', {
-            loop: true,
-            pagination: { el: '.swiper-pagination', clickable: true },
-            autoplay: { delay: 4000 }
-        });
-
-        flatpickr("#datePicker", {
-            mode: "range",
-            minDate: "today",
-            locale: "de",
-            dateFormat: "d.m.Y",
-            disable: blockedDates,
-            onChange: function(selectedDates) {
-                const error = document.getElementById('durationError');
-                const btn = document.getElementById('submitBtn');
-                
-                if (selectedDates.length === 2) {
-                    const days = Math.ceil(Math.abs(selectedDates[1] - selectedDates[0]) / 86400000) + 1;
-                    
-                    let containsBlocked = false;
-                    blockedDates.forEach(range => {
-                        const start = new Date(range.from);
-                        const end = new Date(range.to);
-                        if (selectedDates[0] <= end && selectedDates[1] >= start) {
-                            containsBlocked = true;
-                        }
-                    });
-
-                    const valid = days >= 3 && !containsBlocked;
-                    error.classList.toggle('hidden', days >= 3);
-                    btn.disabled = !valid;
-                    
-                    if(containsBlocked) {
-                        btn.innerText = "Zeitraum belegt";
-                    } else {
-                        btn.innerText = "Anfrage absenden";
-                    }
-                } else { 
-                    btn.disabled = true; 
-                }
-            }
-        });
-
-        function showAlert(success, title, msg) {
-            const modal = document.getElementById('customAlert');
-            const icon = document.getElementById('alertIcon');
-            document.getElementById('alertTitle').innerText = title;
-            document.getElementById('alertMessage').innerText = msg;
-            icon.className = `w-16 h-16 rounded-full mx-auto mb-6 flex items-center justify-center ${success ? 'bg-green-100 text-green-600' : 'bg-red-100 text-red-600'}`;
-            icon.innerHTML = `<i data-lucide="${success ? 'check' : 'x'}" class="w-8 h-8"></i>`;
-            lucide.createIcons();
-            modal.style.display = 'flex';
-        }
-
-        function closeAlert() { document.getElementById('customAlert').style.display = 'none'; }
-
-        document.getElementById('bookingForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const btn = document.getElementById('submitBtn');
-            btn.innerText = 'Wird gesendet...';
-            btn.disabled = true;
-            emailjs.sendForm('service_jul3zgv', 'template_znuahar', this)
-                .then(() => {
-                    showAlert(true, 'Gesendet!', 'Vielen Dank für deine Anfrage. Wir melden uns schnellstmöglich.');
-                    this.reset();
-                    btn.innerText = 'Anfrage absenden';
-                }, () => {
-                    showAlert(false, 'Fehler', 'Senden fehlgeschlagen. Bitte versuche es später noch einmal.');
-                    btn.disabled = false;
-                    btn.innerText = 'Anfrage absenden';
-                });
-        });
-    </script>
 </body>
+
 </html>
